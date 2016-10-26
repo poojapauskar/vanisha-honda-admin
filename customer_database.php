@@ -71,8 +71,6 @@
 <div class="container">
   <div class="row" style="margin-top:5%">
     <div class="col-sm-2">
-    </div>
-    <div class="col-sm-2">
       <h6 style="margin-top:-8%;font-weight:bold">Recent Search</h6>
       <form action="#" style="margin-top:-20%">
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
@@ -107,6 +105,10 @@
   </form>
 </div>
 
+<div class="col-sm-1">
+      <button onclick="clear1()" class="mdl-button mdl-js-button mdl-button--raised">Clear</button>
+</div>
+
     <div class="col-sm-1">
       <button id="btn-export" class="mdl-button mdl-js-button mdl-button--raised">
         Export/Print
@@ -121,7 +123,17 @@
 </div>
 
     <!-- Textfield with Floating Label -->
-
+<script type="text/javascript">
+  function clear1(){
+    $('#date11').val('');
+    $('#date22').val('');
+    var table1 = document.getElementById("example");
+    for (var j = 1, row; row = table1.rows[j]; j++) {
+         table1.rows[j].style.display = "";
+    } 
+   
+  }
+</script>
 <!-- DatePicker And Sorting -->
 
 <link rel="stylesheet" href="css/jquery-ui.css">

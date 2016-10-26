@@ -83,9 +83,6 @@
       </form>
     </div>
 
-    <div class="col-sm-1">
-    </div>
-
 <div class="col-sm-6">
   <form>
     From
@@ -97,6 +94,12 @@
     </button>
   </form>
 </div>
+
+
+    <div class="col-sm-1">
+      <button onclick="clear1()" class="mdl-button mdl-js-button mdl-button--raised">Clear</button>
+    </div>
+
 
 
     <div class="col-sm-1">
@@ -152,6 +155,8 @@ function myFunction() {
   }
 }
 
+
+
 /*when both dates are empty display all data*/
 $('.date').blur(function()
 {
@@ -171,6 +176,19 @@ $('.date').blur(function()
 </script>
 
 <!-- End Datepicker and sorting -->
+
+
+<script type="text/javascript">
+  function clear1(){
+    $('#date11').val('');
+    $('#date22').val('');
+    var table1 = document.getElementById("example");
+    for (var j = 1, row; row = table1.rows[j]; j++) {
+         table1.rows[j].style.display = "";
+    } 
+   
+  }
+</script>
 
 
 <div class="row">
@@ -199,7 +217,7 @@ $('.date').blur(function()
   </thead>
   <tbody>
     <tr>
-      <td>Json Matt123</td>
+      <td>Abc</td>
       <td>91234567898</td>
       <td>json@bitjini.com</td>
       <td>Active</td>
