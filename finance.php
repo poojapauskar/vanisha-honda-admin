@@ -58,7 +58,7 @@
           <!-- Navigation -->
           <nav class="mdl-navigation" style="margin-top:4%">
             <a class="mdl-navigation__link" href=""><img style="width:13%;height:13%;" src="images/bell.png"></img>Welcome User,</a>
-            <a style="color:red" class="mdl-navigation__link" href="#">Logout</a>
+            <a style="color:red" class="mdl-navigation__link" href="index.php">Logout</a>
           </nav>
         </div>
       
