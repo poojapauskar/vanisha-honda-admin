@@ -95,7 +95,7 @@
     <div class="col-sm-5">
     </div>
     <div class="col-sm-2">
-      <button class="mdl-button mdl-js-button mdl-button--raised">
+      <button onclick="open_modal()" class="mdl-button mdl-js-button mdl-button--raised">
         Add New User 
       </button>
     </div>
