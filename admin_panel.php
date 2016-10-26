@@ -43,25 +43,25 @@
     </div>
     <div class="col-sm-2">
       <a href="enquiry.php">
-      <button class="ripple1"><img style="margin-left:-6%;margin-top:-2%;width:120px;height:120px;" src="images/bricks.png"></img></button>
+      <button class="ripple1"></button>
       <p>Enquiry</p>
       </a>
     </div>
     <div class="col-sm-2">
       <a href="test_ride.php">
-      <button class="ripple1"><img style="margin-left:-6%;margin-top:-2%;width:120px;height:120px;" src="images/bricks.png"></img></button>
+      <button class="ripple1"></button>
       <p>Test Rides</p>
       </a>
     </div>
     <div class="col-sm-2">
        <a href="bookings.php">
-       <button class="ripple1"><img style="margin-left:-6%;margin-top:-2%;width:120px;height:120px;" src="images/bricks.png"></img></button> 
+       <button class="ripple1"></button> 
        <p>bookings</p>
        </a>
     </div>
     <div class="col-sm-2">
        <a href="finance.php">
-       <button class="ripple1"><img style="margin-left:-6%;margin-top:-2%;width:120px;height:120px;" src="images/bricks.png"></img></button>
+       <button class="ripple1"></button>
        <p>Finance Requests</p>
        </a>
     </div>
@@ -74,25 +74,25 @@
     </div>
     <div class="col-sm-2">
       <a href="insurance.php">
-      <button class="ripple1"><img style="margin-left:-6%;margin-top:-2%;width:120px;height:120px;" src="images/bricks.png"></img></button>
+      <button class="ripple1"></button>
       <p>Insurance Renewal</p>
       </a>
     </div>
     <div class="col-sm-2">
       <a href="service_requests.php">
-      <button class="ripple1"><img style="margin-left:-6%;margin-top:-2%;width:120px;height:120px;" src="images/bricks.png"></img></button>
+      <button class="ripple1"></button>
       <p>Service Requests</p>
       </a>
     </div>
     <div class="col-sm-2">
        <a href="inventory.php">
-       <button class="ripple1"><img style="margin-left:-6%;margin-top:-2%;width:120px;height:120px;" src="images/bricks.png"></img></button> 
+       <button class="ripple1"></button> 
        <p>Inventory</p>
        </a>
     </div>
     <div class="col-sm-2">
        <a href="customer_database.php">
-       <button class="ripple1"><img style="margin-left:-6%;margin-top:-2%;width:120px;height:120px;" src="images/bricks.png"></img></button> 
+       <button class="ripple1"></button> 
        <p>Customer Database</p>
        </a>
     </div>
@@ -106,13 +106,13 @@
     </div>
     <div class="col-sm-2">
       <a href="push_notification.php">
-      <button class="ripple1"><img style="margin-left:-6%;margin-top:-2%;width:120px;height:120px;" src="images/bricks.png"></img></button>
+      <button class="ripple1"></button>
       <p>Mobile App</p>
       </a>
     </div>
     <div class="col-sm-2">
       <a href="web_app_user_list.php">
-      <button class="ripple1"><img style="margin-left:-6%;margin-top:-2%;width:120px;height:120px;" src="images/bricks.png"></img></button>
+      <button class="ripple1"></button>
       <p>Admin</p>
       </a>
     </div>
