@@ -43,26 +43,30 @@
     </div>
     <div class="col-sm-2">
       <a href="enquiry.php">
-      <button class="ripple1"></button>
+      <button style="width:120px;height:120px" class="mdl-button mdl-js-button mdl-button--raised">
       <p>Enquiry</p>
+      </button>
       </a>
     </div>
     <div class="col-sm-2">
       <a href="test_ride.php">
-      <button class="ripple1"></button>
+      <button style="width:120px;height:120px" class="mdl-button mdl-js-button mdl-button--raised">
       <p>Test Rides</p>
+      </button>
       </a>
     </div>
     <div class="col-sm-2">
        <a href="bookings.php">
-       <button class="ripple1"></button> 
+       <button style="width:120px;height:120px" class="mdl-button mdl-js-button mdl-button--raised">
        <p>bookings</p>
+       </button>
        </a>
     </div>
     <div class="col-sm-2">
        <a href="finance.php">
-       <button class="ripple1"></button>
+       <button style="width:120px;height:120px" class="mdl-button mdl-js-button mdl-button--raised">
        <p>Finance Requests</p>
+       </button>
        </a>
     </div>
     <div class="col-sm-2">
@@ -74,26 +78,30 @@
     </div>
     <div class="col-sm-2">
       <a href="insurance.php">
-      <button class="ripple1"></button>
+      <button style="width:120px;height:120px" class="mdl-button mdl-js-button mdl-button--raised">
       <p>Insurance Renewal</p>
+      </button>
       </a>
     </div>
     <div class="col-sm-2">
       <a href="service_requests.php">
-      <button class="ripple1"></button>
+      <button style="width:120px;height:120px" class="mdl-button mdl-js-button mdl-button--raised">
       <p>Service Requests</p>
+      </button>
       </a>
     </div>
     <div class="col-sm-2">
        <a href="inventory.php">
-       <button class="ripple1"></button> 
+       <button style="width:120px;height:120px" class="mdl-button mdl-js-button mdl-button--raised">
        <p>Inventory</p>
+       </button>
        </a>
     </div>
     <div class="col-sm-2">
        <a href="customer_database.php">
-       <button class="ripple1"></button> 
+       <button style="width:120px;height:120px" class="mdl-button mdl-js-button mdl-button--raised">
        <p>Customer Database</p>
+       </button>
        </a>
     </div>
     <div class="col-sm-2">
@@ -106,14 +114,16 @@
     </div>
     <div class="col-sm-2">
       <a href="push_notification.php">
-      <button class="ripple1"></button>
+      <button style="width:120px;height:120px" class="mdl-button mdl-js-button mdl-button--raised">
       <p>Mobile App</p>
+      </button>
       </a>
     </div>
     <div class="col-sm-2">
       <a href="web_app_user_list.php">
-      <button class="ripple1"></button>
+      <button style="width:120px;height:120px" class="mdl-button mdl-js-button mdl-button--raised">
       <p>Admin</p>
+      </button>
       </a>
     </div>
   </div>
