@@ -13,7 +13,7 @@
     <!-- Material Design icon font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-    
+
   <script src="js/material.min.js"></script>
   <link rel="stylesheet" href="css/material.indigo-pink.min.css">
 <link rel="stylesheet" href="css/style.css">
@@ -50,8 +50,6 @@
       <a class="mdl-navigation__link" href="web_app_user_list.php">Admin</a>
     </nav>
   </div>
-  <main class="mdl-layout__content">
-  </main>
 </div>
   
 <div class="container">
