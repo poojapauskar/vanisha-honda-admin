@@ -16,25 +16,15 @@
 </head>
 <body ng-app="" style="overflow-x:hidden">
 
-<div class="row">
-  <div class="col-sm-4">
-        <img style="width:13%;height:13%;margin-top:4%;margin-left:4%" src="images/sample_logo.jpg"></img>
-        <h6 style="color:black;margin-top:-5%;margin-left:19%">Vanisha Honda</h6>
-  </div>
-  <div class="col-sm-4" style="text-align:center">
-    <h5>Admin Panel</h5>
-  </div>
-  <div class="col-sm-4">
-  
- 
-          <!-- Navigation -->
-          <nav class="mdl-navigation" style="margin-top:4%">
-            <a class="mdl-navigation__link" href=""><img style="width:13%;height:13%;" src="images/bell.png"></img>Welcome User,</a>
-            <a style="color:red" class="mdl-navigation__link" href="index.php">Logout</a>
-          </nav>
-        </div>
-      
-  </div>
+<div class="row" style="background-color:#607D8B;height:100px;width:115%">
+          <div class="col-sm-2">
+          </div> 
+          <div class="col-sm-6">
+              <img style="margin-top:5%" src="images/Different-Honda-Logo.png"></img>
+          </div> 
+          <div class="col-sm-4"> 
+              <h5 style="color:white;font-weight:bold">Vanisha Honda</h5>
+          </div>
 </div>
   
 <div class="container">
