@@ -38,38 +38,45 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 </head>
-<body ng-app="" style="overflow-x:hidden">
+<body ng-app="" style="background-color:#E8E8E8;overflow-x:hidden">
 
-<div class="row">
-  <div class="col-sm-4">
-  <a href="admin_panel.php">
-    <img style="width:13%;height:13%;margin-top:4%;margin-left:4%" src="images/sample_logo.jpg"></img>
-    <h6 style="color:black;margin-top:-5%;margin-left:19%">Vanisha Honda</h6>
-    <img style="width:9%;height:9%;margin-top:-23%;margin-left:48%" src="images/home.png"></img>
-  </a>
-  </div>
-  <div class="col-sm-4" style="text-align:center">
-    <h5>Enquiry</h5>
-  </div>
-  <div class="col-sm-4">
-  
- 
-          <!-- Navigation -->
-          <nav class="mdl-navigation" style="margin-top:4%">
-            <a class="mdl-navigation__link" href=""><img style="width:13%;height:13%;" src="images/bell.png"></img>Welcome User,</a>
-            <a style="color:red" class="mdl-navigation__link" href="index.php">Logout</a>
-          </nav>
-        </div>
-      
+<div class="demo-layout-transparent mdl-layout mdl-js-layout">
+  <header style="background-color:#607D8B;height:100px;" class="mdl-layout__header mdl-layout__header--transparent">
+    <div class="mdl-layout__header-row">
+      <!-- Title -->
+      <a href="admin_panel.php">
+      <img style="margin-top:5%" src="images/Different-Honda-Logo.png"></img>
+      </a>
+      <!-- Add spacer, to align navigation to the right -->
+      <div class="mdl-layout-spacer"></div>
+      <!-- Navigation -->
+      <nav class="mdl-navigation">
+        <h5 style="color:white;font-weight:bold">Vanisha Honda</h5>
+      </nav>
+
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <img style="margin-top:10%;margin-left:20%;width:25%" src="images/Different-Honda-Logo.png"></img>
+    <nav class="mdl-navigation">
+      <a class="mdl-navigation__link" href="enquiry.php">Enquiry</a>
+      <a class="mdl-navigation__link" href="test_ride.php">Test Rides</a>
+      <a class="mdl-navigation__link" href="bookings.php">Bookings</a>
+      <a class="mdl-navigation__link" href="finance.php">Finance Requests</a>
+      <a class="mdl-navigation__link" href="insurance.php">Insurance Renewal</a>
+      <a class="mdl-navigation__link" href="service_requests.php">Service Requests</a>
+      <a class="mdl-navigation__link" href="inventory.php">Inventory</a>
+      <a class="mdl-navigation__link" href="customer_database.php">Customer Database</a>
+      <a class="mdl-navigation__link" href="push_notification.php">Mobile App</a>
+      <a class="mdl-navigation__link" href="web_app_user_list.php">Admin</a>
+    </nav>
   </div>
 </div>
   
 <div class="container">
-  <div class="row" style="margin-top:5%">
+  <div class="row" style="margin-top:15%">
     <div class="col-sm-2">
-    </div>
-    <div class="col-sm-2">
-      <h6 style="margin-top:-8%;font-weight:bold">Recent Enquiries</h6>
+      <h6 style="margin-top:-8%;font-weight:bold">Enquiry</h6>
       <form action="#" style="margin-top:-20%">
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
           <label class="mdl-button mdl-js-button mdl-button--icon" for="sample6">
