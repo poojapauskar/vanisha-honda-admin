@@ -8,6 +8,10 @@
   <script src="bootstrap/js/jquery.min.js"></script>
   <script src="bootstrap/js/bootstrap.min.js"></script>
   
+    <script src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
+    <!-- Material Design icon font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
   <script src="js/material.min.js"></script>
   <link rel="stylesheet" href="css/material.indigo-pink.min.css">
@@ -17,26 +21,37 @@
 </head>
 <body ng-app="">
 
-<div class="text-center">
-  <h5>Admin Portal</h5>
-</div>
+
   
 <div class="container">
-  <div class="row">
-
-    <div class="col-sm-1">
-    </div>
-
-    <div class="col-sm-3">
-        <img style="width:70%;height:70%" src="images/sample_logo.jpg"></img>
-        <h4>Vanisha Honda</h4>
-    </div>
-
-    <div class="col-sm-5">
-    </div>
+  <div class="row" style="background-color:#607D8B;height:100px;width:115%">
 
 
+      <div class="col-sm-2">
+      </div> 
+      <div class="col-sm-6">
+          <img style="margin-top:5%" src="images/Different-Honda-Logo.png"></img>
+      </div> 
+      <div class="col-sm-4"> 
+          <h5 style="color:white;font-weight:bold">Vanisha Honda</h5>
+      </div>
+      <!-- <div class="col-sm-2">
+      </div>  -->
+     
+  </div>
+
+
+<div class="row">
     <div class="col-sm-2">
+    </div>
+
+   
+
+    <div class="col-sm-6">
+    </div>
+
+
+    <div class="col-sm-4" style="margin-top:10%;">
         <form name="myForm" method="post" action="admin_panel.php">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
           <input name="myName" class="mdl-textfield__input" ng-model="myName">
