@@ -8,6 +8,12 @@
   <script src="bootstrap/js/jquery.min.js"></script>
   <script src="bootstrap/js/bootstrap.min.js"></script>
 
+<script src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
+    <!-- Material Design icon font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    
   <script src="js/material.min.js"></script>
   <link rel="stylesheet" href="css/material.indigo-pink.min.css">
 <link rel="stylesheet" href="css/style.css">
@@ -16,19 +22,40 @@
 </head>
 <body ng-app="" style="overflow-x:hidden">
 
-<div class="row" style="background-color:#607D8B;height:100px;width:115%">
-          <div class="col-sm-2">
-          </div> 
-          <div class="col-sm-6">
-              <img style="margin-top:5%" src="images/Different-Honda-Logo.png"></img>
-          </div> 
-          <div class="col-sm-4"> 
-              <h5 style="color:white;font-weight:bold">Vanisha Honda</h5>
-          </div>
+<div class="demo-layout-transparent mdl-layout mdl-js-layout">
+  <header style="background-color:#607D8B;height:100px;" class="mdl-layout__header mdl-layout__header--transparent">
+    <div class="mdl-layout__header-row">
+      <!-- Title -->
+      <img style="margin-top:5%" src="images/Different-Honda-Logo.png"></img>
+      <!-- Add spacer, to align navigation to the right -->
+      <div class="mdl-layout-spacer"></div>
+      <!-- Navigation -->
+      <nav class="mdl-navigation">
+        <h5 style="color:white;font-weight:bold">Vanisha Honda</h5>
+      </nav>
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <img style="margin-top:10%;margin-left:20%;width:25%" src="images/Different-Honda-Logo.png"></img>
+    <nav class="mdl-navigation">
+      <a class="mdl-navigation__link" href="enquiry.php">Enquiry</a>
+      <a class="mdl-navigation__link" href="test_ride.php">Test Rides</a>
+      <a class="mdl-navigation__link" href="bookings.php">Bookings</a>
+      <a class="mdl-navigation__link" href="finance.php">Finance Requests</a>
+      <a class="mdl-navigation__link" href="insurance.php">Insurance Renewal</a>
+      <a class="mdl-navigation__link" href="service_requests.php">Service Requests</a>
+      <a class="mdl-navigation__link" href="inventory.php">Inventory</a>
+      <a class="mdl-navigation__link" href="customer_database.php">Customer Database</a>
+      <a class="mdl-navigation__link" href="push_notification.php">Mobile App</a>
+      <a class="mdl-navigation__link" href="web_app_user_list.php">Admin</a>
+    </nav>
+  </div>
+  <main class="mdl-layout__content">
+  </main>
 </div>
   
 <div class="container">
-  <div class="row" style="margin-top:3%;margin-left:12%"> 
+  <div class="row" style="margin-top:15%;margin-left:12%"> 
     <div class="col-sm-2">
     </div>
     <div class="col-sm-2">
