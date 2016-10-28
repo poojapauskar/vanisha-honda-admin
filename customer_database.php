@@ -210,10 +210,21 @@ $('.date').blur(function()
 
 <!-- End Datepicker and sorting -->
 
+<script type="text/javascript">
+  $(window).on('hashchange', function() {
+     /* alert((document.location.hash).replace('#',''))*/
+});
+</script>
 
 <?php
 
-$url_data = 'https://vanisha-honda.herokuapp.com/register/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy';
+if($_GET['page_no'] == '' || $_GET['page_no'] == 'null'){
+  $page=1;
+}else{
+  $page=$_GET['page_no'];
+}
+
+$url_data = 'https://vanisha-honda.herokuapp.com/register/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy&page='.$page;
 $options_data = array(
   'http' => array(
     'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
@@ -254,7 +265,7 @@ $users_info = json_decode($output_data,true);
   </thead>
   <tbody>
    <?php 
-      for ($x = 0; $x <= count($users_info); $x++) { ?>
+      for ($x = 0; $x <= count($users_info['results']); $x++) { ?>
               <tr>
                 <td align="left"><?php echo empty($users_info['results'][$x]['pk']) ? "NULL" : $users_info['results'][$x]['pk']; ?></td>
                 <td align="left"><?php echo empty($users_info['results'][$x]['username']) ? "NULL" : $users_info['results'][$x]['username']; ?></td>
@@ -276,6 +287,31 @@ $users_info = json_decode($output_data,true);
 <div class="no-result">
     <h2 style="text-align:center">No result</h2>
 </div>
+
+<div class="container">
+  <ul class="pagination">
+
+<table>
+<tr>
+  <?php 
+      for ($x = 0; $x <= $users_info['count']/10; $x++) { ?>
+          <td>
+            <form method="get" action="customer_database.php">
+              <input type="hidden" name="page_no" value=<?php echo $x+1 ?>>
+              <button type="submit"><?php echo $x+1 ?></button>
+            </form>
+          </td>
+  <?php  } 
+    ?>
+</tr>
+</table>
+    <!-- <li><a href="customer_database.php#page=2">2</a></li>
+    <li><a href="customer_database.php#page=3">3</a></li>
+    <li><a href="customer_database.php#page=4">4</a></li>
+    <li><a href="customer_database.php#page=5">5</a></li> -->
+  </ul>
+</div>
+
 
 </div>  
     
