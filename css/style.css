@@ -1,3 +1,12 @@
+body{
+    overflow: auto;
+}
+
+
+/*th
+{
+    width: 100%;
+}*/
 
 .demo-layout-transparent .mdl-layout__header,
 .demo-layout-transparent .mdl-layout__drawer-button {
@@ -25,12 +34,6 @@
 }
 
 
-
-tbody {
-    height: 150px;       /* Just for the demo          */
-    overflow-y: auto;    /* Trigger vertical scroll    */
-    overflow-x: hidden;  /* Hide the horizontal scroll */
-}
 
 .ripple1 {
     position: relative;

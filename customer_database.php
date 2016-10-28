@@ -42,7 +42,7 @@
 
 
 </head>
-<body ng-app="" style="background-color:#E8E8E8;overflow-x:hidden">
+<body ng-app="" style="background-color:#E8E8E8;">
 
 <div class="demo-layout-transparent mdl-layout mdl-js-layout">
   <header style="background-color:#607D8B;height:100px;" class="mdl-layout__header mdl-layout__header--transparent">
@@ -240,7 +240,7 @@ $users_info = json_decode($output_data,true);
 
 
 
-<div class="row">
+
 <!-- <div class="form-group pull-right">
 <input type="text" class="search form-control" placeholder="What you looking for?">
 </div> -->
@@ -265,7 +265,7 @@ $users_info = json_decode($output_data,true);
   </thead>
   <tbody>
    <?php 
-      for ($x = 0; $x <= count($users_info['results']); $x++) { ?>
+      for ($x = 0; $x < count($users_info['results']); $x++) { ?>
               <tr>
                 <td align="left"><?php echo empty($users_info['results'][$x]['pk']) ? "NULL" : $users_info['results'][$x]['pk']; ?></td>
                 <td align="left"><?php echo empty($users_info['results'][$x]['username']) ? "NULL" : $users_info['results'][$x]['username']; ?></td>
@@ -288,32 +288,98 @@ $users_info = json_decode($output_data,true);
     <h2 style="text-align:center">No result</h2>
 </div>
 
-<div class="container">
-  <ul class="pagination">
+<div style="text-align:center">
+  <ul class="pagination"  style="overflow-x:auto;overflow-y:hidden;max-width:239px;">
 
-<table>
-<tr>
-  <?php 
-      for ($x = 0; $x <= $users_info['count']/10; $x++) { ?>
-          <td>
-            <form method="get" action="customer_database.php">
-              <input type="hidden" name="page_no" value=<?php echo $x+1 ?>>
-              <button type="submit"><?php echo $x+1 ?></button>
-            </form>
-          </td>
-  <?php  } 
-    ?>
-</tr>
-</table>
+      <table>
+          <tr>
+            <?php 
+                for ($x = 0; $x <= $users_info['count']/10; $x++) { ?>
+                    <td>
+                      <form method="get" action="customer_database.php">
+                        <input type="hidden" name="page_no" value=<?php echo $x+1 ?>>
+                        <button type="submit"><?php echo $x+1 ?></button>
+                      </form>
+                    </td>
+            <?php  } 
+              ?>
+
+                <td>
+                  <form method="get" action="customer_database.php">
+                    <input type="hidden" name="page_no" value=<?php echo $x+1 ?>>
+                    <button type="submit"><?php echo $x+1 ?></button>
+                  </form>
+                </td>
+                <td>
+                  <form method="get" action="customer_database.php">
+                    <input type="hidden" name="page_no" value=<?php echo $x+1 ?>>
+                    <button type="submit"><?php echo $x+1 ?></button>
+                  </form>
+                </td>
+                <td>
+                  <form method="get" action="customer_database.php">
+                    <input type="hidden" name="page_no" value=<?php echo $x+1 ?>>
+                    <button type="submit"><?php echo $x+1 ?></button>
+                  </form>
+                </td>
+                <td>
+                  <form method="get" action="customer_database.php">
+                    <input type="hidden" name="page_no" value=<?php echo $x+1 ?>>
+                    <button type="submit"><?php echo $x+1 ?></button>
+                  </form>
+                </td>
+                <td>
+                  <form method="get" action="customer_database.php">
+                    <input type="hidden" name="page_no" value=<?php echo $x+1 ?>>
+                    <button type="submit"><?php echo $x+1 ?></button>
+                  </form>
+                </td>
+                <td>
+                  <form method="get" action="customer_database.php">
+                    <input type="hidden" name="page_no" value=<?php echo $x+1 ?>>
+                    <button type="submit"><?php echo $x+1 ?></button>
+                  </form>
+                </td>
+                <td>
+                  <form method="get" action="customer_database.php">
+                    <input type="hidden" name="page_no" value=<?php echo $x+1 ?>>
+                    <button type="submit"><?php echo $x+1 ?></button>
+                  </form>
+                </td>
+                <td>
+                  <form method="get" action="customer_database.php">
+                    <input type="hidden" name="page_no" value=<?php echo $x+1 ?>>
+                    <button type="submit"><?php echo $x+1 ?></button>
+                  </form>
+                </td>
+                <td>
+                  <form method="get" action="customer_database.php">
+                    <input type="hidden" name="page_no" value=<?php echo $x+1 ?>>
+                    <button type="submit"><?php echo $x+1 ?></button>
+                  </form>
+                </td>
+                <td>
+                  <form method="get" action="customer_database.php">
+                    <input type="hidden" name="page_no" value=<?php echo $x+1 ?>>
+                    <button type="submit"><?php echo $x+1 ?></button>
+                  </form>
+                </td>
+                <td>
+                  <form method="get" action="customer_database.php">
+                    <input type="hidden" name="page_no" value=<?php echo $x+1 ?>>
+                    <button type="submit"><?php echo $x+1 ?></button>
+                  </form>
+                </td>
+      </tr>
+      </table>
     <!-- <li><a href="customer_database.php#page=2">2</a></li>
     <li><a href="customer_database.php#page=3">3</a></li>
     <li><a href="customer_database.php#page=4">4</a></li>
     <li><a href="customer_database.php#page=5">5</a></li> -->
   </ul>
+
 </div>
-
-
-</div>  
+ 
     
 
 </body>
