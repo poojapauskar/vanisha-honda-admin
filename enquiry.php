@@ -75,6 +75,7 @@
   
 <div class="container">
   <div class="row" style="margin-top:15%">
+
     <div class="col-sm-2">
       <h6 style="margin-top:-8%;font-weight:bold">Enquiry</h6>
       <form action="#" style="margin-top:-20%">
@@ -90,17 +91,17 @@
       </form>
     </div>
 
-<div class="col-sm-6">
-  <form>
-    From
-    <input id="date11" class="date" type="text" placeholder="DD/MM/YYY" required="True">
-    To
-    <input id="date22" class="date" type="text" placeholder="DD/MM/YYY" required="True">
-    <button type="submit" onclick="myFunction()" class="mdl-button mdl-js-button mdl-button--raised">
-      Search
-    </button>
-  </form>
-</div>
+    <div class="col-sm-6">
+      <form>
+        From
+        <input id="date11" class="date" type="text" placeholder="DD/MM/YYY" required="True">
+        To
+        <input id="date22" class="date" type="text" placeholder="DD/MM/YYY" required="True">
+        <button type="submit" onclick="myFunction()" class="mdl-button mdl-js-button mdl-button--raised">
+          Search
+        </button>
+      </form>
+    </div>
 
 
     <div class="col-sm-1">

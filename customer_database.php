@@ -42,36 +42,51 @@
 
 
 </head>
-<body ng-app="" style="overflow-x:hidden">
+<body ng-app="" style="background-color:#E8E8E8;overflow-x:hidden">
 
-<div class="row">
-  <div class="col-sm-4">
-  <a href="admin_panel.php">
-    <img style="width:13%;height:13%;margin-top:4%;margin-left:4%" src="images/sample_logo.jpg"></img>
-    <h6 style="color:black;margin-top:-5%;margin-left:19%">Vanisha Honda</h6>
-    <img style="width:9%;height:9%;margin-top:-23%;margin-left:48%" src="images/home.png"></img>
-  </a>
-  </div>
-  <div class="col-sm-4" style="text-align:center">
-    <h5>Customer Database</h5>
-  </div>
-  <div class="col-sm-4">
-  
- 
-          <!-- Navigation -->
-          <nav class="mdl-navigation" style="margin-top:4%">
-            <a class="mdl-navigation__link" href=""><img style="width:13%;height:13%;" src="images/bell.png"></img>Welcome User,</a>
-            <a style="color:red" class="mdl-navigation__link" href="index.php">Logout</a>
-          </nav>
-        </div>
-      
+<div class="demo-layout-transparent mdl-layout mdl-js-layout">
+  <header style="background-color:#607D8B;height:100px;" class="mdl-layout__header mdl-layout__header--transparent">
+    <div class="mdl-layout__header-row">
+      <!-- Title -->
+      <a href="admin_panel.php">
+      <img style="margin-top:5%" src="images/Different-Honda-Logo.png"></img>
+      </a>
+      <!-- Add spacer, to align navigation to the right -->
+      <div class="mdl-layout-spacer"></div>
+      <!-- Navigation -->
+      <nav class="mdl-navigation">
+        <h5 style="color:white;font-weight:bold">Vanisha Honda</h5>
+      </nav>
+
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <img style="margin-top:10%;margin-left:20%;width:25%" src="images/Different-Honda-Logo.png"></img>
+    <nav class="mdl-navigation">
+      <a class="mdl-navigation__link" href="enquiry.php">Enquiry</a>
+      <a class="mdl-navigation__link" href="test_ride.php">Test Rides</a>
+      <a class="mdl-navigation__link" href="bookings.php">Bookings</a>
+      <a class="mdl-navigation__link" href="finance.php">Finance Requests</a>
+      <a class="mdl-navigation__link" href="insurance.php">Insurance Renewal</a>
+      <a class="mdl-navigation__link" href="service_requests.php">Service Requests</a>
+      <a class="mdl-navigation__link" href="inventory.php">Inventory</a>
+      <a class="mdl-navigation__link" href="customer_database.php">Customer Database</a>
+      <a class="mdl-navigation__link" href="push_notification.php">Mobile App</a>
+      <a class="mdl-navigation__link" href="web_app_user_list.php">Admin</a>
+    </nav>
   </div>
 </div>
   
 <div class="container">
-  <div class="row" style="margin-top:5%">
-    <div class="col-sm-2">
-      <h6 style="margin-top:-8%;font-weight:bold">Recent Search</h6>
+  <div class="row" style="margin: auto;background-color:#607D8B;margin-top:15%;width:90%;height:80px;">
+
+    
+
+    <div class="col-sm-1" style="margin-top:3%;">
+      <h6 style="margin-top:0%;font-weight:bold">Users</h6>
+    </div>
+
+    <div class="col-sm-2" style="margin-top:3%">
       <form action="#" style="margin-top:-20%">
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
           <label class="mdl-button mdl-js-button mdl-button--icon" for="sample6">
@@ -93,23 +108,21 @@
       To <md-datepicker ng-model="myDate2" md-placeholder="Enter date"></md-datepicker>
     </md-content>
   </div> -->
-<div class="col-sm-6">
+<div class="col-sm-6" style="margin-top:2%">
   <form>
-    From
-    <input id="date11" class="date" type="text" placeholder="DD/MM/YYY" required="True">
-    To
-    <input id="date22" class="date" type="text" placeholder="DD/MM/YYY" required="True">
+    <input id="date11" style="background-color:#E8E8E8" class="date" type="text" placeholder="From: DD/MM/YYY" required="True">
+    <input id="date22" style="background-color:#E8E8E8" class="date" type="text" placeholder="To: DD/MM/YYY" required="True">
     <button type="submit" onclick="myFunction()" class="mdl-button mdl-js-button mdl-button--raised">
       Search
     </button>
   </form>
 </div>
 
-<div class="col-sm-1">
+<div class="col-sm-1" style="margin-top:2%">
       <button onclick="clear1()" class="mdl-button mdl-js-button mdl-button--raised">Clear</button>
 </div>
 
-    <div class="col-sm-1">
+    <div class="col-sm-1" style="margin-top:2%">
       <button id="btn-export" class="mdl-button mdl-js-button mdl-button--raised">
         Export/Print
       </button>
@@ -198,7 +211,21 @@ $('.date').blur(function()
 <!-- End Datepicker and sorting -->
 
 
+<?php
 
+$url_data = 'https://vanisha-honda.herokuapp.com/register/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy';
+$options_data = array(
+  'http' => array(
+    'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+    'method'  => 'GET',
+  ),
+);
+$context_data = stream_context_create($options_data);
+$output_data = file_get_contents($url_data, false,$context_data);
+/*var_dump($output_data);*/
+$users_info = json_decode($output_data,true);
+/*var_dump($users_info['results'][0]['pk']);*/
+?>
 
 
 
@@ -210,82 +237,38 @@ $('.date').blur(function()
 <table id="example" align="center" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp results">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Vehicle</th>
-      <th>Vehicle Co</th>
-      <th>Engine No.</th>
-      <th>Chassis No.</th>
-      <th>Reg. No.</th>
-      <th>Mobile</th>
-      <th>Email</th>
-      <th>Address</th>
-      <th>Date</th>
+      <th align="left">User Id</th>
+      <th align="left">Username</th>
+      <th align="left">Password</th>
+      <th align="left">Mobile</th>
+      <th align="left">Email</th>
+      <th align="left">Name</th>
+      <th align="left">Address</th>
+      <th align="left">Pincode</th>
+      <th align="left">Points</th>
+      <th align="left">Date</th>
     </tr>
     <!-- <tr class="warning no-result">
       <td colspan="4"><i class="fa fa-warning"></i> No result</td>
     </tr> -->
   </thead>
   <tbody>
-    <tr>
-      <td>Jason Matt</td>
-      <td>9123456789</td>
-      <td>jason@bitjini.com</td>
-      <td>Pleasure</td>
-      <td>hjkhk22333</td>
-      <td>87979hj</td>
-      <td>Rs.2000</td>
-      <td>12/4/2014</td>
-      <td>12/4/2014</td>
-      <td>02/10/2016</td>
-    </tr>
-    <tr>
-      <td>Jason Matt123</td>
-      <td>9123456789</td>
-      <td>jason@bitjini.com</td>
-      <td>Pleasure</td>
-      <td>hjkhk22333</td>
-      <td>87979hj</td>
-      <td>Rs.2000</td>
-      <td>12/4/2014</td>
-      <td>12/4/2014</td>
-      <td>03/10/2016</td>
-    </tr>
-    <tr>
-      <td>Jason Matt123</td>
-      <td>9123456789</td>
-      <td>jason@bitjini.com</td>
-      <td>Pleasure</td>
-      <td>hjkhk22333</td>
-      <td>87979hj</td>
-      <td>Rs.2000</td>
-      <td>12/4/2014</td>
-      <td>12/4/2014</td>
-      <td>04/10/2016</td>
-    </tr>
-    <tr>
-      <td>Jason Matt123</td>
-      <td>9123456789</td>
-      <td>jason@bitjini.com</td>
-      <td>Pleasure</td>
-      <td>hjkhk22333</td>
-      <td>87979hj</td>
-      <td>Rs.2000</td>
-      <td>12/4/2014</td>
-      <td>12/4/2014</td>
-      <td>05/10/2016</td>
-    </tr>
-    <tr>
-      <td>Jason Matt123</td>
-      <td>9123456789</td>
-      <td>jason@bitjini.com</td>
-      <td>Pleasure</td>
-      <td>hjkhk22333</td>
-      <td>87979hj</td>
-      <td>Rs.2000</td>
-      <td>12/4/2014</td>
-      <td>12/4/2014</td>
-      <td>06/10/2016</td>
-    </tr>
+   <?php 
+      for ($x = 0; $x <= count($users_info); $x++) { ?>
+              <tr>
+                <td align="left"><?php echo empty($users_info['results'][$x]['pk']) ? "NULL" : $users_info['results'][$x]['pk']; ?></td>
+                <td align="left"><?php echo empty($users_info['results'][$x]['username']) ? "NULL" : $users_info['results'][$x]['username']; ?></td>
+                <td align="left"><?php echo empty($users_info['results'][$x]['password']) ? "NULL" : $users_info['results'][$x]['password']; ?></td>
+                <td align="left"><?php echo empty($users_info['results'][$x]['mobile']) ? "NULL" : $users_info['results'][$x]['mobile']; ?></td>
+                <td align="left"><?php echo empty($users_info['results'][$x]['email']) ? "NULL" : $users_info['results'][$x]['email']; ?></td>
+                <td align="left"><?php echo empty($users_info['results'][$x]['name']) ? "NULL" : $users_info['results'][$x]['name']; ?></td>
+                <td align="left"><?php echo empty($users_info['results'][$x]['address']) ? "NULL" : $users_info['results'][$x]['address']; ?></td>
+                <td align="left"><?php echo empty($users_info['results'][$x]['pincode']) ? "NULL" : $users_info['results'][$x]['pincode']; ?></td>
+                <td align="left"><?php echo empty($users_info['results'][$x]['points']) ? "NULL" : $users_info['results'][$x]['points']; ?></td>
+                <td align="left">02/04/2016</td>
+              </tr>
+    <?php  } 
+    ?> 
 
   </tbody>
 </table>

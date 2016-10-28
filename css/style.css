@@ -25,7 +25,6 @@
 }
 
 
-thead, tbody { display: block; }
 
 tbody {
     height: 250px;       /* Just for the demo          */
