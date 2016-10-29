@@ -1,7 +1,11 @@
-body{
-    overflow: auto;
-}
 
+thead, tbody { display: block; }
+
+#example tbody {
+    height: 250px;   
+    overflow-y: auto;   
+    overflow-x: auto; 
+}
 
 /*th
 {
