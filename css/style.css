@@ -1,11 +1,11 @@
-
-thead, tbody { display: block; }
+html, body, #background { min-height: 100vh; min-width: 100vw; background-color:#E8E8E8;}
+/*thead, tbody { display: block; }
 
 #example tbody {
     height: 250px;   
     overflow-y: auto;   
     overflow-x: auto; 
-}
+}*/
 
 /*th
 {

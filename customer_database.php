@@ -42,7 +42,7 @@
 
 
 </head>
-<body ng-app="" style="background-color:#E8E8E8;">
+<body ng-app="" style="background-color:#E8E8E8;overflow-x:hidden">
 
 <div class="demo-layout-transparent mdl-layout mdl-js-layout">
   <header style="background-color:#607D8B;height:100px;" class="mdl-layout__header mdl-layout__header--transparent">
