@@ -22,15 +22,16 @@
   <script src="js/material.min.js"></script>
   <link rel="stylesheet" href="css/material.indigo-pink.min.css">
 <link rel="stylesheet" href="css/style.css">
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
 
 <!-- search functionality -->
 <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css'>
 <link rel="stylesheet" href="css/search.css">
  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src="js/search.js"></script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 <!-- export -->
 <!-- <link rel="stylesheet" href="css/datatable.css"> -->
@@ -41,37 +42,51 @@
 
 
 </head>
-<body ng-app="" style="overflow-x:hidden">
+<body ng-app="" style="background-color:#E8E8E8;overflow-x:hidden">
 
-<div class="row">
-  <div class="col-sm-4">
-  <a href="admin_panel.php">
-    <img style="width:13%;height:13%;margin-top:4%;margin-left:4%" src="images/sample_logo.jpg"></img>
-    <h6 style="color:black;margin-top:-5%;margin-left:19%">Vanisha Honda</h6>
-    <img style="width:9%;height:9%;margin-top:-23%;margin-left:48%" src="images/home.png"></img>
-  </a>
-  </div>
-  <div class="col-sm-4" style="text-align:center">
-    <h5>Mobile App</h5>
-  </div>
-  <div class="col-sm-4">
-  
- 
-          <!-- Navigation -->
-          <nav class="mdl-navigation" style="margin-top:4%">
-            <a class="mdl-navigation__link" href=""><img style="width:13%;height:13%;" src="images/bell.png"></img>Welcome User,</a>
-            <a style="color:red" class="mdl-navigation__link" href="index.php">Logout</a>
-          </nav>
-        </div>
-      
+<div class="demo-layout-transparent mdl-layout mdl-js-layout">
+  <header style="background-color:#607D8B;height:100px;" class="mdl-layout__header mdl-layout__header--transparent">
+    <div class="mdl-layout__header-row">
+      <!-- Title -->
+      <a href="admin_panel.php">
+      <img style="margin-top:5%" src="images/Different-Honda-Logo.png"></img>
+      </a>
+      <!-- Add spacer, to align navigation to the right -->
+      <div class="mdl-layout-spacer"></div>
+      <!-- Navigation -->
+      <nav class="mdl-navigation">
+        <h5 style="color:white;font-weight:bold">Vanisha Honda</h5>
+      </nav>
+
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <img style="margin-top:10%;margin-left:20%;width:25%" src="images/Different-Honda-Logo.png"></img>
+    <nav class="mdl-navigation">
+      <a class="mdl-navigation__link" href="inventory.php">Enquiry</a>
+      <a class="mdl-navigation__link" href="test_ride.php">Test Rides</a>
+      <a class="mdl-navigation__link" href="bookings.php">Bookings</a>
+      <a class="mdl-navigation__link" href="finance.php">Finance Requests</a>
+      <a class="mdl-navigation__link" href="insurance.php">Insurance Renewal</a>
+      <a class="mdl-navigation__link" href="service_requests.php">Service Requests</a>
+      <a class="mdl-navigation__link" href="inventory.php">Inventory</a>
+      <a class="mdl-navigation__link" href="customer_database.php">Customer Database</a>
+      <a class="mdl-navigation__link" href="push_notification.php">Mobile App</a>
+      <a class="mdl-navigation__link" href="web_app_user_list.php">Admin</a>
+    </nav>
   </div>
 </div>
   
 <div class="container">
-  <div class="row" style="margin-top:5%">
+  <div class="row" style="margin: auto;background-color:#607D8B;margin-top:15%;width:90%;height:80px;">
 
-    <div class="col-sm-2">
-      <h6 style="margin-top:-8%;font-weight:bold">Recent Push Notifications</h6>
+    
+
+    <div class="col-sm-1" style="margin-top:3%;">
+      <h6 style="margin-top:0%;font-weight:bold">Push Notifications</h6>
+    </div>
+
+    <div class="col-sm-2" style="margin-top:3%">
       <form action="#" style="margin-top:-20%">
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
           <label class="mdl-button mdl-js-button mdl-button--icon" for="sample6">
@@ -85,32 +100,42 @@
       </form>
     </div>
 
-<div class="col-sm-6">
+
+<!-- <html ng-app="datepickerBasicUsage">
+<div ng-controller="AppCtrl" style=''>
+    <md-content>
+      From <md-datepicker ng-model="myDate1" md-placeholder="Enter date"></md-datepicker>
+      To <md-datepicker ng-model="myDate2" md-placeholder="Enter date"></md-datepicker>
+    </md-content>
+  </div> -->
+<div class="col-sm-6" style="margin-top:2%">
   <form>
-    From
-    <input id="date11" class="date" type="text" placeholder="DD/MM/YYY" required="True">
-    To
-    <input id="date22" class="date" type="text" placeholder="DD/MM/YYY" required="True">
+    <input id="date11" style="background-color:#E8E8E8" class="date" type="text" placeholder="From: DD/MM/YYY" required="True">
+    <input id="date22" style="background-color:#E8E8E8" class="date" type="text" placeholder="To: DD/MM/YYY" required="True">
     <button type="submit" onclick="myFunction()" class="mdl-button mdl-js-button mdl-button--raised">
       Search
     </button>
   </form>
 </div>
 
-<div class="col-sm-1">
+<div class="col-sm-1" style="margin-top:2%">
       <button onclick="clear1()" class="mdl-button mdl-js-button mdl-button--raised">Clear</button>
 </div>
 
-    <div class="col-sm-3">
-      <button onclick="open_modal()" class="mdl-button mdl-js-button mdl-button--raised">
-        New Push Notification 
+    <div class="col-sm-1" style="margin-top:2%">
+      <button id="btn-export" class="mdl-button mdl-js-button mdl-button--raised">
+        Export/Print
       </button>
     </div>
+    <!-- <div class="col-sm-1">
+      <button class="mdl-button mdl-js-button mdl-button--raised">
+        Add New
+      </button>
+    </div> -->
   </div>
 </div>
 
     <!-- Textfield with Floating Label -->
-
 <script type="text/javascript">
   function clear1(){
     $('#date11').val('');
@@ -185,7 +210,37 @@ $('.date').blur(function()
 
 <!-- End Datepicker and sorting -->
 
-<div class="row">
+<script type="text/javascript">
+  $(window).on('hashchange', function() {
+     /* alert((document.location.hash).replace('#',''))*/
+});
+</script>
+
+<?php
+
+if($_GET['page_no'] == '' || $_GET['page_no'] == 'null'){
+  $page=1;
+}else{
+  $page=$_GET['page_no'];
+}
+
+$url_data = 'http://127.0.0.1:8000/get_all_push_notifications/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy&page='.$page;
+$options_data = array(
+  'http' => array(
+    'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+    'method'  => 'GET',
+  ),
+);
+$context_data = stream_context_create($options_data);
+$output_data = file_get_contents($url_data, false,$context_data);
+/*var_dump($output_data);*/
+$push_notifications_info = json_decode($output_data,true);
+/*var_dump($push_notifications_info);*/
+?>
+
+
+
+
 <!-- <div class="form-group pull-right">
 <input type="text" class="search form-control" placeholder="What you looking for?">
 </div> -->
@@ -201,145 +256,58 @@ $('.date').blur(function()
       <th>Time</th>
       <th>Message</th>
     </tr>
+    <!-- <tr class="warning no-result">
+      <td colspan="4"><i class="fa fa-warning"></i> No result</td>
+    </tr> -->
   </thead>
   <tbody>
-    <tr>
-      <td>Pleasure</td>
-      <td>Mathew</td>
-      <td>jason@bitjini.com</td>
-      <td>Pleasure</td>
-      <td>12/4/2015</td>
-      <td>87979hj</td>
-      <td>Rs.2000</td>
-    </tr>
-    <tr>
-      <td>Jason Matt</td>
-      <td>9123456789</td>
-      <td>jason@bitjini.com</td>
-      <td>Pleasure</td>
-      <td>12/4/2015</td>
-      <td>87979hj</td>
-      <td>Rs.2000</td>
-    </tr>
-    <tr>
-      <td>Jason Matt</td>
-      <td>9123456789</td>
-      <td>jason@bitjini.com</td>
-      <td>Pleasure</td>
-      <td>12/4/2015</td>
-      <td>87979hj</td>
-      <td>Rs.2000</td>
-    </tr>
-    <tr>
-      <td>Jason Matt</td>
-      <td>9123456789</td>
-      <td>jason@bitjini.com</td>
-      <td>Pleasure</td>
-      <td>12/4/2015</td>
-      <td>87979hj</td>
-      <td>Rs.2000</td>
-    </tr>
+   <?php 
+      for ($x = 0; $x < count($push_notifications_info['response']); $x++) { ?>
+              <tr>
+                <td align="left"><?php echo empty($push_notifications_info['response'][$x]['user_details']['name']) ? "All Users" : $push_notifications_info['response'][$x]['user_details']['name']; ?></td>
+                <td align="left"><?php echo empty($push_notifications_info['response'][$x]['user_details']['mobile']) ? "NULL" : $push_notifications_info['response'][$x]['user_details']['mobile']; ?></td>
+                <td align="left"><?php echo empty($push_notifications_info['response'][$x]['user_details']['email']) ? "NULL" : $push_notifications_info['response'][$x]['user_details']['email']; ?></td>
+                <td align="left"><?php echo empty($push_notifications_info['response'][$x]['push_notifications_details']['notification_type']) ? "NULL" : $push_notifications_info['response'][$x]['push_notifications_details']['notification_type']; ?></td>
+                <td align="left"><?php echo empty($push_notifications_info['response'][$x]['push_notifications_details']['date']) ? "NULL" : $push_notifications_info['response'][$x]['push_notifications_details']['date']; ?></td>
+                <td align="left"><?php echo empty($push_notifications_info['response'][$x]['push_notifications_details']['time']) ? "NULL" : $push_notifications_info['response'][$x]['push_notifications_details']['time']; ?></td>
+                <td align="left"><?php echo empty($push_notifications_info['response'][$x]['push_notifications_details']['message']) ? "NULL" : $push_notifications_info['response'][$x]['push_notifications_details']['message']; ?></td>
+              </tr>
+    <?php  } 
+    ?> 
+
   </tbody>
 </table>
-</div>  
-    
 
-<!-- The Modal -->
-<div id="myModal" class="modal">
-
-  <!-- Modal content -->
-  <div class="modal-content">
-    <div class="modal-header">
-      <span style="color:black" class="close">×</span>
-      <h2 style="text-align:center">New Push Notification</h2>
-    </div>
-    <div class="modal-body">
-      <form action="#" style="text-align:center">
-          <div class="mdl-textfield mdl-js-textfield">
-
-          <div class="row">
-
-<div style="text-align:left">
-<input type="radio" ng-checked="true" ng-model="myVar" value="All">All Users<br>
-<input type="radio" ng-model="myVar" value="User">Specific User
+<div class="no-result">
+    <h2 style="text-align:center">No result</h2>
 </div>
 
-                <div class="mdl-textfield mdl-js-textfield">
-                <label style="float: left;" for="sample1">To</label>
-                <input class="mdl-textfield__input" type="text" id="sample1">
-                </div>
+<div style="text-align:center">
+  <ul class="pagination"  style="overflow-x:auto;overflow-y:hidden;max-width:239px;">
 
-                <div class="mdl-textfield mdl-js-textfield">
-                <label style="float: left;" for="sample1">Template</label>
-                <input class="mdl-textfield__input" type="text" id="sample1">
-                </div>
-
-                <div class="mdl-textfield mdl-js-textfield">
-                <label style="float: left;" for="sample1">Customized</label>
-                <textarea class="mdl-textfield__input" type="text" id="sample1"></textarea>
-                </div>
-            
-          </div>
-
-          </div>
-        </form>
-    </div>
-    <div class="modal-footer">
-      <div class="row">
-       <!--  <div class="col-sm-4">
-          <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Cancel</button>
-        </div> -->
-        <div class="col-sm-4">
-        </div>
-        <div class="col-sm-4">
-          <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Send</button>
-        </div>
-        <!-- <div class="col-sm-2">
-          <button style="background-color:red;color:white" type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Cancel</button>
-        </div> -->
-        <div class="col-sm-4">
-        </div>
-      </div>
-    </div>
-  </div>
+      <table>
+          <tr>
+            <?php 
+                for ($x = 0; $x <= $push_notifications_info['count']/10; $x++) { ?>
+                    <td>
+                      <form method="get" action="push_notifications.php">
+                        <input type="hidden" name="page_no" value=<?php echo $x+1 ?>>
+                        <button type="submit"><?php echo $x+1 ?></button>
+                      </form>
+                    </td>
+            <?php  } 
+              ?>
+      </tr>
+      </table>
+    <!-- <li><a href="customer_database.php#page=2">2</a></li>
+    <li><a href="customer_database.php#page=3">3</a></li>
+    <li><a href="customer_database.php#page=4">4</a></li>
+    <li><a href="customer_database.php#page=5">5</a></li> -->
+  </ul>
 
 </div>
+ 
     
-<script>
-// Get the modal
-var modal = document.getElementById('myModal');
-
-// Get the button that opens the modal
-/*var btn = document.getElementById("myBtn");*/
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks the button, open the modal
-/*btn.onclick = function() {
-    modal.style.display = "block";
-}*/
-
-/*document.getElementById("myBtn1").onclick = function() {
-    modal.style.display = "block";
-}*/
-
-function open_modal(){
-   modal.style.display = "block";
-}
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-    modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-</script>
-
 
 </body>
 </html>
