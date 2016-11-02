@@ -122,9 +122,9 @@
       <button onclick="clear1()" class="mdl-button mdl-js-button mdl-button--raised">Clear</button>
 </div>
 
-    <div class="col-sm-1" style="margin-top:2%">
-      <button id="btn-export" class="mdl-button mdl-js-button mdl-button--raised">
-        Export/Print
+    <div class="col-sm-2" style="margin-top:2%">
+      <button style="font-size:8px" onclick="open_modal()" class="mdl-button mdl-js-button mdl-button--raised">
+       New Push Notification
       </button>
     </div>
     <!-- <div class="col-sm-1">
@@ -307,7 +307,102 @@ $push_notifications_info = json_decode($output_data,true);
 
 </div>
  
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span style="color:black" class="close">×</span>
+      <h2 style="text-align:center">New Push Notification</h2>
+    </div>
+    <div class="modal-body">
+      <form action="#" style="text-align:center">
+          <div class="mdl-textfield mdl-js-textfield">
+
+          <div class="row">
+
+<div style="text-align:left">
+<input type="radio" ng-checked="true" ng-model="myVar" value="All">All Users<br>
+<input type="radio" ng-model="myVar" value="User">Specific User
+</div>
+
+                <div class="mdl-textfield mdl-js-textfield">
+                <label style="float: left;" for="sample1">To</label>
+                <input class="mdl-textfield__input" type="text" id="sample1">
+                </div>
+
+                <div class="mdl-textfield mdl-js-textfield">
+                <label style="float: left;" for="sample1">Template</label>
+                <input class="mdl-textfield__input" type="text" id="sample1">
+                </div>
+
+                <div class="mdl-textfield mdl-js-textfield">
+                <label style="float: left;" for="sample1">Customized</label>
+                <textarea class="mdl-textfield__input" type="text" id="sample1"></textarea>
+                </div>
+            
+          </div>
+
+          </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+      <div class="row">
+       <!--  <div class="col-sm-4">
+          <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Cancel</button>
+        </div> -->
+        <div class="col-sm-4">
+        </div>
+        <div class="col-sm-4">
+          <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Send</button>
+        </div>
+        <!-- <div class="col-sm-2">
+          <button style="background-color:red;color:white" type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Cancel</button>
+        </div> -->
+        <div class="col-sm-4">
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
     
+<script>
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+/*var btn = document.getElementById("myBtn");*/
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+/*btn.onclick = function() {
+    modal.style.display = "block";
+}*/
+
+/*document.getElementById("myBtn1").onclick = function() {
+    modal.style.display = "block";
+}*/
+
+function open_modal(){
+   modal.style.display = "block";
+}
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+   
 
 </body>
 </html>
