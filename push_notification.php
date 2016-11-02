@@ -224,7 +224,7 @@ if($_GET['page_no'] == '' || $_GET['page_no'] == 'null'){
   $page=$_GET['page_no'];
 }
 
-$url_data = 'http://127.0.0.1:8000/get_all_push_notifications/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy&page='.$page;
+$url_data = 'https://vanisha-honda.herokuapp.com/get_all_push_notifications/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy&page='.$page;
 $options_data = array(
   'http' => array(
     'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
