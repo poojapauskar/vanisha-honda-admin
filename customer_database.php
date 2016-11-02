@@ -224,7 +224,7 @@ if($_GET['page_no'] == '' || $_GET['page_no'] == 'null'){
   $page=$_GET['page_no'];
 }
 
-$url_data = 'https://vanisha-honda.herokuapp.com/register/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy&page='.$page;
+$url_data = 'http://127.0.0.1:8000/get_all_customers/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy&page='.$page;
 $options_data = array(
   'http' => array(
     'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
@@ -235,7 +235,7 @@ $context_data = stream_context_create($options_data);
 $output_data = file_get_contents($url_data, false,$context_data);
 /*var_dump($output_data);*/
 $users_info = json_decode($output_data,true);
-/*var_dump($users_info['results'][0]['pk']);*/
+/*var_dump($users_info);*/
 ?>
 
 
@@ -245,7 +245,7 @@ $users_info = json_decode($output_data,true);
 <input type="text" class="search form-control" placeholder="What you looking for?">
 </div> -->
 <!-- <span class="counter pull-right"></span> -->
-<table id="example" align="center" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp results">
+<table id="example" align="center" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp response">
   <thead>
     <tr>
       <th align="left">User Id</th>
@@ -265,17 +265,17 @@ $users_info = json_decode($output_data,true);
   </thead>
   <tbody>
    <?php 
-      for ($x = 0; $x < count($users_info['results']); $x++) { ?>
+      for ($x = 0; $x < count($users_info['response']); $x++) { ?>
               <tr>
-                <td align="left"><?php echo empty($users_info['results'][$x]['pk']) ? "NULL" : $users_info['results'][$x]['pk']; ?></td>
-                <td align="left"><?php echo empty($users_info['results'][$x]['username']) ? "NULL" : $users_info['results'][$x]['username']; ?></td>
-                <td align="left"><?php echo empty($users_info['results'][$x]['password']) ? "NULL" : $users_info['results'][$x]['password']; ?></td>
-                <td align="left"><?php echo empty($users_info['results'][$x]['mobile']) ? "NULL" : $users_info['results'][$x]['mobile']; ?></td>
-                <td align="left"><?php echo empty($users_info['results'][$x]['email']) ? "NULL" : $users_info['results'][$x]['email']; ?></td>
-                <td align="left"><?php echo empty($users_info['results'][$x]['name']) ? "NULL" : $users_info['results'][$x]['name']; ?></td>
-                <td align="left"><?php echo empty($users_info['results'][$x]['address']) ? "NULL" : $users_info['results'][$x]['address']; ?></td>
-                <td align="left"><?php echo empty($users_info['results'][$x]['pincode']) ? "NULL" : $users_info['results'][$x]['pincode']; ?></td>
-                <td align="left"><?php echo empty($users_info['results'][$x]['points']) ? "NULL" : $users_info['results'][$x]['points']; ?></td>
+                <td align="left"><?php echo empty($users_info['response'][$x]['user_details']['pk']) ? "NULL" : $users_info['response'][$x]['user_details']['pk']; ?></td>
+                <td align="left"><?php echo empty($users_info['response'][$x]['user_details']['username']) ? "NULL" : $users_info['response'][$x]['user_details']['username']; ?></td>
+                <td align="left"><?php echo empty($users_info['response'][$x]['user_details']['password']) ? "NULL" : $users_info['response'][$x]['user_details']['password']; ?></td>
+                <td align="left"><?php echo empty($users_info['response'][$x]['user_details']['mobile']) ? "NULL" : $users_info['response'][$x]['user_details']['mobile']; ?></td>
+                <td align="left"><?php echo empty($users_info['response'][$x]['user_details']['email']) ? "NULL" : $users_info['response'][$x]['user_details']['email']; ?></td>
+                <td align="left"><?php echo empty($users_info['response'][$x]['user_details']['name']) ? "NULL" : $users_info['response'][$x]['user_details']['name']; ?></td>
+                <td align="left"><?php echo empty($users_info['response'][$x]['user_details']['address']) ? "NULL" : $users_info['response'][$x]['user_details']['address']; ?></td>
+                <td align="left"><?php echo empty($users_info['response'][$x]['user_details']['pincode']) ? "NULL" : $users_info['response'][$x]['user_details']['pincode']; ?></td>
+                <td align="left"><?php echo empty($users_info['response'][$x]['user_details']['points']) ? "NULL" : $users_info['response'][$x]['user_details']['points']; ?></td>
                 <td align="left">02/04/2016</td>
               </tr>
     <?php  } 
@@ -304,7 +304,7 @@ $users_info = json_decode($output_data,true);
             <?php  } 
               ?>
 
-                <td>
+              <!--   <td>
                   <form method="get" action="customer_database.php">
                     <input type="hidden" name="page_no" value=<?php echo $x+1 ?>>
                     <button type="submit"><?php echo $x+1 ?></button>
@@ -369,7 +369,7 @@ $users_info = json_decode($output_data,true);
                     <input type="hidden" name="page_no" value=<?php echo $x+1 ?>>
                     <button type="submit"><?php echo $x+1 ?></button>
                   </form>
-                </td>
+                </td> -->
       </tr>
       </table>
     <!-- <li><a href="customer_database.php#page=2">2</a></li>

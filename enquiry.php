@@ -18,11 +18,20 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.0.4/angular-material.css">
 <script src="js/datepicker.js"></script>   
 
+
+  <script src="js/material.min.js"></script>
+  <link rel="stylesheet" href="css/material.indigo-pink.min.css">
+<link rel="stylesheet" href="css/style.css">
+
 <!-- search functionality -->
 <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css'>
 <link rel="stylesheet" href="css/search.css">
  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src="js/search.js"></script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 <!-- export -->
 <!-- <link rel="stylesheet" href="css/datatable.css"> -->
@@ -31,11 +40,6 @@
 <script src="js/table2excel.js"></script>
 <script src="js/exportscript.js"></script>
 
-  <script src="js/material.min.js"></script>
-  <link rel="stylesheet" href="css/material.indigo-pink.min.css">
-<link rel="stylesheet" href="css/style.css">
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 </head>
 <body ng-app="" style="background-color:#E8E8E8;overflow-x:hidden">
@@ -74,10 +78,15 @@
 </div>
   
 <div class="container">
-  <div class="row" style="margin-top:15%">
+  <div class="row" style="margin: auto;background-color:#607D8B;margin-top:15%;width:90%;height:80px;">
 
-    <div class="col-sm-2">
-      <h6 style="margin-top:-8%;font-weight:bold">Enquiry</h6>
+    
+
+    <div class="col-sm-1" style="margin-top:3%;">
+      <h6 style="margin-top:0%;font-weight:bold">Enquiry</h6>
+    </div>
+
+    <div class="col-sm-2" style="margin-top:3%">
       <form action="#" style="margin-top:-20%">
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
           <label class="mdl-button mdl-js-button mdl-button--icon" for="sample6">
@@ -91,35 +100,53 @@
       </form>
     </div>
 
-    <div class="col-sm-6">
-      <form>
-        From
-        <input id="date11" class="date" type="text" placeholder="DD/MM/YYY" required="True">
-        To
-        <input id="date22" class="date" type="text" placeholder="DD/MM/YYY" required="True">
-        <button type="submit" onclick="myFunction()" class="mdl-button mdl-js-button mdl-button--raised">
-          Search
-        </button>
-      </form>
-    </div>
 
+<!-- <html ng-app="datepickerBasicUsage">
+<div ng-controller="AppCtrl" style=''>
+    <md-content>
+      From <md-datepicker ng-model="myDate1" md-placeholder="Enter date"></md-datepicker>
+      To <md-datepicker ng-model="myDate2" md-placeholder="Enter date"></md-datepicker>
+    </md-content>
+  </div> -->
+<div class="col-sm-6" style="margin-top:2%">
+  <form>
+    <input id="date11" style="background-color:#E8E8E8" class="date" type="text" placeholder="From: DD/MM/YYY" required="True">
+    <input id="date22" style="background-color:#E8E8E8" class="date" type="text" placeholder="To: DD/MM/YYY" required="True">
+    <button type="submit" onclick="myFunction()" class="mdl-button mdl-js-button mdl-button--raised">
+      Search
+    </button>
+  </form>
+</div>
 
-    <div class="col-sm-1">
+<div class="col-sm-1" style="margin-top:2%">
       <button onclick="clear1()" class="mdl-button mdl-js-button mdl-button--raised">Clear</button>
-    </div>
+</div>
 
-
-
-    <div class="col-sm-1">
+    <div class="col-sm-1" style="margin-top:2%">
       <button id="btn-export" class="mdl-button mdl-js-button mdl-button--raised">
         Export/Print
       </button>
     </div>
+    <!-- <div class="col-sm-1">
+      <button class="mdl-button mdl-js-button mdl-button--raised">
+        Add New
+      </button>
+    </div> -->
   </div>
 </div>
 
     <!-- Textfield with Floating Label -->
-
+<script type="text/javascript">
+  function clear1(){
+    $('#date11').val('');
+    $('#date22').val('');
+    var table1 = document.getElementById("example");
+    for (var j = 1, row; row = table1.rows[j]; j++) {
+         table1.rows[j].style.display = "";
+    } 
+   
+  }
+</script>
 <!-- DatePicker And Sorting -->
 
 <link rel="stylesheet" href="css/jquery-ui.css">
@@ -163,8 +190,6 @@ function myFunction() {
   }
 }
 
-
-
 /*when both dates are empty display all data*/
 $('.date').blur(function()
 {
@@ -185,21 +210,37 @@ $('.date').blur(function()
 
 <!-- End Datepicker and sorting -->
 
-
 <script type="text/javascript">
-  function clear1(){
-    $('#date11').val('');
-    $('#date22').val('');
-    var table1 = document.getElementById("example");
-    for (var j = 1, row; row = table1.rows[j]; j++) {
-         table1.rows[j].style.display = "";
-    } 
-   
-  }
+  $(window).on('hashchange', function() {
+     /* alert((document.location.hash).replace('#',''))*/
+});
 </script>
 
+<?php
 
-<div class="row">
+if($_GET['page_no'] == '' || $_GET['page_no'] == 'null'){
+  $page=1;
+}else{
+  $page=$_GET['page_no'];
+}
+
+$url_data = 'http://127.0.0.1:8000/get_all_enquiries/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy&page='.$page;
+$options_data = array(
+  'http' => array(
+    'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+    'method'  => 'GET',
+  ),
+);
+$context_data = stream_context_create($options_data);
+$output_data = file_get_contents($url_data, false,$context_data);
+/*var_dump($output_data);*/
+$enquiry_info = json_decode($output_data,true);
+/*var_dump($enquiry_info);*/
+?>
+
+
+
+
 <!-- <div class="form-group pull-right">
 <input type="text" class="search form-control" placeholder="What you looking for?">
 </div> -->
@@ -224,45 +265,24 @@ $('.date').blur(function()
     </tr> -->
   </thead>
   <tbody>
-    <tr>
-      <td>Abc</td>
-      <td>91234567898</td>
-      <td>json@bitjini.com</td>
-      <td>Active</td>
-      <td>black</td>
-      <td>Hot</td>
-      <td>Yes</td>
-      <td>No</td>
-      <td>590008</td>
-      <td>Git</td>
-      <td>02/10/2016</td>
-    </tr>
-    <tr>
-      <td>Json Matt</td>
-      <td>91234567898</td>
-      <td>json@bitjini.com</td>
-      <td>Active</td>
-      <td>black</td>
-      <td>Hot</td>
-      <td>Yes</td>
-      <td>No</td>
-      <td>590008</td>
-      <td>Git</td>
-      <td>03/10/2016</td>
-    </tr>
-    <tr>
-      <td>Json Matt</td>
-      <td>91234567898</td>
-      <td>json@bitjini.com</td>
-      <td>Active</td>
-      <td>black</td>
-      <td>Hot</td>
-      <td>Yes</td>
-      <td>No</td>
-      <td>590008</td>
-      <td>Git</td>
-      <td>08/10/2016</td>
-    </tr>
+   <?php 
+      for ($x = 0; $x < count($enquiry_info['response']); $x++) { ?>
+              <tr>
+                <td align="left"><?php echo empty($enquiry_info['response'][$x]['user_details']['name']) ? "NULL" : $enquiry_info['response'][$x]['user_details']['name']; ?></td>
+                <td align="left"><?php echo empty($enquiry_info['response'][$x]['user_details']['username']) ? "NULL" : $enquiry_info['response'][$x]['user_details']['username']; ?></td>
+                <td align="left"><?php echo empty($enquiry_info['response'][$x]['user_details']['password']) ? "NULL" : $enquiry_info['response'][$x]['user_details']['password']; ?></td>
+                <td align="left"><?php echo empty($enquiry_info['response'][$x]['vehicle_details']['vehicle']) ? "NULL" : $enquiry_info['response'][$x]['vehicle_details']['vehicle']; ?></td>
+                <td align="left"><?php echo empty($enquiry_info['response'][$x]['user_details']['email']) ? "NULL" : $enquiry_info['response'][$x]['user_details']['email']; ?></td>
+                <td align="left"><?php echo empty($enquiry_info['response'][$x]['enquiry_details']['enquiry_type']) ? "NULL" : $enquiry_info['response'][$x]['enquiry_details']['enquiry_type']; ?></td>
+                <td align="left"><?php echo empty($enquiry_info['response'][$x]['user_details']['address']) ? "NULL" : $enquiry_info['response'][$x]['user_details']['address']; ?></td>
+                <td align="left"><?php echo empty($enquiry_info['response'][$x]['enquiry_details']['exchange']) ? "NULL" : $enquiry_info['response'][$x]['enquiry_details']['exchange']; ?></td>
+                <td align="left"><?php echo empty($enquiry_info['response'][$x]['user_details']['pincode']) ? "NULL" : $enquiry_info['response'][$x]['user_details']['pincode'] ?></td>
+                <td align="left"><?php echo empty($enquiry_info['response'][$x]['user_details']['points']) ? "NULL" : $enquiry_info['response'][$x]['user_details']['points']; ?></td>
+                <td align="left">02/04/2016</td>
+              </tr>
+    <?php  } 
+    ?> 
+
   </tbody>
 </table>
 
@@ -270,7 +290,31 @@ $('.date').blur(function()
     <h2 style="text-align:center">No result</h2>
 </div>
 
-</div>  
+<div style="text-align:center">
+  <ul class="pagination"  style="overflow-x:auto;overflow-y:hidden;max-width:239px;">
+
+      <table>
+          <tr>
+            <?php 
+                for ($x = 0; $x <= $enquiry_info['count']/10; $x++) { ?>
+                    <td>
+                      <form method="get" action="sample.php">
+                        <input type="hidden" name="page_no" value=<?php echo $x+1 ?>>
+                        <button type="submit"><?php echo $x+1 ?></button>
+                      </form>
+                    </td>
+            <?php  } 
+              ?>
+      </tr>
+      </table>
+    <!-- <li><a href="customer_database.php#page=2">2</a></li>
+    <li><a href="customer_database.php#page=3">3</a></li>
+    <li><a href="customer_database.php#page=4">4</a></li>
+    <li><a href="customer_database.php#page=5">5</a></li> -->
+  </ul>
+
+</div>
+ 
     
 
 </body>

@@ -18,11 +18,20 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.0.4/angular-material.css">
 <script src="js/datepicker.js"></script>   
 
+
+  <script src="js/material.min.js"></script>
+  <link rel="stylesheet" href="css/material.indigo-pink.min.css">
+<link rel="stylesheet" href="css/style.css">
+
 <!-- search functionality -->
 <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css'>
 <link rel="stylesheet" href="css/search.css">
  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src="js/search.js"></script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 <!-- export -->
 <!-- <link rel="stylesheet" href="css/datatable.css"> -->
@@ -31,45 +40,53 @@
 <script src="js/table2excel.js"></script>
 <script src="js/exportscript.js"></script>
 
-  <script src="js/material.min.js"></script>
-  <link rel="stylesheet" href="css/material.indigo-pink.min.css">
-<link rel="stylesheet" href="css/style.css">
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 </head>
-<body ng-app="" style="overflow-x:hidden">
+<body ng-app="" style="background-color:#E8E8E8;overflow-x:hidden">
 
-<div class="row">
-  <div class="col-sm-4">
-  <a href="admin_panel.php">
-    <img style="width:13%;height:13%;margin-top:4%;margin-left:4%" src="images/sample_logo.jpg"></img>
-    <h6 style="color:black;margin-top:-5%;margin-left:19%">Vanisha Honda</h6>
-    <img style="width:9%;height:9%;margin-top:-23%;margin-left:48%" src="images/home.png"></img>
-  </a>
-  </div>
-  <div class="col-sm-4" style="text-align:center">
-    <h5>Bookings</h5>
-  </div>
-  <div class="col-sm-4">
-  
- 
-          <!-- Navigation -->
-          <nav class="mdl-navigation" style="margin-top:4%">
-            <a class="mdl-navigation__link" href=""><img style="width:13%;height:13%;" src="images/bell.png"></img>Welcome User,</a>
-            <a style="color:red" class="mdl-navigation__link" href="index.php">Logout</a>
-          </nav>
-        </div>
-      
+<div class="demo-layout-transparent mdl-layout mdl-js-layout">
+  <header style="background-color:#607D8B;height:100px;" class="mdl-layout__header mdl-layout__header--transparent">
+    <div class="mdl-layout__header-row">
+      <!-- Title -->
+      <a href="admin_panel.php">
+      <img style="margin-top:5%" src="images/Different-Honda-Logo.png"></img>
+      </a>
+      <!-- Add spacer, to align navigation to the right -->
+      <div class="mdl-layout-spacer"></div>
+      <!-- Navigation -->
+      <nav class="mdl-navigation">
+        <h5 style="color:white;font-weight:bold">Vanisha Honda</h5>
+      </nav>
+
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <img style="margin-top:10%;margin-left:20%;width:25%" src="images/Different-Honda-Logo.png"></img>
+    <nav class="mdl-navigation">
+      <a class="mdl-navigation__link" href="enquiry.php">Enquiry</a>
+      <a class="mdl-navigation__link" href="test_ride.php">Test Rides</a>
+      <a class="mdl-navigation__link" href="bookings.php">Bookings</a>
+      <a class="mdl-navigation__link" href="finance.php">Finance Requests</a>
+      <a class="mdl-navigation__link" href="insurance.php">Insurance Renewal</a>
+      <a class="mdl-navigation__link" href="service_requests.php">Service Requests</a>
+      <a class="mdl-navigation__link" href="inventory.php">Inventory</a>
+      <a class="mdl-navigation__link" href="customer_database.php">Customer Database</a>
+      <a class="mdl-navigation__link" href="push_notification.php">Mobile App</a>
+      <a class="mdl-navigation__link" href="web_app_user_list.php">Admin</a>
+    </nav>
   </div>
 </div>
   
 <div class="container">
-  <div class="row" style="margin-top:5%">
-    <div class="col-sm-2">
+  <div class="row" style="margin: auto;background-color:#607D8B;margin-top:15%;width:90%;height:80px;">
+
+    
+
+    <div class="col-sm-1" style="margin-top:3%;">
+      <h6 style="margin-top:0%;font-weight:bold">Bookings</h6>
     </div>
-    <div class="col-sm-2">
-      <h6 style="margin-top:-8%;font-weight:bold">Recent Bookings</h6>
+
+    <div class="col-sm-2" style="margin-top:3%">
       <form action="#" style="margin-top:-20%">
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
           <label class="mdl-button mdl-js-button mdl-button--icon" for="sample6">
@@ -84,28 +101,37 @@
     </div>
 
 
-
-<div class="col-sm-6">
+<!-- <html ng-app="datepickerBasicUsage">
+<div ng-controller="AppCtrl" style=''>
+    <md-content>
+      From <md-datepicker ng-model="myDate1" md-placeholder="Enter date"></md-datepicker>
+      To <md-datepicker ng-model="myDate2" md-placeholder="Enter date"></md-datepicker>
+    </md-content>
+  </div> -->
+<div class="col-sm-6" style="margin-top:2%">
   <form>
-    From
-    <input id="date11" class="date" type="text" placeholder="DD/MM/YYY" required="True">
-    To
-    <input id="date22" class="date" type="text" placeholder="DD/MM/YYY" required="True">
+    <input id="date11" style="background-color:#E8E8E8" class="date" type="text" placeholder="From: DD/MM/YYY" required="True">
+    <input id="date22" style="background-color:#E8E8E8" class="date" type="text" placeholder="To: DD/MM/YYY" required="True">
     <button type="submit" onclick="myFunction()" class="mdl-button mdl-js-button mdl-button--raised">
       Search
     </button>
   </form>
 </div>
 
-<div class="col-sm-1">
+<div class="col-sm-1" style="margin-top:2%">
       <button onclick="clear1()" class="mdl-button mdl-js-button mdl-button--raised">Clear</button>
 </div>
 
-    <div class="col-sm-1">
+    <div class="col-sm-1" style="margin-top:2%">
       <button id="btn-export" class="mdl-button mdl-js-button mdl-button--raised">
         Export/Print
       </button>
     </div>
+    <!-- <div class="col-sm-1">
+      <button class="mdl-button mdl-js-button mdl-button--raised">
+        Add New
+      </button>
+    </div> -->
   </div>
 </div>
 
@@ -143,7 +169,7 @@ function myFunction() {
       {
         var dateFrom=document.getElementById('date11').value;
         var dateTo=document.getElementById('date22').value;
-        var dateCheck=row.cells[10].innerText;
+        var dateCheck=row.cells[9].innerText;
 
         var d1 = dateFrom.split("/");
         var d2 = dateTo.split("/");
@@ -184,8 +210,37 @@ $('.date').blur(function()
 
 <!-- End Datepicker and sorting -->
 
+<script type="text/javascript">
+  $(window).on('hashchange', function() {
+     /* alert((document.location.hash).replace('#',''))*/
+});
+</script>
 
-<div class="row">
+<?php
+
+if($_GET['page_no'] == '' || $_GET['page_no'] == 'null'){
+  $page=1;
+}else{
+  $page=$_GET['page_no'];
+}
+
+$url_data = 'http://127.0.0.1:8000/get_all_bookings/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy&page='.$page;
+$options_data = array(
+  'http' => array(
+    'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+    'method'  => 'GET',
+  ),
+);
+$context_data = stream_context_create($options_data);
+$output_data = file_get_contents($url_data, false,$context_data);
+/*var_dump($output_data);*/
+$bookings_info = json_decode($output_data,true);
+/*var_dump($bookings_info);*/
+?>
+
+
+
+
 <!-- <div class="form-group pull-right">
 <input type="text" class="search form-control" placeholder="What you looking for?">
 </div> -->
@@ -199,7 +254,6 @@ $('.date').blur(function()
       <th>Email</th>
       <th>Vehicle</th>
       <th>Colour</th>
-      <th>Date</th>
       <th>Booking Amount</th>
       <th>Delivery date</th>
       <th>Accessory</th>
@@ -210,71 +264,23 @@ $('.date').blur(function()
     </tr> -->
   </thead>
   <tbody>
-    <tr>
-      <td>232421111</td>
-      <td>Jason Matt</td>
-      <td>91234567898</td>
-      <td>json@bitjini.com</td>
-      <td>Active</td>
-      <td>black</td>
-      <td>12/3/2016</td>
-      <td>Rs. 10000</td>
-      <td>12/4/2015</td>
-      <td>Side Stand</td>
-      <td>Git</td>
-    </tr>
-    <tr>
-      <td>23242</td>
-      <td>Jason Matt</td>
-      <td>91234567898</td>
-      <td>json@bitjini.com</td>
-      <td>Active</td>
-      <td>black</td>
-      <td>12/3/2016</td>
-      <td>Rs. 10000</td>
-      <td>12/4/2015</td>
-      <td>Side Stand</td>
-      <td>Git</td>
-    </tr>
-    <tr>
-      <td>23242</td>
-      <td>Jason Matt</td>
-      <td>91234567898</td>
-      <td>json@bitjini.com</td>
-      <td>Active</td>
-      <td>black</td>
-      <td>12/3/2016</td>
-      <td>Rs. 10000</td>
-      <td>12/4/2015</td>
-      <td>Side Stand</td>
-      <td>Git</td>
-    </tr>
-    <tr>
-      <td>23242</td>
-      <td>Jason Matt</td>
-      <td>91234567898</td>
-      <td>json@bitjini.com</td>
-      <td>Active</td>
-      <td>black</td>
-      <td>12/3/2016</td>
-      <td>Rs. 10000</td>
-      <td>12/4/2015</td>
-      <td>Side Stand</td>
-      <td>Git</td>
-    </tr>
-    <tr>
-      <td>23242</td>
-      <td>Jason Matt</td>
-      <td>91234567898</td>
-      <td>json@bitjini.com</td>
-      <td>Active</td>
-      <td>black</td>
-      <td>12/3/2016</td>
-      <td>Rs. 10000</td>
-      <td>12/4/2015</td>
-      <td>Side Stand</td>
-      <td>Git</td>
-    </tr>
+   <?php 
+      for ($x = 0; $x < count($bookings_info['response']); $x++) { ?>
+              <tr>
+                <td align="left"><?php echo empty($bookings_info['response'][$x]['booking_details']['quotation']) ? "NULL" : $bookings_info['response'][$x]['booking_details']['quotation']; ?></td>
+                <td align="left"><?php echo empty($bookings_info['response'][$x]['user_details']['name']) ? "NULL" : $bookings_info['response'][$x]['user_details']['name']; ?></td>
+                <td align="left"><?php echo empty($bookings_info['response'][$x]['user_details']['mobile']) ? "NULL" : $bookings_info['response'][$x]['user_details']['mobile']; ?></td>
+                <td align="left"><?php echo empty($bookings_info['response'][$x]['user_details']['email']) ? "NULL" : $bookings_info['response'][$x]['user_details']['email']; ?></td>
+                <td align="left"><?php echo empty($bookings_info['response'][$x]['vehicle_details']['vehicle']) ? "NULL" : $bookings_info['response'][$x]['vehicle_details']['vehicle']; ?></td>
+                <td align="left"><?php echo empty($bookings_info['response'][$x]['vehicle_details']['colour']) ? "NULL" : $bookings_info['response'][$x]['vehicle_details']['colour']; ?></td>
+                <td align="left"><?php echo empty($bookings_info['response'][$x]['booking_details']['booking_amt']) ? "NULL" : $bookings_info['response'][$x]['booking_details']['booking_amt']; ?></td>
+                <td align="left"><?php echo empty($bookings_info['response'][$x]['booking_details']['delivery_date']) ? "NULL" : $bookings_info['response'][$x]['booking_details']['delivery_date']; ?></td>
+                <td align="left"><?php echo empty($bookings_info['response'][$x]['booking_details']['accessories']) ? "NULL" : $bookings_info['response'][$x]['booking_details']['accessories']; ?></td>
+                <td align="left">02/04/2016</td>
+              </tr>
+    <?php  } 
+    ?> 
+
   </tbody>
 </table>
 
@@ -282,7 +288,31 @@ $('.date').blur(function()
     <h2 style="text-align:center">No result</h2>
 </div>
 
-</div>  
+<div style="text-align:center">
+  <ul class="pagination"  style="overflow-x:auto;overflow-y:hidden;max-width:239px;">
+
+      <table>
+          <tr>
+            <?php 
+                for ($x = 0; $x <= $bookings_info['count']/10; $x++) { ?>
+                    <td>
+                      <form method="get" action="bookings.php">
+                        <input type="hidden" name="page_no" value=<?php echo $x+1 ?>>
+                        <button type="submit"><?php echo $x+1 ?></button>
+                      </form>
+                    </td>
+            <?php  } 
+              ?>
+      </tr>
+      </table>
+    <!-- <li><a href="customer_database.php#page=2">2</a></li>
+    <li><a href="customer_database.php#page=3">3</a></li>
+    <li><a href="customer_database.php#page=4">4</a></li>
+    <li><a href="customer_database.php#page=5">5</a></li> -->
+  </ul>
+
+</div>
+ 
     
 
 </body>

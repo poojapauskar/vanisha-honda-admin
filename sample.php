@@ -63,7 +63,7 @@
   <div class="mdl-layout__drawer">
     <img style="margin-top:10%;margin-left:20%;width:25%" src="images/Different-Honda-Logo.png"></img>
     <nav class="mdl-navigation">
-      <a class="mdl-navigation__link" href="enquiry.php">Enquiry</a>
+      <a class="mdl-navigation__link" href="inventory.php">Enquiry</a>
       <a class="mdl-navigation__link" href="test_ride.php">Test Rides</a>
       <a class="mdl-navigation__link" href="bookings.php">Bookings</a>
       <a class="mdl-navigation__link" href="finance.php">Finance Requests</a>
@@ -83,7 +83,7 @@
     
 
     <div class="col-sm-1" style="margin-top:3%;">
-      <h6 style="margin-top:0%;font-weight:bold">Finance</h6>
+      <h6 style="margin-top:0%;font-weight:bold">Push Notifications</h6>
     </div>
 
     <div class="col-sm-2" style="margin-top:3%">
@@ -169,7 +169,7 @@ function myFunction() {
       {
         var dateFrom=document.getElementById('date11').value;
         var dateTo=document.getElementById('date22').value;
-        var dateCheck=row.cells[8].innerText;
+        var dateCheck=row.cells[4].innerText;
 
         var d1 = dateFrom.split("/");
         var d2 = dateTo.split("/");
@@ -224,7 +224,7 @@ if($_GET['page_no'] == '' || $_GET['page_no'] == 'null'){
   $page=$_GET['page_no'];
 }
 
-$url_data = 'http://127.0.0.1:8000/get_all_finance/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy&page='.$page;
+$url_data = 'http://127.0.0.1:8000/get_all_push_notifications/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy&page='.$page;
 $options_data = array(
   'http' => array(
     'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
@@ -234,8 +234,8 @@ $options_data = array(
 $context_data = stream_context_create($options_data);
 $output_data = file_get_contents($url_data, false,$context_data);
 /*var_dump($output_data);*/
-$finance_info = json_decode($output_data,true);
-/*var_dump($finance_info);*/
+$push_notifications_info = json_decode($output_data,true);
+/*var_dump($push_notifications_info);*/
 ?>
 
 
@@ -251,12 +251,10 @@ $finance_info = json_decode($output_data,true);
       <th>Name</th>
       <th>Mobile</th>
       <th>Email</th>
-      <th>Vehicle</th>
-      <th>Down Payment</th>
-      <th>Loan Amount</th>
-      <th>PAN No.</th>
-      <th>Documents</th>
+      <th>Type</th>
       <th>Date</th>
+      <th>Time</th>
+      <th>Message</th>
     </tr>
     <!-- <tr class="warning no-result">
       <td colspan="4"><i class="fa fa-warning"></i> No result</td>
@@ -264,17 +262,15 @@ $finance_info = json_decode($output_data,true);
   </thead>
   <tbody>
    <?php 
-      for ($x = 0; $x < count($finance_info['response']); $x++) { ?>
+      for ($x = 0; $x < count($push_notifications_info['response']); $x++) { ?>
               <tr>
-                <td align="left"><?php echo empty($finance_info['response'][$x]['user_details']['name']) ? "NULL" : $finance_info['response'][$x]['user_details']['name']; ?></td>
-                <td align="left"><?php echo empty($finance_info['response'][$x]['user_details']['mobile']) ? "NULL" : $finance_info['response'][$x]['user_details']['mobile']; ?></td>
-                <td align="left"><?php echo empty($finance_info['response'][$x]['user_details']['email']) ? "NULL" : $finance_info['response'][$x]['user_details']['email']; ?></td>
-                <td align="left"><?php echo empty($finance_info['response'][$x]['vehicle_details']['vehicle']) ? "NULL" : $finance_info['response'][$x]['vehicle_details']['vehicle']; ?></td>
-                <td align="left"><?php echo empty($finance_info['response'][$x]['finance_details']['down_payment']) ? "NULL" : $finance_info['response'][$x]['finance_details']['down_payment']; ?></td>
-                <td align="left"><?php echo empty($finance_info['response'][$x]['finance_details']['loan_amt']) ? "NULL" : $finance_info['response'][$x]['finance_details']['loan_amt']; ?></td>
-                <td align="left"><?php echo empty($finance_info['response'][$x]['finance_details']['pan_no']) ? "NULL" : $finance_info['response'][$x]['finance_details']['pan_no']; ?></td>
-                <td align="left"></td>
-                <td align="left">02/04/2016</td>
+                <td align="left"><?php echo empty($push_notifications_info['response'][$x]['user_details']['name']) ? "NULL" : $push_notifications_info['response'][$x]['user_details']['name']; ?></td>
+                <td align="left"><?php echo empty($push_notifications_info['response'][$x]['user_details']['mobile']) ? "NULL" : $push_notifications_info['response'][$x]['user_details']['mobile']; ?></td>
+                <td align="left"><?php echo empty($push_notifications_info['response'][$x]['user_details']['email']) ? "NULL" : $push_notifications_info['response'][$x]['user_details']['email']; ?></td>
+                <td align="left"><?php echo empty($push_notifications_info['response'][$x]['push_notifications_details']['notification_type']) ? "NULL" : $push_notifications_info['response'][$x]['push_notifications_details']['notification_type']; ?></td>
+                <td align="left"><?php echo empty($push_notifications_info['response'][$x]['push_notifications_details']['date']) ? "NULL" : $push_notifications_info['response'][$x]['push_notifications_details']['date']; ?></td>
+                <td align="left"><?php echo empty($push_notifications_info['response'][$x]['push_notifications_details']['time']) ? "NULL" : $push_notifications_info['response'][$x]['push_notifications_details']['time']; ?></td>
+                <td align="left"><?php echo empty($push_notifications_info['response'][$x]['push_notifications_details']['message']) ? "NULL" : $push_notifications_info['response'][$x]['push_notifications_details']['message']; ?></td>
               </tr>
     <?php  } 
     ?> 
@@ -292,9 +288,9 @@ $finance_info = json_decode($output_data,true);
       <table>
           <tr>
             <?php 
-                for ($x = 0; $x <= $finance_info['count']/10; $x++) { ?>
+                for ($x = 0; $x <= $push_notifications_info['count']/10; $x++) { ?>
                     <td>
-                      <form method="get" action="finance.php">
+                      <form method="get" action="inventory.php">
                         <input type="hidden" name="page_no" value=<?php echo $x+1 ?>>
                         <button type="submit"><?php echo $x+1 ?></button>
                       </form>
