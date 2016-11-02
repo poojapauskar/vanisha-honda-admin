@@ -119,8 +119,8 @@
 </div>
 
 <div class="col-sm-3" style="margin-top:2%">
-      <button onclick="open_modal()" class="mdl-button mdl-js-button mdl-button--raised">
-        Add New User 
+      <button onclick="open_modal_add()" class="mdl-button mdl-js-button mdl-button--raised">
+        Add New Employee 
       </button>
 </div>
 
@@ -218,13 +218,37 @@ $('.date').blur(function()
 
 <?php
 
+if($_POST['mobile1'] == '' || $_POST['mobile1'] == 'null'){
+}else{
+  /*echo $_POST['mobile1'];*/
+  $url_add = 'http://127.0.0.1:8000/add_new_employee/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy';
+  $options_add = array(
+    'http' => array(
+      'header'  => array(
+                    'NAME: '.$_POST['name1'],
+                    'EMAIL: '.$_POST['email1'],
+                    'MOBILE: '.$_POST['mobile1'],
+                    'USERNAME: '.$_POST['username1'],
+                    'PASSWORD: '.$_POST['password1'],
+                    'ACCESS-LEVEL: '.$_POST['access_level1']
+                    ),
+      'method'  => 'GET',
+    ),
+  );
+  $context_add = stream_context_create($options_add);
+  $output_add = file_get_contents($url_add, false,$context_add);
+  $add_emp_info = json_decode($output_add,true);
+  /*var_dump($add_emp_info);*/
+}
+
+
 if($_GET['page_no'] == '' || $_GET['page_no'] == 'null'){
   $page=1;
 }else{
   $page=$_GET['page_no'];
 }
 
-$url_data = 'https://vanisha-honda.herokuapp.com/get_all_employees_details/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy&page='.$page;
+$url_data = 'http://127.0.0.1:8000/get_all_employees_details/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy&page='.$page;
 $options_data = array(
   'http' => array(
     'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
@@ -240,6 +264,17 @@ $employees_details_info = json_decode($output_data,true);
 
 
 
+  <form method="post" action="enquiry.php">
+  <input value="aaaa"></input>
+  <input  value="zzzzz"></input>
+  <input  value="xxxxx"></input>
+  <input  value="xxxxxx"></input>
+  <input value="xxxxxx"></input>
+  <input value="zzzzzz"></input>
+  <button type="submit">
+                  Edit
+                </button>
+  </form>
 
 <!-- <div class="form-group pull-right">
 <input type="text" class="search form-control" placeholder="What you looking for?">
@@ -248,6 +283,8 @@ $employees_details_info = json_decode($output_data,true);
 <table id="example" align="center" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp results">
   <thead>
     <tr>
+      <th>User Id</th>
+      <th>Employee Id</th>
       <th>Name</th>
       <th>Username</th>
       <th>Password</th>
@@ -259,14 +296,19 @@ $employees_details_info = json_decode($output_data,true);
     </tr> -->
   </thead>
   <tbody>
+
+
+
    <?php 
       for ($x = 0; $x < count($employees_details_info['response']); $x++) { ?>
               <tr>
-                <td align="left"><?php echo empty($employees_details_info['response'][$x]['user_details']['name']) ? "All Users" : $employees_details_info['response'][$x]['user_details']['name']; ?></td>
+                <td align="left"><?php echo empty($employees_details_info['response'][$x]['user_id']) ? "NULL" : $employees_details_info['response'][$x]['user_id']; ?></td>
+                <td align="left"><?php echo empty($employees_details_info['response'][$x]['employee_details']['pk']) ? "NULL" : $employees_details_info['response'][$x]['employee_details']['pk']; ?></td>
+                <td align="left"><?php echo empty($employees_details_info['response'][$x]['user_details']['name']) ? "NULL" : $employees_details_info['response'][$x]['user_details']['name']; ?></td>
                 <td align="left"><?php echo empty($employees_details_info['response'][$x]['user_details']['username']) ? "NULL" : $employees_details_info['response'][$x]['user_details']['username']; ?></td>
                 <td align="left"><?php echo empty($employees_details_info['response'][$x]['user_details']['password']) ? "NULL" : $employees_details_info['response'][$x]['user_details']['password']; ?></td>
                 <td align="left"><?php echo empty($employees_details_info['response'][$x]['employee_details']['access_level']) ? "NULL" : $employees_details_info['response'][$x]['employee_details']['access_level']; ?></td>
-                <td><button onclick="open_modal()" class="mdl-button mdl-js-button mdl-button--raised">
+                <td><button onclick="open_modal" class="mdl-button mdl-js-button mdl-button--raised">
                   Edit
                 </button></td>
               </tr>
@@ -304,7 +346,90 @@ $employees_details_info = json_decode($output_data,true);
   </ul>
 
 </div>
- 
+
+<div id="myModal_add" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span style="color:black" class="close_add">×</span>
+      <h2 style="text-align:center">Add New User</h2>
+    </div>
+    <div class="modal-body">
+      <form id="form1" method="post" action="web_app_user_list.php" style="text-align:center">
+          <div class="mdl-textfield mdl-js-textfield">
+
+          <div class="row">
+            <div class="col-sm-6" style="">
+                <!-- <div class="mdl-textfield mdl-js-textfield">
+                <label style="float: left;" for="employee_id">Employee Id</label>
+                <input class="mdl-textfield__input" type="text" id="employee_id" name="employee_id">
+                </div>
+ -->
+                <div class="mdl-textfield mdl-js-textfield">
+                <label style="float: left;" for="name1">Name</label>
+                <input class="mdl-textfield__input" type="text" id="name1" name="name1">
+                </div>
+
+                <div class="mdl-textfield mdl-js-textfield">
+                <label style="float: left;" for="email1">Email</label>
+                <input class="mdl-textfield__input" type="text" id="email1" name="email1">
+                </div>
+
+                <div class="mdl-textfield mdl-js-textfield">
+                <label style="float: left;" for="mobile1">Mobile</label>
+                <input class="mdl-textfield__input" type="text" id="mobile1" name="mobile1" required>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="mdl-textfield mdl-js-textfield">
+                <label style="float: left;" for="username1">Username</label>
+                <input class="mdl-textfield__input" type="text" id="username1" name="username1">
+                </div>
+
+                <div class="mdl-textfield mdl-js-textfield">
+                <label style="float: left;" for="password1">Password</label>
+                <input class="mdl-textfield__input" type="text" id="password1" name="password1">
+                </div>
+
+                <div class="mdl-textfield mdl-js-textfield">
+                <label style="float: left;" for="access_level1">Access Level</label>
+                <select id="access_level1" name="access_level1">
+                  <option ng-selected="true" value="Sales">Sales
+                  <option value="Insurance">Insurance
+                  <option value="Admin">Admin
+                </select>
+                </div>
+
+  
+            </div>
+          </div>
+
+          </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+      <div class="row">
+       <!--  <div class="col-sm-4">
+          <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Cancel</button>
+        </div> -->
+        <div class="col-sm-4">
+        </div>
+        <div class="col-sm-2">
+          <button form="form1" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Save Changes</button>
+        </div>
+       <!--  <div class="col-sm-2">
+          <button style="background-color:red;color:white" type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Delete User</button>
+        </div> -->
+        <div class="col-sm-4">
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
 <!-- The Modal -->
 <div id="myModal" class="modal">
 
@@ -388,7 +513,42 @@ $employees_details_info = json_decode($output_data,true);
   </div>
 
 </div>
-    
+
+<script>
+// Get the modal
+var modal_add= document.getElementById('myModal_add');
+
+// Get the button that opens the modal
+/*var btn = document.getElementById("myBtn");*/
+
+// Get the <span> element that closes the modal
+var span_add = document.getElementsByClassName("close_add")[0];
+
+// When the user clicks the button, open the modal
+/*btn.onclick = function() {
+    modal.style.display = "block";
+}*/
+
+/*document.getElementById("myBtn1").onclick = function() {
+    modal.style.display = "block";
+}*/
+
+function open_modal_add(){
+   modal_add.style.display = "block";
+}
+// When the user clicks on <span> (x), close the modal
+span_add.onclick = function() {
+    modal_add.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal_add) {
+        modal_add.style.display = "none";
+    }
+}
+</script> 
+
 <script>
 // Get the modal
 var modal = document.getElementById('myModal');

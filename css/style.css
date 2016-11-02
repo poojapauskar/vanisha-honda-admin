@@ -120,6 +120,20 @@ html, body, #background { min-height: 100vh; min-width: 100vw; background-color:
     cursor: pointer;
 }
 
+.close_add {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close_add:hover,
+.close_add:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
@@ -171,6 +185,20 @@ html, body, #background { min-height: 100vh; min-width: 100vw; background-color:
 
 .close:hover,
 .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.close_add {
+    color: black;
+/*    float: right;*/
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close_add:hover,
+.close_add:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
