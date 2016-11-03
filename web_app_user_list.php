@@ -220,7 +220,7 @@ $('.date').blur(function()
 if($_POST['disable_emp_id'] == '' || $_POST['disable_emp_id'] == null){
   /*echo "null";*/
 }else{
-  $url_disable = 'http://127.0.0.1:8000/disable_employee/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy';
+  $url_disable = 'https://vanisha-honda.herokuapp.com/disable_employee/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy';
   $options_disable = array(
     'http' => array(
       'header'  => array(
@@ -239,7 +239,7 @@ if($_POST['disable_emp_id'] == '' || $_POST['disable_emp_id'] == null){
 if($_POST['edit_employee_id'] == '' || $_POST['edit_employee_id'] == null){
   /*echo "null";*/
 }else{
- $url_edit_emp_det = 'http://127.0.0.1:8000/edit_employee/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy';
+ $url_edit_emp_det = 'https://vanisha-honda.herokuapp.com/edit_employee/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy';
   $options_edit_emp_det = array(
     'http' => array(
       'header'  => array(
@@ -265,7 +265,7 @@ if($_POST['edit_employee_id'] == '' || $_POST['edit_employee_id'] == null){
 if($_POST['mobile1'] == '' || $_POST['mobile1'] == 'null'){
 }else{
   /*echo $_POST['mobile1'];*/
-  $url_add = 'http://127.0.0.1:8000/add_new_employee/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy';
+  $url_add = 'https://vanisha-honda.herokuapp.com/add_new_employee/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy';
   $options_add = array(
     'http' => array(
       'header'  => array(
@@ -292,7 +292,7 @@ if($_GET['page_no'] == '' || $_GET['page_no'] == 'null'){
   $page=$_GET['page_no'];
 }
 
-$url_data = 'http://127.0.0.1:8000/get_all_employees_details/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy&page='.$page;
+$url_data = 'https://vanisha-honda.herokuapp.com/get_all_employees_details/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy&page='.$page;
 $options_data = array(
   'http' => array(
     'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
@@ -490,7 +490,7 @@ echo '<script type="text/javascript">',
 ;
 
 
- $url_sel_emp_det = 'http://127.0.0.1:8000/get_details_from_emp_id/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy';
+ $url_sel_emp_det = 'https://vanisha-honda.herokuapp.com/get_details_from_emp_id/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy';
   $options_sel_emp_det = array(
     'http' => array(
       'header'  => array(
