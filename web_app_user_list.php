@@ -262,20 +262,6 @@ $employees_details_info = json_decode($output_data,true);
 // var_dump($employees_details_info);
 ?>
 
-
-
-  <form method="post" action="enquiry.php">
-  <input value="aaaa"></input>
-  <input  value="zzzzz"></input>
-  <input  value="xxxxx"></input>
-  <input  value="xxxxxx"></input>
-  <input value="xxxxxx"></input>
-  <input value="zzzzzz"></input>
-  <button type="submit">
-                  Edit
-                </button>
-  </form>
-
 <!-- <div class="form-group pull-right">
 <input type="text" class="search form-control" placeholder="What you looking for?">
 </div> -->
@@ -308,7 +294,7 @@ $employees_details_info = json_decode($output_data,true);
                 <td align="left"><?php echo empty($employees_details_info['response'][$x]['user_details']['username']) ? "NULL" : $employees_details_info['response'][$x]['user_details']['username']; ?></td>
                 <td align="left"><?php echo empty($employees_details_info['response'][$x]['user_details']['password']) ? "NULL" : $employees_details_info['response'][$x]['user_details']['password']; ?></td>
                 <td align="left"><?php echo empty($employees_details_info['response'][$x]['employee_details']['access_level']) ? "NULL" : $employees_details_info['response'][$x]['employee_details']['access_level']; ?></td>
-                <td><button onclick="open_modal" class="mdl-button mdl-js-button mdl-button--raised">
+                <td><button onclick="open_modal(10)" class="mdl-button mdl-js-button mdl-button--raised">
                   Edit
                 </button></td>
               </tr>
@@ -353,7 +339,7 @@ $employees_details_info = json_decode($output_data,true);
   <div class="modal-content">
     <div class="modal-header">
       <span style="color:black" class="close_add">×</span>
-      <h2 style="text-align:center">Add New User</h2>
+      <h2 style="text-align:center">Add New Employee</h2>
     </div>
     <div class="modal-body">
       <form id="form1" method="post" action="web_app_user_list.php" style="text-align:center">
@@ -433,6 +419,27 @@ $employees_details_info = json_decode($output_data,true);
 <!-- The Modal -->
 <div id="myModal" class="modal">
 
+
+<form id="edit_value_form" method="post" action="#">
+<input type="hidden" name="emp_id_edit" id="emp_id_edit">
+<button type="submit"></button>
+</form>
+
+<?php 
+ $url_sel_emp_det = 'http://127.0.0.1:8000/get_details_from_emp_id/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy';
+  $options_sel_emp_det = array(
+    'http' => array(
+      'header'  => array(
+                    'EMP-ID: '.$_POST['emp_id_edit'],
+                    ),
+      'method'  => 'GET',
+    ),
+  );
+  $context_sel_emp_det = stream_context_create($options_sel_emp_det);
+  $output_sel_emp_det = file_get_contents($url_sel_emp_det, false,$context_sel_emp_det);
+  $sel_emp_det_info = json_decode($output_sel_emp_det,true);
+?>
+
   <!-- Modal content -->
   <div class="modal-content">
     <div class="modal-header">
@@ -445,48 +452,50 @@ $employees_details_info = json_decode($output_data,true);
 
           <div class="row">
             <div class="col-sm-6" style="">
+                <!-- <div class="mdl-textfield mdl-js-textfield">
+                <label style="float: left;" for="edit_employee">Employee Id</label> -->
+                <input class="mdl-textfield__input" type="hidden" name="edit_employee" id="edit_employee" value="<?php echo $_POST['edit_emp_id'] ?>">
+                <!-- </div> -->
+
                 <div class="mdl-textfield mdl-js-textfield">
-                <label style="float: left;" for="sample1">Employee Id</label>
-                <input class="mdl-textfield__input" type="text" id="sample1">
+                <label style="float: left;" for="edit_name">Name</label>
+                <input class="mdl-textfield__input" type="text" id="edit_name" value="<?php echo $sel_emp_det_info[0]['user_details']['name'] ?>"></input>
                 </div>
 
                 <div class="mdl-textfield mdl-js-textfield">
-                <label style="float: left;" for="sample1">Name</label>
-                <input class="mdl-textfield__input" type="text" id="sample1">
+                <label style="float: left;" for="edit_email">Email</label>
+                <input class="mdl-textfield__input" type="text" id="edit_email" value="<?php echo $sel_emp_det_info[0]['user_details']['email'] ?>">
                 </div>
 
                 <div class="mdl-textfield mdl-js-textfield">
-                <label style="float: left;" for="sample1">Email</label>
-                <input class="mdl-textfield__input" type="text" id="sample1">
-                </div>
-
-                <div class="mdl-textfield mdl-js-textfield">
-                <label style="float: left;" for="sample1">Mobile</label>
-                <input class="mdl-textfield__input" type="text" id="sample1">
+                <label style="float: left;" for="edit_mobile">Mobile</label>
+                <input class="mdl-textfield__input" type="text" id="edit_mobile" value="<?php echo $sel_emp_det_info[0]['user_details']['mobile'] ?>">
                 </div>
             </div>
 
             <div class="col-sm-6">
                 <div class="mdl-textfield mdl-js-textfield">
-                <label style="float: left;" for="sample1">Username</label>
-                <input class="mdl-textfield__input" type="text" id="sample1">
+                <label style="float: left;" for="edit_username">Username</label>
+                <input class="mdl-textfield__input" type="text" id="edit_username" value="<?php echo $sel_emp_det_info[0]['user_details']['username'] ?>">
                 </div>
 
                 <div class="mdl-textfield mdl-js-textfield">
-                <label style="float: left;" for="sample1">Password</label>
-                <input class="mdl-textfield__input" type="text" id="sample1">
+                <label style="float: left;" for="edit_password">Password</label>
+                <input class="mdl-textfield__input" type="text" id="edit_password" value="<?php echo $sel_emp_det_info[0]['user_details']['password'] ?>">
                 </div>
+
+                
 
                 <div class="mdl-textfield mdl-js-textfield">
-                <label style="float: left;" for="sample1">Access Level</label>
-                <input class="mdl-textfield__input" type="text" id="sample1">
+                <label style="float: left;" for="edit_access_level">Access Level</label>
+                <select id="access_level1" name="edit_access_level" value="<?php echo $sel_emp_det_info[0]['emp_details']['access_level'] ?>"><?php echo $sel_emp_det_info[0]['emp_details']['access_level'] ?>
+                  <option ng-selected="true" value="Sales">Sales
+                  <option value="Sales">Sales
+                  <option value="Insurance">Insurance
+                  <option value="Admin">Admin
+                </select>
                 </div>
 
-  <select ng-model="myVar3">
-    <option ng-selected="true" value="sales">Sales
-    <option value="insurance">Insurance
-    <option value="admin">Admin
-  </select>
             </div>
           </div>
 
@@ -568,7 +577,11 @@ var span = document.getElementsByClassName("close")[0];
     modal.style.display = "block";
 }*/
 
-function open_modal(){
+function open_modal(emp_id){
+   /*alert(user_id);
+   alert(emp_id);*/
+   document.getElementById("emp_id_edit").value = emp_id;
+   document.getElementById("edit_value_form").submit();
    modal.style.display = "block";
 }
 // When the user clicks on <span> (x), close the modal
