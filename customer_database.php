@@ -276,7 +276,7 @@ $users_info = json_decode($output_data,true);
                 <td align="left"><?php echo empty($users_info['response'][$x]['user_details']['address']) ? "NULL" : $users_info['response'][$x]['user_details']['address']; ?></td>
                 <td align="left"><?php echo empty($users_info['response'][$x]['user_details']['pincode']) ? "NULL" : $users_info['response'][$x]['user_details']['pincode']; ?></td>
                 <td align="left"><?php echo empty($users_info['response'][$x]['user_details']['points']) ? "NULL" : $users_info['response'][$x]['user_details']['points']; ?></td>
-                <td align="left">02/04/2016</td>
+                <td align="left"><?php echo empty($users_info['response'][$x]['user_details']['date']) ? "NULL" : $users_info['response'][$x]['user_details']['date']; ?></td>
               </tr>
     <?php  } 
     ?> 

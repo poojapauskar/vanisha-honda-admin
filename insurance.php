@@ -276,7 +276,7 @@ $insurance_info = json_decode($output_data,true);
                 <td align="left"><?php echo empty($insurance_info['response'][$x]['insurance_details']['renewal_amt']) ? "NULL" : $insurance_info['response'][$x]['insurance_details']['renewal_amt']; ?></td>
                 <td align="left"><?php echo empty($insurance_info['response'][$x]['insurance_details']['payment_date']) ? "NULL" : $insurance_info['response'][$x]['insurance_details']['payment_date']; ?></td>
                 <td align="left"><?php echo empty($insurance_info['response'][$x]['insurance_details']['expiry_date']) ? "NULL" : $insurance_info['response'][$x]['insurance_details']['expiry_date']; ?></td>
-                <td align="left">02/04/2016</td>
+                <td align="left"><?php echo empty($insurance_info['response'][$x]['insurance_details']['date']) ? "NULL" : $insurance_info['response'][$x]['insurance_details']['date']; ?></td>
               </tr>
     <?php  } 
     ?> 

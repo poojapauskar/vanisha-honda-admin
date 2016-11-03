@@ -328,18 +328,23 @@ $push_notifications_info = json_decode($output_data,true);
 </div>
 
                 <div class="mdl-textfield mdl-js-textfield">
-                <label style="float: left;" for="sample1">To</label>
-                <input class="mdl-textfield__input" type="text" id="sample1">
+                <label style="float: left;" for="to">To</label>
+                <input class="mdl-textfield__input" type="text" id="to" name="to">
                 </div>
 
                 <div class="mdl-textfield mdl-js-textfield">
-                <label style="float: left;" for="sample1">Template</label>
-                <input class="mdl-textfield__input" type="text" id="sample1">
+                <label style="float: left;" for="template">Template</label>
+                <select id="template" name="template">
+                <option ng-selected="true" value="">
+                  <option value="Hello">Hello
+                  <option value="Good Morning">Good Morning
+                  <option value="New Offers">New Offers
+                </select>
                 </div>
 
                 <div class="mdl-textfield mdl-js-textfield">
-                <label style="float: left;" for="sample1">Customized</label>
-                <textarea class="mdl-textfield__input" type="text" id="sample1"></textarea>
+                <label style="float: left;" for="customized">Customized</label>
+                <textarea class="mdl-textfield__input" type="text" name="customized" id="customized"></textarea>
                 </div>
             
           </div>

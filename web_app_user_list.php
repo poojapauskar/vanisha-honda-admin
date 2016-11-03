@@ -109,13 +109,13 @@
     </md-content>
   </div> -->
 <div class="col-sm-6" style="margin-top:2%">
-  <form>
+  <!-- <form>
     <input id="date11" style="background-color:#E8E8E8" class="date" type="text" placeholder="From: DD/MM/YYY" required="True">
     <input id="date22" style="background-color:#E8E8E8" class="date" type="text" placeholder="To: DD/MM/YYY" required="True">
     <button type="submit" onclick="myFunction()" class="mdl-button mdl-js-button mdl-button--raised">
       Search
     </button>
-  </form>
+  </form> -->
 </div>
 
 <div class="col-sm-3" style="margin-top:2%">

@@ -276,7 +276,7 @@ $bookings_info = json_decode($output_data,true);
                 <td align="left"><?php echo empty($bookings_info['response'][$x]['booking_details']['booking_amt']) ? "NULL" : $bookings_info['response'][$x]['booking_details']['booking_amt']; ?></td>
                 <td align="left"><?php echo empty($bookings_info['response'][$x]['booking_details']['delivery_date']) ? "NULL" : $bookings_info['response'][$x]['booking_details']['delivery_date']; ?></td>
                 <td align="left"><?php echo empty($bookings_info['response'][$x]['booking_details']['accessories']) ? "NULL" : $bookings_info['response'][$x]['booking_details']['accessories']; ?></td>
-                <td align="left">02/04/2016</td>
+                <td align="left"><?php echo empty($bookings_info['response'][$x]['booking_details']['date']) ? "NULL" : $bookings_info['response'][$x]['booking_details']['date']; ?></td>
               </tr>
     <?php  } 
     ?> 

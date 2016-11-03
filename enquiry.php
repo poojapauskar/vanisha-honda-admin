@@ -278,7 +278,7 @@ $enquiry_info = json_decode($output_data,true);
                 <td align="left"><?php echo empty($enquiry_info['response'][$x]['enquiry_details']['exchange']) ? "NULL" : $enquiry_info['response'][$x]['enquiry_details']['exchange']; ?></td>
                 <td align="left"><?php echo empty($enquiry_info['response'][$x]['user_details']['pincode']) ? "NULL" : $enquiry_info['response'][$x]['user_details']['pincode'] ?></td>
                 <td align="left"><?php echo empty($enquiry_info['response'][$x]['user_details']['points']) ? "NULL" : $enquiry_info['response'][$x]['user_details']['points']; ?></td>
-                <td align="left">02/04/2016</td>
+                <td align="left"><?php echo empty($enquiry_info['response'][$x]['enquiry_details']['date']) ? "NULL" : $enquiry_info['response'][$x]['enquiry_details']['date']; ?></td>
               </tr>
     <?php  } 
     ?> 

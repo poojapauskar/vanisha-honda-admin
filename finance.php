@@ -274,7 +274,7 @@ $finance_info = json_decode($output_data,true);
                 <td align="left"><?php echo empty($finance_info['response'][$x]['finance_details']['loan_amt']) ? "NULL" : $finance_info['response'][$x]['finance_details']['loan_amt']; ?></td>
                 <td align="left"><?php echo empty($finance_info['response'][$x]['finance_details']['pan_no']) ? "NULL" : $finance_info['response'][$x]['finance_details']['pan_no']; ?></td>
                 <td align="left"></td>
-                <td align="left">02/04/2016</td>
+                <td align="left"><?php echo empty($finance_info['response'][$x]['finance_details']['date']) ? "NULL" : $finance_info['response'][$x]['finance_details']['date']; ?></td>
               </tr>
     <?php  } 
     ?> 
