@@ -294,7 +294,7 @@ $employees_details_info = json_decode($output_data,true);
                 <td align="left"><?php echo empty($employees_details_info['response'][$x]['user_details']['username']) ? "NULL" : $employees_details_info['response'][$x]['user_details']['username']; ?></td>
                 <td align="left"><?php echo empty($employees_details_info['response'][$x]['user_details']['password']) ? "NULL" : $employees_details_info['response'][$x]['user_details']['password']; ?></td>
                 <td align="left"><?php echo empty($employees_details_info['response'][$x]['employee_details']['access_level']) ? "NULL" : $employees_details_info['response'][$x]['employee_details']['access_level']; ?></td>
-                <td><button onclick="open_modal(10)" class="mdl-button mdl-js-button mdl-button--raised">
+                <td><button onclick="<?php echo 'open_modal('.$employees_details_info['response'][$x]['employee_details']['pk'].')' ?>" class="mdl-button mdl-js-button mdl-button--raised">
                   Edit
                 </button></td>
               </tr>
@@ -426,6 +426,20 @@ $employees_details_info = json_decode($output_data,true);
 </form>
 
 <?php 
+
+if($_POST['emp_id_edit'] == '' || $_POST['emp_id_edit'] == null){
+
+}else{
+
+
+
+echo '<script type="text/javascript">',
+     'var modal = document.getElementById("myModal");',
+     'modal.style.display = "block"',
+     '</script>'
+;
+
+
  $url_sel_emp_det = 'http://127.0.0.1:8000/get_details_from_emp_id/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy';
   $options_sel_emp_det = array(
     'http' => array(
@@ -438,6 +452,7 @@ $employees_details_info = json_decode($output_data,true);
   $context_sel_emp_det = stream_context_create($options_sel_emp_det);
   $output_sel_emp_det = file_get_contents($url_sel_emp_det, false,$context_sel_emp_det);
   $sel_emp_det_info = json_decode($output_sel_emp_det,true);
+}
 ?>
 
   <!-- Modal content -->
@@ -582,7 +597,7 @@ function open_modal(emp_id){
    alert(emp_id);*/
    document.getElementById("emp_id_edit").value = emp_id;
    document.getElementById("edit_value_form").submit();
-   modal.style.display = "block";
+   /*modal.style.display = "block";*/
 }
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
