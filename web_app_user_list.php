@@ -468,6 +468,8 @@ $employees_details_info = json_decode($output_data,true);
 <div id="myModal" class="modal">
 
 
+
+<!-- To insert data inside modal -->
 <form id="edit_value_form" method="post" action="#">
 <input type="hidden" name="emp_id_edit" id="emp_id_edit">
 <button type="submit"></button>
@@ -502,6 +504,7 @@ echo '<script type="text/javascript">',
   $sel_emp_det_info = json_decode($output_sel_emp_det,true);
 }
 ?>
+<!-- -Finish inserting data to modal-->
 
 <form action="web_app_user_list.php" method="post" name="disable_form" id="disable_form">
 <input type="hidden" name="disable_emp_id" id="disable_emp_id">
@@ -591,6 +594,20 @@ echo '<script type="text/javascript">',
 
 </div>
 
+
+
+<script type="text/javascript">
+  function disable_emp(emp_id){
+   /*alert(user_id);
+   alert(emp_id);*/
+   document.getElementById("disable_emp_id").value = emp_id;
+   document.getElementById("disable_form").submit();
+   /*modal.style.display = "block";*/
+}
+</script>
+
+
+
 <script>
 // Get the modal
 var modal_add= document.getElementById('myModal_add');
@@ -626,15 +643,6 @@ window.onclick = function(event) {
 }
 </script> 
 
-<script type="text/javascript">
-  function disable_emp(emp_id){
-   /*alert(user_id);
-   alert(emp_id);*/
-   document.getElementById("disable_emp_id").value = emp_id;
-   document.getElementById("disable_form").submit();
-   /*modal.style.display = "block";*/
-}
-</script>
 
 <script>
 // Get the modal
