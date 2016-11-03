@@ -217,6 +217,25 @@ $('.date').blur(function()
 </script>
 
 <?php 
+if($_POST['disable_emp_id'] == '' || $_POST['disable_emp_id'] == null){
+  /*echo "null";*/
+}else{
+  $url_disable = 'http://127.0.0.1:8000/disable_employee/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy';
+  $options_disable = array(
+    'http' => array(
+      'header'  => array(
+                    'EMPLOYEE-ID: '.$_POST['disable_emp_id'],
+                    ),
+      'method'  => 'GET',
+    ),
+  );
+  $context_disable = stream_context_create($options_disable);
+  $output_disable = file_get_contents($url_disable, false,$context_disable);
+  $disable_info = json_decode($output_disable,true);
+}
+?>
+
+<?php 
 if($_POST['edit_employee_id'] == '' || $_POST['edit_employee_id'] == null){
   /*echo "null";*/
 }else{
@@ -299,7 +318,9 @@ $employees_details_info = json_decode($output_data,true);
       <th>Name</th>
       <th>Username</th>
       <th>Password</th>
+      <th>Email</th>
       <th>Access Level</th>
+      <th>Is Active</th>
       <th>Edit</th>
     </tr>
     <!-- <tr class="warning no-result">
@@ -318,7 +339,9 @@ $employees_details_info = json_decode($output_data,true);
                 <td align="left"><?php echo empty($employees_details_info['response'][$x]['user_details']['name']) ? "NULL" : $employees_details_info['response'][$x]['user_details']['name']; ?></td>
                 <td align="left"><?php echo empty($employees_details_info['response'][$x]['user_details']['username']) ? "NULL" : $employees_details_info['response'][$x]['user_details']['username']; ?></td>
                 <td align="left"><?php echo empty($employees_details_info['response'][$x]['user_details']['password']) ? "NULL" : $employees_details_info['response'][$x]['user_details']['password']; ?></td>
+                <td align="left"><?php echo empty($employees_details_info['response'][$x]['user_details']['password']) ? "NULL" : $employees_details_info['response'][$x]['user_details']['email']; ?></td>
                 <td align="left"><?php echo empty($employees_details_info['response'][$x]['employee_details']['access_level']) ? "NULL" : $employees_details_info['response'][$x]['employee_details']['access_level']; ?></td>
+                <td align="left"><?php echo empty($employees_details_info['response'][$x]['employee_details']['access_level']) ? "NULL" : $employees_details_info['response'][$x]['employee_details']['is_active']; ?></td>
                 <td><button onclick="<?php echo 'open_modal('.$employees_details_info['response'][$x]['employee_details']['pk'].')' ?>" class="mdl-button mdl-js-button mdl-button--raised">
                   Edit
                 </button></td>
@@ -480,6 +503,11 @@ echo '<script type="text/javascript">',
 }
 ?>
 
+<form action="web_app_user_list.php" method="post" name="disable_form" id="disable_form">
+<input type="hidden" name="disable_emp_id" id="disable_emp_id">
+<button type="submit"></button>
+</form>
+
   <!-- Modal content -->
   <div class="modal-content">
     <div class="modal-header">
@@ -552,9 +580,9 @@ echo '<script type="text/javascript">',
         <div class="col-sm-2">
           <button type="submit" form="form3" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Save Changes</button>
         </div>
-       <!--  <div class="col-sm-2">
-          <button style="background-color:red;color:white" type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Delete User</button>
-        </div> -->
+        <div class="col-sm-2">
+          <button style="background-color:red;color:white" type="submit" onclick="<?php echo 'disable_emp('.$sel_emp_det_info[0]['emp_id'].')' ?>" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Delete User</button>
+        </div>
         <div class="col-sm-4">
         </div>
       </div>
@@ -597,6 +625,16 @@ window.onclick = function(event) {
     }
 }
 </script> 
+
+<script type="text/javascript">
+  function disable_emp(emp_id){
+   /*alert(user_id);
+   alert(emp_id);*/
+   document.getElementById("disable_emp_id").value = emp_id;
+   document.getElementById("disable_form").submit();
+   /*modal.style.display = "block";*/
+}
+</script>
 
 <script>
 // Get the modal
