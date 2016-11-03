@@ -216,6 +216,31 @@ $('.date').blur(function()
 });
 </script>
 
+<?php 
+if($_POST['edit_employee_id'] == '' || $_POST['edit_employee_id'] == null){
+  /*echo "null";*/
+}else{
+ $url_edit_emp_det = 'http://127.0.0.1:8000/edit_employee/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy';
+  $options_edit_emp_det = array(
+    'http' => array(
+      'header'  => array(
+                    'EMPLOYEE-ID: '.$_POST['edit_employee_id'],
+                    'NAME: '.$_POST['edit_name'],
+                    'EMAIL: '.$_POST['edit_email'],
+                    'MOBILE: '.$_POST['edit_mobile'],
+                    'USERNAME: '.$_POST['edit_username'],
+                    'PASSWORD: '.$_POST['edit_password'],
+                    'ACCESS-LEVEL: '.$_POST['edit_access_level'],
+                    ),
+      'method'  => 'GET',
+    ),
+  );
+  $context_edit_emp_det = stream_context_create($options_edit_emp_det);
+  $output_edit_emp_det = file_get_contents($url_edit_emp_det, false,$context_edit_emp_det);
+  $edit_emp_det_info = json_decode($output_edit_emp_det,true);
+}
+?>
+
 <?php
 
 if($_POST['mobile1'] == '' || $_POST['mobile1'] == 'null'){
@@ -462,48 +487,48 @@ echo '<script type="text/javascript">',
       <h2 style="text-align:center">Edit User</h2>
     </div>
     <div class="modal-body">
-      <form action="#" style="text-align:center">
+      <form action="web_app_user_list.php" method="post" name="form3" id="form3" style="text-align:center">
           <div class="mdl-textfield mdl-js-textfield">
 
           <div class="row">
             <div class="col-sm-6" style="">
                 <!-- <div class="mdl-textfield mdl-js-textfield">
                 <label style="float: left;" for="edit_employee">Employee Id</label> -->
-                <input class="mdl-textfield__input" type="hidden" name="edit_employee" id="edit_employee" value="<?php echo $_POST['edit_emp_id'] ?>">
+                <input class="mdl-textfield__input" type="hidden" name="edit_employee_id" id="edit_employee_id" value="<?php echo $sel_emp_det_info[0]['emp_id'] ?>">
                 <!-- </div> -->
 
                 <div class="mdl-textfield mdl-js-textfield">
                 <label style="float: left;" for="edit_name">Name</label>
-                <input class="mdl-textfield__input" type="text" id="edit_name" value="<?php echo $sel_emp_det_info[0]['user_details']['name'] ?>"></input>
+                <input class="mdl-textfield__input" type="text" name="edit_name" id="edit_name" value="<?php echo $sel_emp_det_info[0]['user_details']['name'] ?>"></input>
                 </div>
 
                 <div class="mdl-textfield mdl-js-textfield">
                 <label style="float: left;" for="edit_email">Email</label>
-                <input class="mdl-textfield__input" type="text" id="edit_email" value="<?php echo $sel_emp_det_info[0]['user_details']['email'] ?>">
+                <input class="mdl-textfield__input" type="text" name="edit_email"id="edit_email" value="<?php echo $sel_emp_det_info[0]['user_details']['email'] ?>">
                 </div>
 
                 <div class="mdl-textfield mdl-js-textfield">
                 <label style="float: left;" for="edit_mobile">Mobile</label>
-                <input class="mdl-textfield__input" type="text" id="edit_mobile" value="<?php echo $sel_emp_det_info[0]['user_details']['mobile'] ?>">
+                <input class="mdl-textfield__input" type="text" name="edit_mobile" id="edit_mobile" value="<?php echo $sel_emp_det_info[0]['user_details']['mobile'] ?>">
                 </div>
             </div>
 
             <div class="col-sm-6">
                 <div class="mdl-textfield mdl-js-textfield">
                 <label style="float: left;" for="edit_username">Username</label>
-                <input class="mdl-textfield__input" type="text" id="edit_username" value="<?php echo $sel_emp_det_info[0]['user_details']['username'] ?>">
+                <input class="mdl-textfield__input" type="text" name="edit_username" id="edit_username" value="<?php echo $sel_emp_det_info[0]['user_details']['username'] ?>">
                 </div>
 
                 <div class="mdl-textfield mdl-js-textfield">
                 <label style="float: left;" for="edit_password">Password</label>
-                <input class="mdl-textfield__input" type="text" id="edit_password" value="<?php echo $sel_emp_det_info[0]['user_details']['password'] ?>">
+                <input class="mdl-textfield__input" type="text" name="edit_password" id="edit_password" value="<?php echo $sel_emp_det_info[0]['user_details']['password'] ?>">
                 </div>
 
                 
 
                 <div class="mdl-textfield mdl-js-textfield">
                 <label style="float: left;" for="edit_access_level">Access Level</label>
-                <select id="access_level1" name="edit_access_level" value="<?php echo $sel_emp_det_info[0]['emp_details']['access_level'] ?>"><?php echo $sel_emp_det_info[0]['emp_details']['access_level'] ?>
+                <select id="edit_access_level1" name="edit_access_level" value="<?php echo $sel_emp_det_info[0]['emp_details']['access_level'] ?>"><?php echo $sel_emp_det_info[0]['emp_details']['access_level'] ?>
                   <option ng-selected="true" value="Sales">Sales
                   <option value="Sales">Sales
                   <option value="Insurance">Insurance
@@ -525,11 +550,11 @@ echo '<script type="text/javascript">',
         <div class="col-sm-4">
         </div>
         <div class="col-sm-2">
-          <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Save Changes</button>
+          <button type="submit" form="form3" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Save Changes</button>
         </div>
-        <div class="col-sm-2">
+       <!--  <div class="col-sm-2">
           <button style="background-color:red;color:white" type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Delete User</button>
-        </div>
+        </div> -->
         <div class="col-sm-4">
         </div>
       </div>
