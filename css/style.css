@@ -14,7 +14,9 @@ button{
     font-family: Roboto-Regular !important;
 }
 #example{
-    margin-top: -2%;
+    margin-top: -3%;
+    width:73% !important;
+    table-layout: fixed;
 }
 i{
     color:#E8E8E8;
@@ -34,6 +36,7 @@ th{
 }
 #row1{
     margin-top: 12% !important;
+    width:84.3% !important;
 }
 
 

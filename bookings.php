@@ -78,7 +78,7 @@
 </div>
   
 <div class="container">
-  <div class="row" id="row1" style="margin: auto;background-color:#607D8B;margin-top:15%;width:90%;height:80px;">
+  <div class="row" id="row1" style="margin: auto;background-color:#607D8B;margin-top:15%;height:80px;">
 
     
 
