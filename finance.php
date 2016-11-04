@@ -296,7 +296,7 @@ $finance_info = json_decode($output_data,true);
                     <td>
                       <form method="get" action="finance.php">
                         <input type="hidden" name="page_no" value=<?php echo $x+1 ?>>
-                        <button type="submit"><?php echo $x+1 ?></button>
+                        <button style="background-color:#607D8B" class="mdl-button mdl-js-button mdl-button--raised" type="submit"><?php echo $x+1 ?></button>
                       </form>
                     </td>
             <?php  } 
