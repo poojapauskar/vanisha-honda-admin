@@ -323,7 +323,7 @@ $push_notifications_info = json_decode($output_data,true);
           <div class="row">
 
 <div style="text-align:left">
-<input type="radio" ng-checked="true" ng-model="myVar" value="All">All Users<br>
+<input type="radio" ng-checked="true" ng-model="myVar" value="All Users">All Users<br>
 <input type="radio" ng-model="myVar" value="User">Specific User
 </div>
 
