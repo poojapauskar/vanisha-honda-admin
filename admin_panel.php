@@ -22,6 +22,9 @@
 <style>
 p{
   color:white;
+  font-size:12px;
+  line-height: 14px;
+  margin-top: 14px;
 }
 </style>
 </head>
@@ -56,97 +59,130 @@ p{
     </nav>
   </div>
 </div>
-  
+
+
 <div class="container">
-  <div class="row" style="margin-top:15%;margin-left:12%"> 
-    <div class="col-sm-2">
+  <div class="row" style="margin-top:14%;margin-left:12%"> 
+    
+    <div class="col-sm-1">
     </div>
     <div class="col-sm-2">
       <a href="enquiry.php">
-      <button style="background-color:#607D8B;width:120px;height:120px" class="mdl-button mdl-js-button mdl-button--raised">
+      <button style="background-color:#607D8B;width:160px;height:60px" class="mdl-button mdl-js-button mdl-button--raised">
       <p>Enquiry</p>
       </button>
       </a>
     </div>
     <div class="col-sm-2">
+    </div>
+    <div class="col-sm-2">
       <a href="test_ride.php">
-      <button style="background-color:#607D8B;width:120px;height:120px" class="mdl-button mdl-js-button mdl-button--raised">
+      <button style="background-color:#607D8B;width:160px;height:60px" class="mdl-button mdl-js-button mdl-button--raised">
       <p>Test Rides</p>
       </button>
       </a>
     </div>
     <div class="col-sm-2">
+    </div>
+    <div class="col-sm-2">
        <a href="bookings.php">
-       <button style="background-color:#607D8B;width:120px;height:120px" class="mdl-button mdl-js-button mdl-button--raised">
+       <button style="background-color:#607D8B;width:160px;height:60px" class="mdl-button mdl-js-button mdl-button--raised">
        <p>bookings</p>
        </button>
        </a>
     </div>
+    <div class="col-sm-1">
+    </div>
+    
+  </div>
+
+  <div class="row" style="margin-top:5%;margin-left:12%"> 
+    <div class="col-sm-1">
+    </div>
     <div class="col-sm-2">
        <a href="finance.php">
-       <button style="background-color:#607D8B;width:120px;height:120px" class="mdl-button mdl-js-button mdl-button--raised">
+       <button style="background-color:#607D8B;width:160px;height:60px" class="mdl-button mdl-js-button mdl-button--raised">
        <p>Finance Requests</p>
        </button>
        </a>
     </div>
     <div class="col-sm-2">
     </div>
-  </div>
-
-  <div class="row" style="margin-top:2%;margin-left:12%"> 
-    <div class="col-sm-2">
-    </div>
     <div class="col-sm-2">
       <a href="insurance.php">
-      <button style="background-color:#607D8B;width:120px;height:120px" class="mdl-button mdl-js-button mdl-button--raised">
+      <button style="background-color:#607D8B;width:160px;height:60px" class="mdl-button mdl-js-button mdl-button--raised">
       <p>Insurance Renewal</p>
       </button>
       </a>
     </div>
     <div class="col-sm-2">
+    </div>
+    <div class="col-sm-2">
       <a href="service_requests.php">
-      <button style="background-color:#607D8B;width:120px;height:120px" class="mdl-button mdl-js-button mdl-button--raised">
+      <button style="background-color:#607D8B;width:160px;height:60px" class="mdl-button mdl-js-button mdl-button--raised">
       <p>Service Requests</p>
       </button>
       </a>
     </div>
+    <div class="col-sm-1">
+    </div>
+  </div>
+
+
+  <div class="row" style="margin-top:5%;margin-left:12%"> 
+    <div class="col-sm-1">
+    </div>
     <div class="col-sm-2">
        <a href="inventory.php">
-       <button style="background-color:#607D8B;width:120px;height:120px" class="mdl-button mdl-js-button mdl-button--raised">
+       <button style="background-color:#607D8B;width:160px;height:60px" class="mdl-button mdl-js-button mdl-button--raised">
        <p>Inventory</p>
        </button>
        </a>
     </div>
     <div class="col-sm-2">
+    </div>
+    <div class="col-sm-2">
        <a href="customer_database.php">
-       <button style="background-color:#607D8B;width:120px;height:120px" class="mdl-button mdl-js-button mdl-button--raised">
+       <button style="background-color:#607D8B;width:160px;height:60px" class="mdl-button mdl-js-button mdl-button--raised">
        <p>Customer Database</p>
        </button>
        </a>
     </div>
     <div class="col-sm-2">
     </div>
-  </div>
-
-
-  <div class="row" style="margin-top:2%;margin-left:12%"> 
-    <div class="col-sm-2">
-    </div>
     <div class="col-sm-2">
       <a href="push_notification.php">
-      <button style="background-color:#607D8B;width:120px;height:120px" class="mdl-button mdl-js-button mdl-button--raised">
+      <button style="background-color:#607D8B;width:160px;height:60px" class="mdl-button mdl-js-button mdl-button--raised">
       <p>Mobile App</p>
       </button>
       </a>
     </div>
+    <div class="col-sm-1">
+    </div>
+  </div>
+
+  <div class="row" style="margin-top:5%;margin-left:12%"> 
+    <div class="col-sm-1">
+    </div>
     <div class="col-sm-2">
       <a href="web_app_user_list.php">
-      <button style="background-color:#607D8B;width:120px;height:120px" class="mdl-button mdl-js-button mdl-button--raised">
+      <button style="background-color:#607D8B;width:160px;height:60px" class="mdl-button mdl-js-button mdl-button--raised">
       <p>Admin</p>
       </button>
       </a>
     </div>
+    <div class="col-sm-2">
+    </div>
+    <div class="col-sm-2">
+    </div>
+    <div class="col-sm-2">
+    </div>
+    <div class="col-sm-2">
+    </div>
+    <div class="col-sm-1">
+    </div>
   </div>
+
 </div>
 
     <!-- Textfield with Floating Label -->
