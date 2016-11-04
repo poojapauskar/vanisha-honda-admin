@@ -8,6 +8,12 @@ button{
 #example{
     margin-top: -3%;
 }
+i{
+    color:#E8E8E8;
+}
+.search{
+    color:#E8E8E8;
+}
 
 
 html, body, #background { min-height: 100vh; min-width: 100vw; background-color:#E8E8E8;}
