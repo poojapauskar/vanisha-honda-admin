@@ -55,7 +55,7 @@
       <div class="mdl-layout-spacer"></div>
       <!-- Navigation -->
       <nav class="mdl-navigation">
-        <h5 style="color:white;font-weight:bold">Vanisha Honda</h5>
+        <h5 style="color:white;">Vanisha Honda</h5>
       </nav>
 
     </div>
@@ -78,12 +78,12 @@
 </div>
   
 <div class="container">
-  <div class="row" style="margin: auto;background-color:#607D8B;margin-top:15%;width:90%;height:80px;">
+  <div class="row" id="row1" style="margin: auto;background-color:#607D8B;width:90%;height:80px;">
 
     
 
     <div class="col-sm-1" style="margin-top:3%;">
-      <h6 style="margin-top:0%;font-weight:bold">Service Requests</h6>
+      <h6 style="margin-top:0%;">Service Requests</h6>
     </div>
 
     <div class="col-sm-2" style="margin-top:3%">

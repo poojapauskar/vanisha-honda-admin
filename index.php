@@ -33,7 +33,7 @@
           <img style="margin-top:5%" src="images/Different-Honda-Logo.png"></img>
       </div> 
       <div class="col-sm-4"> 
-          <h5 style="color:white;font-weight:bold">Vanisha Honda</h5>
+          <h5 style="color:white;">Vanisha Honda</h5>
       </div>
       <!-- <div class="col-sm-2">
       </div>  -->

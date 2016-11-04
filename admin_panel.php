@@ -39,7 +39,7 @@ p{
       <div class="mdl-layout-spacer"></div>
       <!-- Navigation -->
       <nav class="mdl-navigation">
-        <h5 style="color:white;font-weight:bold">Vanisha Honda</h5>
+        <h5 style="color:white;">Vanisha Honda</h5>
       </nav>
     </div>
   </header>
