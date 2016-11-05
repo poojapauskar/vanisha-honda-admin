@@ -86,14 +86,14 @@
       <h6 style="margin-top:0%;">Finance</h6>
     </div>
 
-   <div class="col-sm-2" style="margin-top:3%">
+    <div class="col-sm-2" style="margin-top:3%">
       <form action="#" style="margin-top:-20%">
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
           <label class="mdl-button mdl-js-button mdl-button--icon" for="search_text">
             <i class="material-icons">search</i>
           </label>
           <div class="mdl-textfield__expandable-holder">
-            <input form="search_form" class="search mdl-textfield__input" type="text" id="search_text" name="search_text">
+            <input form="search_form" class="search mdl-textfield__input" value="<?php echo $_POST['search_text'] ?>" type="text" id="search_text" name="search_text">            
             <label class="mdl-textfield__label" for="sample-expandable">Expandable Input</label>
           </div>
         </div>
@@ -110,8 +110,8 @@
   </div> -->
 <div class="col-sm-6" style="margin-top:2%">
   <form method="post" action="finance.php" name="search_form" id="search_form">
-    <input id="date11" name="date11" style="background-color:#E8E8E8" class="date" type="text" placeholder="From: DD/MM/YYYY">
-    <input id="date22" name="date22" style="background-color:#E8E8E8" class="date" type="text" placeholder="To: DD/MM/YYYY">
+    <input id="date11" name="date11" value="<?php echo $_POST['date11'] ?>" style="background-color:#E8E8E8" class="date" type="text" placeholder="From: DD/MM/YYYY">
+    <input id="date22" name="date22" value="<?php echo $_POST['date22'] ?>" style="background-color:#E8E8E8" class="date" type="text" placeholder="To: DD/MM/YYYY">
     <button type="submit" class="mdl-button mdl-js-button mdl-button--raised">
       Search
     </button>
