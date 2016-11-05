@@ -119,7 +119,9 @@
 </div>
 
 <div class="col-sm-1" style="margin-top:2%">
-      <button onclick="clear1()" class="mdl-button mdl-js-button mdl-button--raised">Clear</button>
+    <form action="finance.php">
+      <button type="submit" onclick="clear1()" class="mdl-button mdl-js-button mdl-button--raised">Clear</button>
+    </form>
 </div>
 
     <div class="col-sm-1" style="margin-top:2%">
@@ -138,12 +140,13 @@
     <!-- Textfield with Floating Label -->
 <script type="text/javascript">
   function clear1(){
+    $('#search_text').val('');
     $('#date11').val('');
     $('#date22').val('');
-    var table1 = document.getElementById("example");
+    /*var table1 = document.getElementById("example");
     for (var j = 1, row; row = table1.rows[j]; j++) {
          table1.rows[j].style.display = "";
-    } 
+    } */
    
   }
 </script>

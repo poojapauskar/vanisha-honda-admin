@@ -108,7 +108,7 @@
       To <md-datepicker ng-model="myDate2" md-placeholder="Enter date"></md-datepicker>
     </md-content>
   </div> -->
-<div class="col-sm-6" style="margin-top:2%">
+<div class="col-sm-5" style="margin-top:2%">
   <form method="post" action="web_app_user_list.php" name="search_form" id="search_form">
     <!-- <input id="date11" name="date11" style="background-color:#E8E8E8" class="date" type="text" placeholder="From: DD/MM/YYYY">
     <input id="date22" name="date22" style="background-color:#E8E8E8" class="date" type="text" placeholder="To: DD/MM/YYYY"> -->
@@ -118,15 +118,19 @@
   </form>
 </div>
 
+<div class="col-sm-1" style="margin-top:2%">
+     <form action="web_app_user_list.php">
+      <button type="submit" onclick="clear1()" class="mdl-button mdl-js-button mdl-button--raised">Clear</button>
+    </form>
+</div>
+
 <div class="col-sm-3" style="margin-top:2%">
       <button onclick="open_modal_add()" class="mdl-button mdl-js-button mdl-button--raised">
         Add New Employee 
       </button>
 </div>
 
-    <div class="col-sm-2">
-      
-    </div>
+    
     <!-- <div class="col-sm-1">
       <button class="mdl-button mdl-js-button mdl-button--raised">
         Add New
@@ -138,12 +142,13 @@
     <!-- Textfield with Floating Label -->
 <script type="text/javascript">
   function clear1(){
+    $('#search_text').val('');
     $('#date11').val('');
     $('#date22').val('');
-    var table1 = document.getElementById("example");
+    /*var table1 = document.getElementById("example");
     for (var j = 1, row; row = table1.rows[j]; j++) {
          table1.rows[j].style.display = "";
-    } 
+    } */
    
   }
 </script>
@@ -299,7 +304,7 @@ if($_POST['search_text'] != ''){
                     );
 
 
-        $url_data = 'https://vanisha-honda.herokuapp.com/search_test_rides/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy&page='.$page;
+        $url_data = 'https://vanisha-honda.herokuapp.com/search_employee/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy&page='.$page;
         $options_data = array(
           'http' => array(
             'header'  => $header,

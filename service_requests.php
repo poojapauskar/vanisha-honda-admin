@@ -89,11 +89,11 @@
     <div class="col-sm-2" style="margin-top:3%">
       <form action="#" style="margin-top:-20%">
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
-          <label class="mdl-button mdl-js-button mdl-button--icon" for="sample6">
+          <label class="mdl-button mdl-js-button mdl-button--icon" for="search_text">
             <i class="material-icons">search</i>
           </label>
           <div class="mdl-textfield__expandable-holder">
-            <input class="search mdl-textfield__input" type="text" id="sample6">
+            <input form="search_form" class="search mdl-textfield__input" type="text" id="search_text" name="search_text">
             <label class="mdl-textfield__label" for="sample-expandable">Expandable Input</label>
           </div>
         </div>
@@ -109,17 +109,19 @@
     </md-content>
   </div> -->
 <div class="col-sm-6" style="margin-top:2%">
-  <form>
-    <input id="date11" style="background-color:#E8E8E8" class="date" type="text" placeholder="From: DD/MM/YYY" required="True">
-    <input id="date22" style="background-color:#E8E8E8" class="date" type="text" placeholder="To: DD/MM/YYY" required="True">
-    <button type="submit" onclick="myFunction()" class="mdl-button mdl-js-button mdl-button--raised">
+  <form method="post" action="service_requests.php" name="search_form" id="search_form">
+    <input id="date11" name="date11" style="background-color:#E8E8E8" class="date" type="text" placeholder="From: DD/MM/YYYY">
+    <input id="date22" name="date22" style="background-color:#E8E8E8" class="date" type="text" placeholder="To: DD/MM/YYYY">
+    <button type="submit" class="mdl-button mdl-js-button mdl-button--raised">
       Search
     </button>
   </form>
 </div>
 
 <div class="col-sm-1" style="margin-top:2%">
-      <button onclick="clear1()" class="mdl-button mdl-js-button mdl-button--raised">Clear</button>
+     <form action="service_requests.php">
+      <button type="submit" onclick="clear1()" class="mdl-button mdl-js-button mdl-button--raised">Clear</button>
+    </form>
 </div>
 
     <div class="col-sm-1" style="margin-top:2%">
@@ -138,12 +140,13 @@
     <!-- Textfield with Floating Label -->
 <script type="text/javascript">
   function clear1(){
+    $('#search_text').val('');
     $('#date11').val('');
     $('#date22').val('');
-    var table1 = document.getElementById("example");
+    /*var table1 = document.getElementById("example");
     for (var j = 1, row; row = table1.rows[j]; j++) {
          table1.rows[j].style.display = "";
-    } 
+    } */
    
   }
 </script>
