@@ -27,7 +27,18 @@ i{
 td{
     font-size: 10px !important;
     font-family: Roboto-Regular !important;
+    text-overflow:ellipsis;
+    overflow:hidden;
+    white-space:nowrap;
 }
+td:hover{
+    font-size: 10px !important;
+    font-family: Roboto-Regular !important;
+    text-overflow:initial;
+    overflow:initial;
+    white-space:initial;
+}
+
 th{
     font-family: Roboto-Regular !important;
 }
