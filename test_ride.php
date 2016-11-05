@@ -281,7 +281,7 @@ $test_rides_info = json_decode($output_data,true);
 </table>
 
 <div class="no-result">
-    <h2 style="text-align:center">No result</h2>
+    <p id="no_res">No result</p>
 </div>
 
 <div style="text-align:center">

@@ -1,5 +1,10 @@
 @import url('fonts.css');
 
+#no_res{
+    font-size:16px;
+    text-align:center;
+    margin-top:1%;
+}
 #admin_console{
     font-family: Roboto-Regular !important;
 }
@@ -46,7 +51,7 @@ th{
     font-family: Roboto-Regular !important;
 }
 .pagination{
-    margin-top:-1% !important;
+    /*margin-top:-1% !important;*/
 }
 #row1{
     margin-top: 12% !important;
