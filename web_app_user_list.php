@@ -89,11 +89,11 @@
     <div class="col-sm-2" style="margin-top:3%">
       <form action="#" style="margin-top:-20%">
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
-          <label class="mdl-button mdl-js-button mdl-button--icon" for="sample6">
+          <label class="mdl-button mdl-js-button mdl-button--icon" for="search_text">
             <i class="material-icons">search</i>
           </label>
           <div class="mdl-textfield__expandable-holder">
-            <input class="search mdl-textfield__input" type="text" id="sample6">
+            <input form="search_form" class="search mdl-textfield__input" type="text" id="search_text" name="search_text">
             <label class="mdl-textfield__label" for="sample-expandable">Expandable Input</label>
           </div>
         </div>
@@ -109,13 +109,13 @@
     </md-content>
   </div> -->
 <div class="col-sm-6" style="margin-top:2%">
-  <!-- <form>
-    <input id="date11" style="background-color:#E8E8E8" class="date" type="text" placeholder="From: DD/MM/YYY" required="True">
-    <input id="date22" style="background-color:#E8E8E8" class="date" type="text" placeholder="To: DD/MM/YYY" required="True">
-    <button type="submit" onclick="myFunction()" class="mdl-button mdl-js-button mdl-button--raised">
+  <form method="post" action="web_app_user_list.php" name="search_form" id="search_form">
+    <!-- <input id="date11" name="date11" style="background-color:#E8E8E8" class="date" type="text" placeholder="From: DD/MM/YYYY">
+    <input id="date22" name="date22" style="background-color:#E8E8E8" class="date" type="text" placeholder="To: DD/MM/YYYY"> -->
+    <button type="submit" class="mdl-button mdl-js-button mdl-button--raised">
       Search
     </button>
-  </form> -->
+  </form>
 </div>
 
 <div class="col-sm-3" style="margin-top:2%">
@@ -292,18 +292,40 @@ if($_GET['page_no'] == '' || $_GET['page_no'] == 'null'){
   $page=$_GET['page_no'];
 }
 
-$url_data = 'https://vanisha-honda.herokuapp.com/get_all_employees_details/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy&page='.$page;
-$options_data = array(
-  'http' => array(
-    'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-    'method'  => 'GET',
-  ),
-);
-$context_data = stream_context_create($options_data);
-$output_data = file_get_contents($url_data, false,$context_data);
-/*var_dump($output_data);*/
-$employees_details_info = json_decode($output_data,true);
-// var_dump($employees_details_info);
+if($_POST['search_text'] != ''){
+
+        $header=array(
+                    'TEXT: '.$_POST['search_text']
+                    );
+
+
+        $url_data = 'https://vanisha-honda.herokuapp.com/search_test_rides/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy&page='.$page;
+        $options_data = array(
+          'http' => array(
+            'header'  => $header,
+            'method'  => 'GET',
+          ),
+        );
+        $context_data = stream_context_create($options_data);
+        $output_data = file_get_contents($url_data, false,$context_data);
+        $employees_details_info = json_decode($output_data,true);
+
+}else{
+      
+        $url_data = 'https://vanisha-honda.herokuapp.com/get_all_employees_details/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy&page='.$page;
+        $options_data = array(
+          'http' => array(
+            'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+            'method'  => 'GET',
+          ),
+        );
+        $context_data = stream_context_create($options_data);
+        $output_data = file_get_contents($url_data, false,$context_data);
+        /*var_dump($output_data);*/
+        $employees_details_info = json_decode($output_data,true);
+        // var_dump($employees_details_info);
+}
+
 ?>
 
 <!-- <div class="form-group pull-right">

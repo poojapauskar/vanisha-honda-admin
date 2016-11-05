@@ -224,18 +224,53 @@ if($_GET['page_no'] == '' || $_GET['page_no'] == 'null'){
   $page=$_GET['page_no'];
 }
 
-$url_data = 'https://vanisha-honda.herokuapp.com/get_all_service_requests/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy&page='.$page;
-$options_data = array(
-  'http' => array(
-    'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-    'method'  => 'GET',
-  ),
-);
-$context_data = stream_context_create($options_data);
-$output_data = file_get_contents($url_data, false,$context_data);
-/*var_dump($output_data);*/
-$push_notifications_info = json_decode($output_data,true);
-/*var_dump($push_notifications_info);*/
+if($_POST['search_text'] != '' || ($_POST['date11'] != '' && $_POST['date22'] != '')){
+  
+        if($_POST['search_text'] != '' && $_POST['date11'] != '' && $_POST['date22'] != ''){
+           $header=array(
+                          'TEXT: '.$_POST['search_text'],
+                          'FROM-DATE: '.$_POST['date11'],
+                          'TO-DATE: '.$_POST['date22']
+                          );
+        }
+        if($_POST['date11'] != '' && $_POST['date22'] != '' && $_POST['search_text'] == ''){
+            $header=array(
+                          'FROM-DATE: '.$_POST['date11'],
+                          'TO-DATE: '.$_POST['date22']
+                          );
+        }
+        if($_POST['search_text'] != '' && $_POST['date11'] == '' && $_POST['date22'] == ''){
+           $header=array(
+                          'TEXT: '.$_POST['search_text']
+                          );
+        }
+
+        $url_data = 'https://vanisha-honda.herokuapp.com/search_service/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy&page='.$page;
+        $options_data = array(
+          'http' => array(
+            'header'  => $header,
+            'method'  => 'GET',
+          ),
+        );
+        $context_data = stream_context_create($options_data);
+        $output_data = file_get_contents($url_data, false,$context_data);
+        $service_requests_info = json_decode($output_data,true);
+
+}else{
+      $url_data = 'https://vanisha-honda.herokuapp.com/get_all_service_requests/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy&page='.$page;
+      $options_data = array(
+        'http' => array(
+          'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+          'method'  => 'GET',
+        ),
+      );
+      $context_data = stream_context_create($options_data);
+      $output_data = file_get_contents($url_data, false,$context_data);
+      /*var_dump($output_data);*/
+      $service_requests_info = json_decode($output_data,true);
+      /*var_dump($service_requests_info);*/
+}
+
 ?>
 
 
@@ -263,16 +298,16 @@ $push_notifications_info = json_decode($output_data,true);
   </thead>
   <tbody>
    <?php 
-      for ($x = 0; $x < count($push_notifications_info['response']); $x++) { ?>
+      for ($x = 0; $x < count($service_requests_info['response']); $x++) { ?>
               <tr>
-                <td align="left"><?php echo empty($push_notifications_info['response'][$x]['vehicle_details']['vehicle']) ? "All Users" : $push_notifications_info['response'][$x]['vehicle_details']['vehicle']; ?></td>
-                <td align="left"><?php echo empty($push_notifications_info['response'][$x]['user_details']['name']) ? "NULL" : $push_notifications_info['response'][$x]['user_details']['name']; ?></td>
-                <td align="left"><?php echo empty($push_notifications_info['response'][$x]['vehicle_details']['engine_no']) ? "NULL" : $push_notifications_info['response'][$x]['vehicle_details']['engine_no']; ?></td>
-                <td align="left"><?php echo empty($push_notifications_info['response'][$x]['service_requests_details']['date']) ? "NULL" : $push_notifications_info['response'][$x]['service_requests_details']['date']; ?></td>
-                <td align="left"><?php echo empty($push_notifications_info['response'][$x]['service_requests_details']['service_type']) ? "NULL" : $push_notifications_info['response'][$x]['service_requests_details']['service_type']; ?></td>
-                <td align="left"><?php echo empty($push_notifications_info['response'][$x]['service_requests_details']['additional_service']) ? "NULL" : $push_notifications_info['response'][$x]['service_requests_details']['additional_service']; ?></td>
-                <td align="left"><?php echo empty($push_notifications_info['response'][$x]['service_requests_details']['complaints']) ? "NULL" : $push_notifications_info['response'][$x]['service_requests_details']['complaints']; ?></td>
-                <td align="left"><?php echo empty($push_notifications_info['response'][$x]['service_requests_details']['pick_up']) ? "NULL" : $push_notifications_info['response'][$x]['service_requests_details']['pick_up']; ?></td>
+                <td align="left"><?php echo empty($service_requests_info['response'][$x]['vehicle_details']['vehicle']) ? "All Users" : $service_requests_info['response'][$x]['vehicle_details']['vehicle']; ?></td>
+                <td align="left"><?php echo empty($service_requests_info['response'][$x]['user_details']['name']) ? "NULL" : $service_requests_info['response'][$x]['user_details']['name']; ?></td>
+                <td align="left"><?php echo empty($service_requests_info['response'][$x]['vehicle_details']['engine_no']) ? "NULL" : $service_requests_info['response'][$x]['vehicle_details']['engine_no']; ?></td>
+                <td align="left"><?php echo empty($service_requests_info['response'][$x]['service_requests_details']['date']) ? "NULL" : $service_requests_info['response'][$x]['service_requests_details']['date']; ?></td>
+                <td align="left"><?php echo empty($service_requests_info['response'][$x]['service_requests_details']['service_type']) ? "NULL" : $service_requests_info['response'][$x]['service_requests_details']['service_type']; ?></td>
+                <td align="left"><?php echo empty($service_requests_info['response'][$x]['service_requests_details']['additional_service']) ? "NULL" : $service_requests_info['response'][$x]['service_requests_details']['additional_service']; ?></td>
+                <td align="left"><?php echo empty($service_requests_info['response'][$x]['service_requests_details']['complaints']) ? "NULL" : $service_requests_info['response'][$x]['service_requests_details']['complaints']; ?></td>
+                <td align="left"><?php echo empty($service_requests_info['response'][$x]['service_requests_details']['pick_up']) ? "NULL" : $service_requests_info['response'][$x]['service_requests_details']['pick_up']; ?></td>
               </tr>
     <?php  } 
     ?> 
@@ -290,7 +325,7 @@ $push_notifications_info = json_decode($output_data,true);
       <table>
           <tr>
             <?php 
-                for ($x = 0; $x <= $push_notifications_info['count']/10; $x++) { ?>
+                for ($x = 0; $x <= $service_requests_info['count']/10; $x++) { ?>
                     <td>
                       <form method="get" action="service_requests.php">
                         <input type="hidden" name="page_no" value=<?php echo $x+1 ?>>

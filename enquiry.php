@@ -143,7 +143,7 @@
 <script src="js/jquery-ui.js"></script>
   <script>
   $(function() {
-    $( ".date" ).datepicker({ dateFormat: 'dd/mm/yy' }).val();
+    $( ".date" ).datepicker({ dateFormat: 'dd/mm/yy' });
   });
   </script>
 
@@ -215,8 +215,7 @@ if($_GET['page_no'] == '' || $_GET['page_no'] == 'null'){
 }
 
 if($_POST['search_text'] != '' || ($_POST['date11'] != '' && $_POST['date22'] != '')){
-
-
+  
         if($_POST['search_text'] != '' && $_POST['date11'] != '' && $_POST['date22'] != ''){
            $header=array(
                           'TEXT: '.$_POST['search_text'],
@@ -236,7 +235,7 @@ if($_POST['search_text'] != '' || ($_POST['date11'] != '' && $_POST['date22'] !=
                           );
         }
 
-        $url_data = 'http://127.0.0.1:8000/search_enquiry/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy&page='.$page;
+        $url_data = 'https://vanisha-honda.herokuapp.com/search_enquiry/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy&page='.$page;
         $options_data = array(
           'http' => array(
             'header'  => $header,
