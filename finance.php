@@ -314,7 +314,7 @@ if($_POST['search_text'] != '' || ($_POST['date11'] != '' && $_POST['date22'] !=
                 <td align="left"><?php echo empty($finance_info['response'][$x]['finance_details']['loan_amt']) ? "NULL" : $finance_info['response'][$x]['finance_details']['loan_amt']; ?></td>
                 <td align="left"><?php echo empty($finance_info['response'][$x]['finance_details']['pan_no']) ? "NULL" : $finance_info['response'][$x]['finance_details']['pan_no']; ?></td>
                 <td align="left"></td>
-                <td align="left"><?php echo empty($finance_info['response'][$x]['finance_details']['date']) ? "NULL" : $finance_info['response'][$x]['finance_details']['date']; ?></td>
+                <td style="text-overflow:initial;overflow:initial;white-space:initial;" align="left"><?php echo empty($finance_info['response'][$x]['finance_details']['date']) ? "NULL" : $finance_info['response'][$x]['finance_details']['date']; ?></td>
               </tr>
     <?php  } 
     ?> 

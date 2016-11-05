@@ -308,7 +308,7 @@ if($_POST['search_text'] != '' || ($_POST['date11'] != '' && $_POST['date22'] !=
                 <td align="left"><?php echo empty($test_rides_info['response'][$x]['user_details']['mobile']) ? "NULL" : $test_rides_info['response'][$x]['user_details']['mobile']; ?></td>
                 <td align="left"><?php echo empty($test_rides_info['response'][$x]['user_details']['email']) ? "NULL" : $test_rides_info['response'][$x]['user_details']['email']; ?></td>
                 <td align="left"><?php echo empty($test_rides_info['response'][$x]['test_vehicle_details']['vehicle']) ? "NULL" : $test_rides_info['response'][$x]['test_vehicle_details']['vehicle']; ?></td>
-                <td align="left"><?php echo empty($test_rides_info['response'][$x]['test_ride_details']['date']) ? "NULL" : $test_rides_info['response'][$x]['test_ride_details']['date']; ?></td>
+                <td style="text-overflow:initial;overflow:initial;white-space:initial;" align="left"><?php echo empty($test_rides_info['response'][$x]['test_ride_details']['date']) ? "NULL" : $test_rides_info['response'][$x]['test_ride_details']['date']; ?></td>
                 <td align="left"><?php echo empty($test_rides_info['response'][$x]['test_ride_details']['time']) ? "NULL" : $test_rides_info['response'][$x]['test_ride_details']['time']; ?></td>
                 <td align="left"><?php echo empty($test_rides_info['response'][$x]['user_details']['address']) ? "NULL" : $test_rides_info['response'][$x]['user_details']['address']; ?></td>
                 <td align="left"><?php echo empty($test_rides_info['response'][$x]['test_ride_details']['gps_location']) ? "NULL" : $test_rides_info['response'][$x]['test_ride_details']['gps_location']; ?></td>

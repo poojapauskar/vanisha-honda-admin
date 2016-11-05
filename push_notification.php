@@ -307,7 +307,7 @@ if($_POST['search_text'] != '' || ($_POST['date11'] != '' && $_POST['date22'] !=
                 <td align="left"><?php echo empty($push_notifications_info['response'][$x]['user_details']['mobile']) ? "NULL" : $push_notifications_info['response'][$x]['user_details']['mobile']; ?></td>
                 <td align="left"><?php echo empty($push_notifications_info['response'][$x]['user_details']['email']) ? "NULL" : $push_notifications_info['response'][$x]['user_details']['email']; ?></td>
                 <td align="left"><?php echo empty($push_notifications_info['response'][$x]['push_notifications_details']['notification_type']) ? "NULL" : $push_notifications_info['response'][$x]['push_notifications_details']['notification_type']; ?></td>
-                <td align="left"><?php echo empty($push_notifications_info['response'][$x]['push_notifications_details']['date']) ? "NULL" : $push_notifications_info['response'][$x]['push_notifications_details']['date']; ?></td>
+                <td style="text-overflow:initial;overflow:initial;white-space:initial;" align="left"><?php echo empty($push_notifications_info['response'][$x]['push_notifications_details']['date']) ? "NULL" : $push_notifications_info['response'][$x]['push_notifications_details']['date']; ?></td>
                 <td align="left"><?php echo empty($push_notifications_info['response'][$x]['push_notifications_details']['time']) ? "NULL" : $push_notifications_info['response'][$x]['push_notifications_details']['time']; ?></td>
                 <td align="left"><?php echo empty($push_notifications_info['response'][$x]['push_notifications_details']['message']) ? "NULL" : $push_notifications_info['response'][$x]['push_notifications_details']['message']; ?></td>
               </tr>

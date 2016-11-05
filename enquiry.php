@@ -303,7 +303,7 @@ if($_POST['search_text'] != '' || ($_POST['date11'] != '' && $_POST['date22'] !=
                 <td align="left"><?php echo empty($enquiry_info['response'][$x]['enquiry_details']['exchange']) ? "NULL" : $enquiry_info['response'][$x]['enquiry_details']['exchange']; ?></td>
                 <td align="left"><?php echo empty($enquiry_info['response'][$x]['user_details']['pincode']) ? "NULL" : $enquiry_info['response'][$x]['user_details']['pincode'] ?></td>
                 <td align="left"><?php echo empty($enquiry_info['response'][$x]['user_details']['points']) ? "NULL" : $enquiry_info['response'][$x]['user_details']['points']; ?></td>
-                <td align="left"><?php echo empty($enquiry_info['response'][$x]['enquiry_details']['date']) ? "NULL" : $enquiry_info['response'][$x]['enquiry_details']['date']; ?></td>
+                <td style="text-overflow:initial;overflow:initial;white-space:initial;" align="left"><?php echo empty($enquiry_info['response'][$x]['enquiry_details']['date']) ? "NULL" : $enquiry_info['response'][$x]['enquiry_details']['date']; ?></td>
               </tr>
     <?php  } 
     ?> 

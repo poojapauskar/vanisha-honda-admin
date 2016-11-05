@@ -313,9 +313,9 @@ if($_POST['search_text'] != '' || ($_POST['date11'] != '' && $_POST['date22'] !=
                 <td align="left"><?php echo empty($insurance_info['response'][$x]['vehicle_details']['engine_no']) ? "NULL" : $insurance_info['response'][$x]['vehicle_details']['engine_no']; ?></td>
                 <td align="left"><?php echo empty($insurance_info['response'][$x]['insurance_details']['policy_no']) ? "NULL" : $insurance_info['response'][$x]['insurance_details']['policy_no']; ?></td>
                 <td align="left"><?php echo empty($insurance_info['response'][$x]['insurance_details']['renewal_amt']) ? "NULL" : $insurance_info['response'][$x]['insurance_details']['renewal_amt']; ?></td>
-                <td align="left"><?php echo empty($insurance_info['response'][$x]['insurance_details']['payment_date']) ? "NULL" : $insurance_info['response'][$x]['insurance_details']['payment_date']; ?></td>
-                <td align="left"><?php echo empty($insurance_info['response'][$x]['insurance_details']['expiry_date']) ? "NULL" : $insurance_info['response'][$x]['insurance_details']['expiry_date']; ?></td>
-                <td align="left"><?php echo empty($insurance_info['response'][$x]['insurance_details']['date']) ? "NULL" : $insurance_info['response'][$x]['insurance_details']['date']; ?></td>
+                <td style="text-overflow:initial;overflow:initial;white-space:initial;" align="left"><?php echo empty($insurance_info['response'][$x]['insurance_details']['payment_date']) ? "NULL" : $insurance_info['response'][$x]['insurance_details']['payment_date']; ?></td>
+                <td style="text-overflow:initial;overflow:initial;white-space:initial;" align="left"><?php echo empty($insurance_info['response'][$x]['insurance_details']['expiry_date']) ? "NULL" : $insurance_info['response'][$x]['insurance_details']['expiry_date']; ?></td>
+                <td style="text-overflow:initial;overflow:initial;white-space:initial;" align="left"><?php echo empty($insurance_info['response'][$x]['insurance_details']['date']) ? "NULL" : $insurance_info['response'][$x]['insurance_details']['date']; ?></td>
               </tr>
     <?php  } 
     ?> 

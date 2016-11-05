@@ -304,7 +304,7 @@ if($_POST['search_text'] != '' || ($_POST['date11'] != '' && $_POST['date22'] !=
                 <td align="left"><?php echo empty($inventory_info['response'][$x]['inventory_details']['vehicle']) ? "NULL" : $inventory_info['response'][$x]['inventory_details']['vehicle']; ?></td>
                 <td align="left"><?php echo empty($inventory_info['response'][$x]['inventory_details']['chassis_no']) ? "NULL" : $inventory_info['response'][$x]['inventory_details']['chassis_no']; ?></td>
                 <td align="left"><?php echo empty($inventory_info['response'][$x]['inventory_details']['invoice_no']) ? "NULL" : $inventory_info['response'][$x]['inventory_details']['invoice_no']; ?></td>
-                <td align="left"><?php echo empty($inventory_info['response'][$x]['inventory_details']['inward_date']) ? "NULL" : $inventory_info['response'][$x]['inventory_details']['inward_date']; ?></td>
+                <td style="text-overflow:initial;overflow:initial;white-space:initial;" align="left"><?php echo empty($inventory_info['response'][$x]['inventory_details']['inward_date']) ? "NULL" : $inventory_info['response'][$x]['inventory_details']['inward_date']; ?></td>
               </tr>
     <?php  } 
     ?> 
