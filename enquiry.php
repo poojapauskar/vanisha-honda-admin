@@ -6,17 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
   <script src="bootstrap/js/jquery.min.js"></script>
-  <script src="bootstrap/js/bootstrap.min.js"></script>
-
-
-<!-- datepicker -->
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-animate.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-aria.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.0.4/angular-material.js"></script>
-<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-114/assets-cache.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.0.4/angular-material.css">
-<script src="js/datepicker.js"></script>   
+  <script src="bootstrap/js/bootstrap.min.js"></script> 
 
 
   <script src="js/material.min.js"></script>
@@ -110,8 +100,8 @@
   </div> -->
 <div class="col-sm-6" style="margin-top:2%">
   <form method="post" action="enquiry.php" name="search_form" id="search_form">
-    <input id="date11" name="date11" style="background-color:#E8E8E8" class="date" type="text" placeholder="From: DD/MM/YYY">
-    <input id="date22" name="date22" style="background-color:#E8E8E8" class="date" type="text" placeholder="To: DD/MM/YYY">
+    <input id="date11" name="date11" style="background-color:#E8E8E8" class="date" type="text" placeholder="From: DD/MM/YYYY">
+    <input id="date22" name="date22" style="background-color:#E8E8E8" class="date" type="text" placeholder="To: DD/MM/YYYY">
     <button type="submit" class="mdl-button mdl-js-button mdl-button--raised">
       Search
     </button>
@@ -153,7 +143,7 @@
 <script src="js/jquery-ui.js"></script>
   <script>
   $(function() {
-    $( ".date" ).datepicker({ dateFormat: 'dd/mm/yy' });
+    $( ".date" ).datepicker({ dateFormat: 'dd/mm/yy' }).val();
   });
   </script>
 
