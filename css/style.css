@@ -49,6 +49,9 @@ td:hover{
 
 th{
     font-family: Roboto-Regular !important;
+    text-overflow:initial;
+    overflow:initial;
+    white-space:initial;
 }
 .pagination{
     /*margin-top:-1% !important;*/

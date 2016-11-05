@@ -313,7 +313,7 @@ if($_POST['search_text'] != '' || ($_POST['date11'] != '' && $_POST['date22'] !=
                 <td align="left"><?php echo empty($bookings_info['response'][$x]['vehicle_details']['vehicle']) ? "NULL" : $bookings_info['response'][$x]['vehicle_details']['vehicle']; ?></td>
                 <td align="left"><?php echo empty($bookings_info['response'][$x]['vehicle_details']['colour']) ? "NULL" : $bookings_info['response'][$x]['vehicle_details']['colour']; ?></td>
                 <td align="left"><?php echo empty($bookings_info['response'][$x]['booking_details']['booking_amt']) ? "NULL" : $bookings_info['response'][$x]['booking_details']['booking_amt']; ?></td>
-                <td align="left"><?php echo empty($bookings_info['response'][$x]['booking_details']['delivery_date']) ? "NULL" : $bookings_info['response'][$x]['booking_details']['delivery_date']; ?></td>
+                <td style="text-overflow:initial;overflow:initial;white-space:initial;" align="left"><?php echo empty($bookings_info['response'][$x]['booking_details']['delivery_date']) ? "NULL" : $bookings_info['response'][$x]['booking_details']['delivery_date']; ?></td>
                 <td align="left"><?php echo empty($bookings_info['response'][$x]['booking_details']['accessories']) ? "NULL" : $bookings_info['response'][$x]['booking_details']['accessories']; ?></td>
                 <td style="text-overflow:initial;overflow:initial;white-space:initial;" align="left"><?php echo empty($bookings_info['response'][$x]['booking_details']['date']) ? "NULL" : $bookings_info['response'][$x]['booking_details']['date']; ?></td>
               </tr>
