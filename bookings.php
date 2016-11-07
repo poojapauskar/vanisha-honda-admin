@@ -44,6 +44,24 @@
 </head>
 <body ng-app="" style="background-color:#E8E8E8;overflow-x:hidden">
 
+
+<?php
+$url_check_wether_login = 'https://vanisha-honda.herokuapp.com/update_logged_in/check/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy';
+$options_check_wether_login = array(
+  'http' => array(
+    'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+    'method'  => 'GET',
+  ),
+);
+$context_check_wether_login = stream_context_create($options_check_wether_login);
+$output_check_wether_login = file_get_contents($url_check_wether_login, false,$context_check_wether_login);
+$arr_check_wether_login = json_decode($output_check_wether_login,true);
+if($arr_check_wether_login['status'] != 200){
+  echo "<script>location='index.php'</script>";
+}
+?>
+
+
 <div class="demo-layout-transparent mdl-layout mdl-js-layout">
   <header style="background-color:#607D8B;height:100px;" class="mdl-layout__header mdl-layout__header--transparent">
     <div class="mdl-layout__header-row">
@@ -56,6 +74,7 @@
       <!-- Navigation -->
       <nav class="mdl-navigation">
         <h5 style="color:white;">Vanisha Honda</h5>
+        <a href="logout.php"><img class="logout_btn" src="images/logout.png"></img></a>
       </nav>
 
     </div>

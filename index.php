@@ -54,13 +54,15 @@ if($arr2['status']==200){
                           $context_logged = stream_context_create($options_logged);
                           $output_logged = file_get_contents($url_logged, false,$context_logged);
                           $arr_logged = json_decode($output_logged,true);
-  echo "<script>location='admin_panel.php'</script>";
+                          if($arr_logged['status'] == 200){
+                              echo "<script>location='admin_panel.php'</script>";
+                          }
 }else{
   if($arr2['status']==401){
      $error_message="Not an Admin";
   }elseif($arr2['status']==402){
      $error_message="Password Invalid";
-  }else{
+  }elseif($arr2['status']==403){
      $error_message="Username Invalid";
   }
 }

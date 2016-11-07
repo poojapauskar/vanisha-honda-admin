@@ -1,5 +1,10 @@
 @import url('fonts.css');
 
+.logout_btn{
+   -moz-transform: scale(0.2) !important;
+  -webkit-transform: scale(0.2) !important;
+  transform: scale(0.2) !important;
+}
 #no_res{
     font-size:16px;
     text-align:center;
