@@ -21,6 +21,53 @@
 </head>
 <body ng-app="" style="background-color:#E8E8E8;overflow-x:hidden">
 
+<?php 
+
+if($_POST['username'] != '' && $_POST['password'] != ''){
+$url2 = 'https://vanisha-honda.herokuapp.com/check_admin/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy';
+$options2 = array(
+  'http' => array(
+    'header'  => array(
+                  'USERNAME: '.$_POST['username'],
+                  'PASSWORD: '.$_POST['password'],
+                ),
+    'method'  => 'GET',
+  ),
+);
+$context2 = stream_context_create($options2);
+$output2 = file_get_contents($url2, false,$context2);
+$arr2 = json_decode($output2,true);
+/*echo $arr2['status'];*/
+if($arr2['status']==200){
+
+                          $url_logged = 'https://vanisha-honda.herokuapp.com/update_logged_in/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy';
+                          $options_logged = array(
+                            'http' => array(
+                              'header'  => array(
+                                            'LOGGED-IN: 1',
+                                            'USERNAME: '.$_POST['username'],
+                                            'PASSWORD: '.$_POST['password'],
+                                          ),
+                              'method'  => 'GET',
+                            ),
+                          );
+                          $context_logged = stream_context_create($options_logged);
+                          $output_logged = file_get_contents($url_logged, false,$context_logged);
+                          $arr_logged = json_decode($output_logged,true);
+  echo "<script>location='admin_panel.php'</script>";
+}else{
+  if($arr2['status']==401){
+     $error_message="Not an Admin";
+  }elseif($arr2['status']==402){
+     $error_message="Password Invalid";
+  }else{
+     $error_message="Username Invalid";
+  }
+}
+
+}
+
+?>
 
   
 <div class="container">
@@ -47,19 +94,21 @@
 
 
     <div class="col-sm-3" style="margin-top:5%;width:250px;">
-        <form name="myForm" method="post" action="admin_panel.php"  style="background-color:white !important;padding:12px 0px 15px 10px">
+        <form name="myForm" method="post" action=""  style="background-color:white !important;padding:12px 0px 15px 10px">
 
           <p style="color:#607D8B;font-size:18px" id="admin_console">Admin Console</p>
 
+<p style="color:red"><?php echo $error_message ?></p>
+
           <div style="width:180px" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input name="myName" class="mdl-textfield__input" ng-model="myName">
+          <input name="username" class="mdl-textfield__input" ng-model="username">
           <label style="font-size:14px;" class="mdl-textfield__label" for="sample3">Username</label>
           </div>
           </p>
 
 <!-- pattern=".{8,}"  -->
           <div style="width:180px"  class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input name="myPassword" class="mdl-textfield__input" ng-model="myPassword" type="password">
+          <input name="password" class="mdl-textfield__input" ng-model="password" type="password">
           <label style="font-size:14px;" class="mdl-textfield__label" for="sample3">Password</label>
           </div>
           </p>
