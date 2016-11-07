@@ -288,6 +288,7 @@ if($_POST['search_text'] != '' || ($_POST['date11'] != '' && $_POST['date22'] !=
 <table id="example" align="center" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp results">
   <thead>
     <tr>
+      <th>User Id</th>
       <th>Name</th>
       <th>Mobile</th>
       <th>Email</th>
@@ -306,6 +307,7 @@ if($_POST['search_text'] != '' || ($_POST['date11'] != '' && $_POST['date22'] !=
    <?php 
       for ($x = 0; $x < count($finance_info['response']); $x++) { ?>
               <tr>
+                <td align="left"><?php echo empty($finance_info['response'][$x]['user_details']['pk']) ? "NULL" : $finance_info['response'][$x]['user_details']['pk']; ?></td>
                 <td align="left"><?php echo empty($finance_info['response'][$x]['user_details']['name']) ? "NULL" : $finance_info['response'][$x]['user_details']['name']; ?></td>
                 <td align="left"><?php echo empty($finance_info['response'][$x]['user_details']['mobile']) ? "NULL" : $finance_info['response'][$x]['user_details']['mobile']; ?></td>
                 <td align="left"><?php echo empty($finance_info['response'][$x]['user_details']['email']) ? "NULL" : $finance_info['response'][$x]['user_details']['email']; ?></td>
@@ -313,7 +315,15 @@ if($_POST['search_text'] != '' || ($_POST['date11'] != '' && $_POST['date22'] !=
                 <td align="left"><?php echo empty($finance_info['response'][$x]['finance_details']['down_payment']) ? "NULL" : $finance_info['response'][$x]['finance_details']['down_payment']; ?></td>
                 <td align="left"><?php echo empty($finance_info['response'][$x]['finance_details']['loan_amt']) ? "NULL" : $finance_info['response'][$x]['finance_details']['loan_amt']; ?></td>
                 <td align="left"><?php echo empty($finance_info['response'][$x]['finance_details']['pan_no']) ? "NULL" : $finance_info['response'][$x]['finance_details']['pan_no']; ?></td>
-                <td align="left"></td>
+                
+
+                <td style="text-overflow:initial;overflow:initial;white-space:initial;">
+                <form method="post" action="download.php">
+                <input type="hidden" name="user_id" value="<?php echo $finance_info['response'][$x]['user_details']['pk'] ?>"></input>
+                <button style="font-size:11px" type="submit" class="mdl-button mdl-js-button mdl-button--raised">Download</button>
+                </form>
+                </td>
+
                 <td style="text-overflow:initial;overflow:initial;white-space:initial;" align="left"><?php echo empty($finance_info['response'][$x]['finance_details']['date']) ? "NULL" : $finance_info['response'][$x]['finance_details']['date']; ?></td>
               </tr>
     <?php  } 
