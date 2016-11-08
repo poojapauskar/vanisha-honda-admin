@@ -27,7 +27,7 @@ function hide_wait_msg ()
 function show_wait_msg ()
 {
      if(document.getElementById('username').value == '' && document.getElementById('password').value == ''){
-       alert("Username and Password required");
+       /*alert("Username and Password required");*/
      }else{
         document.getElementById('loadingPleaseWait').style.display = 'block';
      }
@@ -86,12 +86,12 @@ $arr2 = json_decode($output2,true);
                   }
 
 }
-elseif($_POST['username'] == '' && $_POST['password'] == ''){
-  /*$error_message="Username and Password required";*/
+elseif($_POST['username'] == '' && $_POST['password'] == '' && isset($_POST['submit'])){
+  $error_message="Username and Password required";
 }
-elseif($_POST['username'] == ''){
+elseif($_POST['username'] == '' && isset($_POST['submit'])){
   $error_message="Username is required";
-}elseif($_POST['password'] == ''){
+}elseif($_POST['password'] == '' && isset($_POST['submit'])){
   $error_message="Password is required";
 }
 
@@ -147,7 +147,7 @@ elseif($_POST['username'] == ''){
           </p>
 
           <br>
-          <button onclick="show_wait_msg()" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+          <button onclick="show_wait_msg()" name="submit" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
            Log In
           </button>
 
