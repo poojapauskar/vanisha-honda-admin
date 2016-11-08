@@ -159,7 +159,7 @@ if($arr_check_wether_login['status'] != 200){
 </div>
 
     <div class="col-sm-2" style="margin-top:2%">
-      <button style="font-size:8px" onclick="open_modal()" class="mdl-button mdl-js-button mdl-button--raised">
+      <button style="font-size:10px !important;line-height:12px;text-overflow:initial;overflow:initial;white-space:initial;" onclick="open_modal()" class="mdl-button mdl-js-button mdl-button--raised">
        New Push Notification
       </button>
     </div>
@@ -431,15 +431,15 @@ if($_POST['search_text'] != '' || ($_POST['date11'] != '' && $_POST['date22'] !=
        <!--  <div class="col-sm-4">
           <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Cancel</button>
         </div> -->
-        <div class="col-sm-4">
+        <div class="col-sm-3">
         </div>
         <div class="col-sm-4">
-          <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Send</button>
+          <button style="background-color:#607D8B" type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Send</button>
         </div>
         <!-- <div class="col-sm-2">
           <button style="background-color:red;color:white" type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Cancel</button>
         </div> -->
-        <div class="col-sm-4">
+        <div class="col-sm-5">
         </div>
       </div>
     </div>

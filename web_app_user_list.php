@@ -404,7 +404,7 @@ if($_POST['search_text'] != ''){
                 <td align="left"><?php echo empty($employees_details_info['response'][$x]['user_details']['password']) ? "NULL" : $employees_details_info['response'][$x]['user_details']['email']; ?></td>
                 <td align="left"><?php echo empty($employees_details_info['response'][$x]['employee_details']['access_level']) ? "NULL" : $employees_details_info['response'][$x]['employee_details']['access_level']; ?></td>
                 <td align="left"><?php echo empty($employees_details_info['response'][$x]['employee_details']['access_level']) ? "NULL" : $employees_details_info['response'][$x]['employee_details']['is_active']; ?></td>
-                <td><button onclick="<?php echo 'open_modal('.$employees_details_info['response'][$x]['employee_details']['pk'].')' ?>" class="mdl-button mdl-js-button mdl-button--raised">
+                <td><button style="background-color:#607D8B" onclick="<?php echo 'open_modal('.$employees_details_info['response'][$x]['employee_details']['pk'].')' ?>" class="mdl-button mdl-js-button mdl-button--raised">
                   Edit
                 </button></td>
               </tr>
@@ -510,15 +510,15 @@ if($_POST['search_text'] != ''){
        <!--  <div class="col-sm-4">
           <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Cancel</button>
         </div> -->
-        <div class="col-sm-4">
+        <div class="col-sm-3">
         </div>
-        <div class="col-sm-2">
-          <button form="form1" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Save Changes</button>
+        <div class="col-sm-4">
+          <button form="form1" style="background-color:#607D8B" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Save</button>
         </div>
        <!--  <div class="col-sm-2">
           <button style="background-color:red;color:white" type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Delete User</button>
         </div> -->
-        <div class="col-sm-4">
+        <div class="col-sm-5">
         </div>
       </div>
     </div>
@@ -643,7 +643,7 @@ echo '<script type="text/javascript">',
         <div class="col-sm-4">
         </div>
         <div class="col-sm-2">
-          <button onclick="show_wait_msg()" type="submit" form="form3" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Save Changes</button>
+          <button style="background-color:#607D8B" onclick="show_wait_msg()" type="submit" form="form3" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Save Changes</button>
         </div>
         <div class="col-sm-2">
           <button style="background-color:red;color:white" type="submit" onclick="<?php echo 'disable_emp('.$sel_emp_det_info[0]['emp_id'].')' ?>" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Delete User</button>

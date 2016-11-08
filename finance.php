@@ -355,7 +355,7 @@ if($_POST['search_text'] != '' || ($_POST['date11'] != '' && $_POST['date22'] !=
                 <td style="text-overflow:initial;overflow:initial;white-space:initial;">
                 <form method="post" action="download.php">
                 <input type="hidden" name="user_id" value="<?php echo $finance_info['response'][$x]['user_details']['pk'] ?>"></input>
-                <button style="font-size:11px" type="submit" class="mdl-button mdl-js-button mdl-button--raised">Download</button>
+                <button style="font-size:11px;background-color:#607D8B" type="submit" class="mdl-button mdl-js-button mdl-button--raised">Download</button>
                 </form>
                 </td>
 
