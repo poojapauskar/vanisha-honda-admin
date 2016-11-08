@@ -27,8 +27,20 @@ p{
   margin-top: 14px;
 }
 </style>
+<script type="text/javascript">
+function hide_wait_msg ()
+{
+    document.getElementById('loadingPleaseWait').style.display = 'none';
+}
+
+function show_wait_msg ()
+{
+     document.getElementById('loadingPleaseWait').style.display = 'block';
+}
+
+</script>
 </head>
-<body ng-app="" style="overflow-x:hidden">
+<body ng-app="" style="overflow-x:hidden" onload="hide_wait_msg()">
 
 <?php
 $url_check_wether_login = 'https://vanisha-honda.herokuapp.com/update_logged_in/check/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy';
@@ -61,6 +73,7 @@ if($arr_check_wether_login['status'] != 200){
       </nav>
     </div>
   </header>
+
   <div class="mdl-layout__drawer">
     <img style="margin-top:10%;margin-left:20%;width:25%" src="images/Different-Honda-Logo.png"></img>
     <nav class="mdl-navigation">
@@ -78,15 +91,20 @@ if($arr_check_wether_login['status'] != 200){
   </div>
 </div>
 
+<div style="margin-top:7%;position: absolute; left: 0; top: 0;width: 100%; height: 10%;display: none;vertical-align: center;" id="loadingPleaseWait">
+  <div style="text-align: center;">
+    <h4 style="color:black;font-size:14px;">Loading, please wait...</h4>
+  </div>
+</div>
 
 <div class="container">
   <div class="row" style="margin-top:14%;margin-left:12%"> 
-    
+
     <div class="col-sm-1">
     </div>
     <div class="col-sm-2">
       <a href="enquiry.php">
-      <button style="background-color:#607D8B;width:160px;height:60px" class="mdl-button mdl-js-button mdl-button--raised">
+      <button onclick="show_wait_msg()" style="background-color:#607D8B;width:160px;height:60px" class="mdl-button mdl-js-button mdl-button--raised">
       <p>Enquiry</p>
       </button>
       </a>
@@ -95,7 +113,7 @@ if($arr_check_wether_login['status'] != 200){
     </div>
     <div class="col-sm-2">
       <a href="test_ride.php">
-      <button style="background-color:#607D8B;width:160px;height:60px" class="mdl-button mdl-js-button mdl-button--raised">
+      <button onclick="show_wait_msg()" style="background-color:#607D8B;width:160px;height:60px" class="mdl-button mdl-js-button mdl-button--raised">
       <p>Test Rides</p>
       </button>
       </a>
@@ -104,7 +122,7 @@ if($arr_check_wether_login['status'] != 200){
     </div>
     <div class="col-sm-2">
        <a href="bookings.php">
-       <button style="background-color:#607D8B;width:160px;height:60px" class="mdl-button mdl-js-button mdl-button--raised">
+       <button onclick="show_wait_msg()" style="background-color:#607D8B;width:160px;height:60px" class="mdl-button mdl-js-button mdl-button--raised">
        <p>bookings</p>
        </button>
        </a>
@@ -119,7 +137,7 @@ if($arr_check_wether_login['status'] != 200){
     </div>
     <div class="col-sm-2">
        <a href="finance.php">
-       <button style="background-color:#607D8B;width:160px;height:60px" class="mdl-button mdl-js-button mdl-button--raised">
+       <button onclick="show_wait_msg()" style="background-color:#607D8B;width:160px;height:60px" class="mdl-button mdl-js-button mdl-button--raised">
        <p>Finance Requests</p>
        </button>
        </a>
@@ -128,7 +146,7 @@ if($arr_check_wether_login['status'] != 200){
     </div>
     <div class="col-sm-2">
       <a href="insurance.php">
-      <button style="background-color:#607D8B;width:160px;height:60px" class="mdl-button mdl-js-button mdl-button--raised">
+      <button onclick="show_wait_msg()" style="background-color:#607D8B;width:160px;height:60px" class="mdl-button mdl-js-button mdl-button--raised">
       <p>Insurance Renewal</p>
       </button>
       </a>
@@ -137,7 +155,7 @@ if($arr_check_wether_login['status'] != 200){
     </div>
     <div class="col-sm-2">
       <a href="service_requests.php">
-      <button style="background-color:#607D8B;width:160px;height:60px" class="mdl-button mdl-js-button mdl-button--raised">
+      <button onclick="show_wait_msg()" style="background-color:#607D8B;width:160px;height:60px" class="mdl-button mdl-js-button mdl-button--raised">
       <p>Service Requests</p>
       </button>
       </a>
@@ -152,7 +170,7 @@ if($arr_check_wether_login['status'] != 200){
     </div>
     <div class="col-sm-2">
        <a href="inventory.php">
-       <button style="background-color:#607D8B;width:160px;height:60px" class="mdl-button mdl-js-button mdl-button--raised">
+       <button onclick="show_wait_msg()" style="background-color:#607D8B;width:160px;height:60px" class="mdl-button mdl-js-button mdl-button--raised">
        <p>Inventory</p>
        </button>
        </a>
@@ -161,7 +179,7 @@ if($arr_check_wether_login['status'] != 200){
     </div>
     <div class="col-sm-2">
        <a href="customer_database.php">
-       <button style="background-color:#607D8B;width:160px;height:60px" class="mdl-button mdl-js-button mdl-button--raised">
+       <button onclick="show_wait_msg()" style="background-color:#607D8B;width:160px;height:60px" class="mdl-button mdl-js-button mdl-button--raised">
        <p>Customer Database</p>
        </button>
        </a>
@@ -170,7 +188,7 @@ if($arr_check_wether_login['status'] != 200){
     </div>
     <div class="col-sm-2">
       <a href="push_notification.php">
-      <button style="background-color:#607D8B;width:160px;height:60px" class="mdl-button mdl-js-button mdl-button--raised">
+      <button onclick="show_wait_msg()" style="background-color:#607D8B;width:160px;height:60px" class="mdl-button mdl-js-button mdl-button--raised">
       <p>Mobile App</p>
       </button>
       </a>
@@ -184,7 +202,7 @@ if($arr_check_wether_login['status'] != 200){
     </div>
     <div class="col-sm-2">
       <a href="web_app_user_list.php">
-      <button style="background-color:#607D8B;width:160px;height:60px" class="mdl-button mdl-js-button mdl-button--raised">
+      <button onclick="show_wait_msg()" style="background-color:#607D8B;width:160px;height:60px" class="mdl-button mdl-js-button mdl-button--raised">
       <p>Admin</p>
       </button>
       </a>

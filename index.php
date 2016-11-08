@@ -18,8 +18,22 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 
+<script type="text/javascript">
+function hide_wait_msg ()
+{
+    document.getElementById('loadingPleaseWait').style.display = 'none';
+}
+
+function show_wait_msg ()
+{
+     document.getElementById('loadingPleaseWait').style.display = 'block';
+}
+
+</script>
+
+</script>
 </head>
-<body ng-app="" style="background-color:#E8E8E8;overflow-x:hidden">
+<body ng-app="" style="background-color:#E8E8E8;overflow-x:hidden" onload="hide_wait_msg()">
 
 <?php 
 
@@ -89,6 +103,11 @@ if($arr2['status']==200){
     </div>
   </div>
 
+<div style="margin-top:7%;position: absolute; left: 0; top: 0;width: 100%; height: 10%;display: none;vertical-align: center;" id="loadingPleaseWait">
+  <div style="text-align: center;">
+    <h4 style="color:black;font-size:14px;">Loading, please wait...</h4>
+  </div>
+</div>
 
 <div class="row">
     <div class="col-sm-9">
@@ -116,7 +135,7 @@ if($arr2['status']==200){
           </p>
 
           <br>
-          <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+          <button onclick="show_wait_msg()" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
            Log In
           </button>
 

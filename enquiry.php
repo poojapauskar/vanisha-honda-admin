@@ -30,9 +30,20 @@
 <script src="js/table2excel.js"></script>
 <script src="js/exportscript.js"></script>
 
+<script type="text/javascript">
+function hide_wait_msg ()
+{
+    document.getElementById('loadingPleaseWait').style.display = 'none';
+}
 
+function show_wait_msg ()
+{
+     document.getElementById('loadingPleaseWait').style.display = 'block';
+}
+
+</script>
 </head>
-<body ng-app="" style="background-color:#E8E8E8;overflow-x:hidden">
+<body ng-app="" style="background-color:#E8E8E8;overflow-x:hidden" onload="hide_wait_msg()">
 
 <?php
 $url_check_wether_login = 'https://vanisha-honda.herokuapp.com/update_logged_in/check/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy';
@@ -84,6 +95,12 @@ if($arr_check_wether_login['status'] != 200){
   </div>
 </div>
   
+<div style="margin-top:7%;position: absolute; left: 0; top: 0;width: 100%; height: 10%;display: none;vertical-align: center;" id="loadingPleaseWait">
+  <div style="text-align: center;">
+    <h4 style="color:black;font-size:14px;">Loading, please wait...</h4>
+  </div>
+</div>
+
 <div class="container">
   <div class="row" id="row1" style="margin: auto;background-color:#607D8B;height:80px;">
 
@@ -119,7 +136,7 @@ if($arr_check_wether_login['status'] != 200){
   <form method="post" action="enquiry.php" name="search_form" id="search_form">
     <input id="date11" name="date11" value="<?php echo $_POST['date11'] ?>" style="background-color:#E8E8E8" class="date" type="text" placeholder="From: DD/MM/YYYY">
     <input id="date22" name="date22" value="<?php echo $_POST['date22'] ?>" style="background-color:#E8E8E8" class="date" type="text" placeholder="To: DD/MM/YYYY">
-    <button type="submit" class="mdl-button mdl-js-button mdl-button--raised">
+    <button onclick="show_wait_msg()" type="submit" class="mdl-button mdl-js-button mdl-button--raised">
       Search
     </button>
   </form>
@@ -147,6 +164,7 @@ if($arr_check_wether_login['status'] != 200){
     <!-- Textfield with Floating Label -->
 <script type="text/javascript">
   function clear1(){
+    document.getElementById('loadingPleaseWait').style.display = 'block';
     $('#search_text').val('');
     $('#date11').val('');
     $('#date22').val('');
