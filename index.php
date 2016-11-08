@@ -52,35 +52,39 @@ $context2 = stream_context_create($options2);
 $output2 = file_get_contents($url2, false,$context2);
 $arr2 = json_decode($output2,true);
 /*echo $arr2['status'];*/
-if($arr2['status']==200){
+                  if($arr2['status']==200){
 
-                          $url_logged = 'https://vanisha-honda.herokuapp.com/update_logged_in/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy';
-                          $options_logged = array(
-                            'http' => array(
-                              'header'  => array(
-                                            'LOGGED-IN: 1',
-                                            'USERNAME: '.$_POST['username'],
-                                            'PASSWORD: '.$_POST['password'],
-                                          ),
-                              'method'  => 'GET',
-                            ),
-                          );
-                          $context_logged = stream_context_create($options_logged);
-                          $output_logged = file_get_contents($url_logged, false,$context_logged);
-                          $arr_logged = json_decode($output_logged,true);
-                          if($arr_logged['status'] == 200){
-                              echo "<script>location='admin_panel.php'</script>";
-                          }
-}else{
-  if($arr2['status']==401){
-     $error_message="Not an Admin";
-  }elseif($arr2['status']==402){
-     $error_message="Password Invalid";
-  }elseif($arr2['status']==403){
-     $error_message="Username Invalid";
-  }
-}
+                                            $url_logged = 'https://vanisha-honda.herokuapp.com/update_logged_in/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy';
+                                            $options_logged = array(
+                                              'http' => array(
+                                                'header'  => array(
+                                                              'LOGGED-IN: 1',
+                                                              'USERNAME: '.$_POST['username'],
+                                                              'PASSWORD: '.$_POST['password'],
+                                                            ),
+                                                'method'  => 'GET',
+                                              ),
+                                            );
+                                            $context_logged = stream_context_create($options_logged);
+                                            $output_logged = file_get_contents($url_logged, false,$context_logged);
+                                            $arr_logged = json_decode($output_logged,true);
+                                            if($arr_logged['status'] == 200){
+                                                echo "<script>location='admin_panel.php'</script>";
+                                            }
+                  }else{
+                    if($arr2['status']==401){
+                       $error_message="Not an Admin";
+                    }elseif($arr2['status']==402){
+                       $error_message="Password Invalid";
+                    }elseif($arr2['status']==403){
+                       $error_message="Username Invalid";
+                    }
+                  }
 
+}elseif($_POST['username'] == ''){
+  $error_message="Username is required";
+}elseif($_POST['password'] == ''){
+  $error_message="Password is required";
 }
 
 ?>
@@ -122,14 +126,14 @@ if($arr2['status']==200){
 <p style="color:red"><?php echo $error_message ?></p>
 
           <div style="width:180px" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input name="username" class="mdl-textfield__input" ng-model="username">
+          <input name="username" class="mdl-textfield__input" value="<?php echo $_POST['username'] ?>">
           <label style="font-size:14px;" class="mdl-textfield__label" for="sample3">Username</label>
           </div>
           </p>
 
 <!-- pattern=".{8,}"  -->
           <div style="width:180px"  class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input name="password" class="mdl-textfield__input" ng-model="password" type="password">
+          <input name="password" class="mdl-textfield__input" type="password" value="<?php echo $_POST['password'] ?>">
           <label style="font-size:14px;" class="mdl-textfield__label" for="sample3">Password</label>
           </div>
           </p>
