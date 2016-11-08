@@ -26,11 +26,7 @@ function hide_wait_msg ()
 
 function show_wait_msg ()
 {
-     if(document.getElementById('username').value == '' && document.getElementById('password').value == ''){
-       /*alert("Username and Password required");*/
-     }else{
-        document.getElementById('loadingPleaseWait').style.display = 'block';
-     }
+   document.getElementById('loadingPleaseWait').style.display = 'block';
 }
 
 </script>
