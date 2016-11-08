@@ -26,7 +26,11 @@ function hide_wait_msg ()
 
 function show_wait_msg ()
 {
-     document.getElementById('loadingPleaseWait').style.display = 'block';
+     if(document.getElementById('username').value == '' && document.getElementById('password').value == ''){
+       alert("Username and Password required");
+     }else{
+        document.getElementById('loadingPleaseWait').style.display = 'block';
+     }
 }
 
 </script>
@@ -81,7 +85,11 @@ $arr2 = json_decode($output2,true);
                     }
                   }
 
-}elseif($_POST['username'] == ''){
+}
+elseif($_POST['username'] == '' && $_POST['password'] == ''){
+  /*$error_message="Username and Password required";*/
+}
+elseif($_POST['username'] == ''){
   $error_message="Username is required";
 }elseif($_POST['password'] == ''){
   $error_message="Password is required";
@@ -126,14 +134,14 @@ $arr2 = json_decode($output2,true);
 <p style="color:red"><?php echo $error_message ?></p>
 
           <div style="width:180px" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input name="username" class="mdl-textfield__input" value="<?php echo $_POST['username'] ?>">
+          <input name="username" id="username" class="mdl-textfield__input" value="<?php echo $_POST['username'] ?>">
           <label style="font-size:14px;" class="mdl-textfield__label" for="sample3">Username</label>
           </div>
           </p>
 
 <!-- pattern=".{8,}"  -->
           <div style="width:180px"  class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <input name="password" class="mdl-textfield__input" type="password" value="<?php echo $_POST['password'] ?>">
+          <input name="password" id="password" class="mdl-textfield__input" type="password" value="<?php echo $_POST['password'] ?>">
           <label style="font-size:14px;" class="mdl-textfield__label" for="sample3">Password</label>
           </div>
           </p>

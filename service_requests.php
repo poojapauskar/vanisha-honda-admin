@@ -144,8 +144,10 @@ if($arr_check_wether_login['status'] != 200){
   </div> -->
 <div class="col-sm-6" style="margin-top:2%">
   <form method="post" action="service_requests.php" name="search_form" id="search_form">
-    <input id="date11" name="date11" value="<?php echo $_POST['date11'] ?>" style="background-color:#E8E8E8" class="date" type="text" placeholder="From: DD/MM/YYYY">
-    <input id="date22" name="date22" value="<?php echo $_POST['date22'] ?>" style="background-color:#E8E8E8" class="date" type="text" placeholder="To: DD/MM/YYYY">
+    <input id="date11" name="date11" value="<?php echo $_POST['date11'] ?>" style="background-color:#E8E8E8;background-image:url(images/calendar-range.png) !important;
+    background-size: 20px 20px;background-repeat: no-repeat;text-indent: 22px;font-size:13px" class="date" type="text" placeholder="From: DD/MM/YYYY">
+    <input id="date22" name="date22" value="<?php echo $_POST['date22'] ?>" style="background-color:#E8E8E8;background-image:url(images/calendar-range.png) !important;
+    background-size: 20px 20px;background-repeat: no-repeat;text-indent: 22px;font-size:13px" class="date" type="text" placeholder="To: DD/MM/YYYY">
     <button onclick="show_wait_msg()" type="submit" class="mdl-button mdl-js-button mdl-button--raised">
       Search
     </button>
