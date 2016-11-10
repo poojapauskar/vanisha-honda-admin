@@ -94,22 +94,21 @@ elseif($_POST['username'] == '' && isset($_POST['submit'])){
 ?>
 
   
-<div class="container">
-  <div class="row" style="background-color:#607D8B;height:100px;width:115%">
+<div class="demo-layout-transparent mdl-layout mdl-js-layout">
+  <header style="background-color:#607D8B;height:100px;" class="mdl-layout__header mdl-layout__header--transparent">
     <div class="mdl-layout__header-row">
       <!-- Title -->
-      <a href="admin_panel.php">
       <img style="margin-top:5%" src="images/Different-Honda-Logo.png"></img>
-      </a>
       <!-- Add spacer, to align navigation to the right -->
       <div class="mdl-layout-spacer"></div>
       <!-- Navigation -->
       <nav class="mdl-navigation">
         <h5 style="color:white;">Vanisha Honda</h5>
+        <a style="visibility:hidden" href="logout.php"><img class="logout_btn" src="images/logout.png"></img></a>
       </nav>
-
     </div>
-  </div>
+  </header>
+</div>
 
 <div style="margin-top:7%;position: absolute; left: 0; top: 0;width: 100%; height: 10%;display: none;vertical-align: center;" id="loadingPleaseWait">
   <div style="text-align: center;">
@@ -122,7 +121,7 @@ elseif($_POST['username'] == '' && isset($_POST['submit'])){
     </div>
 
 
-    <div class="col-sm-3" style="margin-top:5%;width:250px;">
+    <div class="col-sm-3" style="margin-top:15%;width:250px;">
         <form name="myForm" method="post" action=""  style="background-color:white !important;padding:12px 0px 15px 10px">
 
           <p style="color:#607D8B;font-size:18px" id="admin_console">Admin Console</p>
