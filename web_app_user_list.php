@@ -342,11 +342,19 @@ elseif( (strlen(preg_replace("/[^0-9]/","",$_POST['edit_mobile'])) >15 || strlen
   </script>";
   $error_message_edit="Access Level is required";
 }elseif(isset($_POST['edit_emp'])){
+
+  echo "<script type='text/javascript'>
+  $(document).ready(function(){
+  var modal=document.getElementById('myModal');
+  modal.style.display = 'none';
+  });
+  </script>";
+ /*$error_message_edit=$_POST['emp_id_edit'];*/
  $url_edit_emp_det = 'https://vanisha-honda.herokuapp.com/edit_employee/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy';
   $options_edit_emp_det = array(
     'http' => array(
       'header'  => array(
-                    'EMPLOYEE-ID: '.$_POST['edit_employee_id'],
+                    'EMPLOYEE-ID: '.$_POST['emp_id_edit'],
                     'NAME: '.$_POST['edit_name'],
                     'EMAIL: '.$_POST['edit_email'],
                     'MOBILE: '.$_POST['edit_mobile'],
