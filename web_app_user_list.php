@@ -304,8 +304,56 @@ if($_POST['edit_employee_id'] == '' || $_POST['edit_employee_id'] == null){
 
 <?php
 
-if($_POST['mobile1'] == '' || $_POST['mobile1'] == 'null'){
-}else{
+if(($_POST['mobile1'] == '' || $_POST['mobile1'] == 'null') &&  isset($_POST['add_emp'])){
+  echo "<script type='text/javascript'>
+  $(document).ready(function(){
+  var modal=document.getElementById('myModal_add');
+  modal.style.display = 'block';
+  });
+  </script>";
+  $error_message="Mobile field is required";
+}elseif(!is_numeric($_POST['mobile1']) && isset($_POST['add_emp'])) {
+  echo "<script type='text/javascript'>
+  $(document).ready(function(){
+  var modal=document.getElementById('myModal_add');
+  modal.style.display = 'block';
+  });
+  </script>";
+  $error_message="Mobile no must contain only digits";
+}elseif( (strlen($_POST['mobile1']) >15 || strlen($_POST['mobile1']) <10) && isset($_POST['add_emp']) ) {
+  echo "<script type='text/javascript'>
+  $(document).ready(function(){
+  var modal=document.getElementById('myModal_add');
+  modal.style.display = 'block';
+  });
+  </script>";
+  $error_message="Mobile no must contain 10-15 digits";
+}elseif(($_POST['username1'] == '' || $_POST['username1'] == 'null') &&  isset($_POST['add_emp'])){
+  echo "<script type='text/javascript'>
+  $(document).ready(function(){
+  var modal=document.getElementById('myModal_add');
+  modal.style.display = 'block';
+  });
+  </script>";
+  $error_message="Username is required";
+}elseif(($_POST['password1'] == '' || $_POST['password1'] == 'null') &&  isset($_POST['add_emp'])){
+  echo "<script type='text/javascript'>
+  $(document).ready(function(){
+  var modal=document.getElementById('myModal_add');
+  modal.style.display = 'block';
+  });
+  </script>";
+  $error_message="Password is required";
+}elseif(($_POST['access_level1'] == '' || $_POST['access_level1'] == 'null') &&  isset($_POST['add_emp'])){
+  echo "<script type='text/javascript'>
+  $(document).ready(function(){
+  var modal=document.getElementById('myModal_add');
+  modal.style.display = 'block';
+  });
+  </script>";
+  $error_message="Access Level is required";
+}
+else{
   /*echo $_POST['mobile1'];*/
   $url_add = 'https://vanisha-honda.herokuapp.com/add_new_employee/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy';
   $options_add = array(
@@ -452,6 +500,7 @@ if($_POST['search_text'] != ''){
     <div class="modal-header">
       <span style="color:black" class="close_add">×</span>
       <h2 style="text-align:center">Add New Employee</h2>
+      <p style="color:red;text-align:center"><?php echo $error_message ?></p>
     </div>
     <div class="modal-body">
       <form id="form1" method="post" action="web_app_user_list.php" style="text-align:center">
@@ -466,35 +515,40 @@ if($_POST['search_text'] != ''){
  -->
                 <div class="mdl-textfield mdl-js-textfield">
                 <label style="float: left;" for="name1">Name</label>
-                <input class="mdl-textfield__input" type="text" id="name1" name="name1">
+                <input value="<?php echo $_POST['name1'] ?>" class="mdl-textfield__input" type="text" id="name1" name="name1">
                 </div>
 
                 <div class="mdl-textfield mdl-js-textfield">
                 <label style="float: left;" for="email1">Email</label>
-                <input class="mdl-textfield__input" type="text" id="email1" name="email1">
+                <input value="<?php echo $_POST['email1'] ?>" class="mdl-textfield__input" type="text" id="email1" name="email1">
                 </div>
 
                 <div class="mdl-textfield mdl-js-textfield">
                 <label style="float: left;" for="mobile1">Mobile</label>
-                <input class="mdl-textfield__input" type="text" id="mobile1" name="mobile1" required>
+                <input value="<?php echo $_POST['mobile1'] ?>" class="mdl-textfield__input" type="text" id="mobile1" name="mobile1">
                 </div>
             </div>
 
             <div class="col-sm-6">
                 <div class="mdl-textfield mdl-js-textfield">
                 <label style="float: left;" for="username1">Username</label>
-                <input class="mdl-textfield__input" type="text" id="username1" name="username1">
+                <input value="<?php echo $_POST['username1'] ?>" class="mdl-textfield__input" type="text" id="username1" name="username1">
                 </div>
 
                 <div class="mdl-textfield mdl-js-textfield">
                 <label style="float: left;" for="password1">Password</label>
-                <input class="mdl-textfield__input" type="text" id="password1" name="password1">
+                <input value="<?php echo $_POST['password1'] ?>" class="mdl-textfield__input" type="text" id="password1" name="password1">
                 </div>
 
                 <div class="mdl-textfield mdl-js-textfield">
                 <label style="float: left;" for="access_level1">Access Level</label>
                 <select id="access_level1" name="access_level1">
-                  <option ng-selected="true" value="Sales">Sales
+
+                <?php if($_POST['access_level1'] != ''){?>
+                  <option ng-selected="true" value="<?php echo $_POST['access_level1']; ?>"><?php echo $_POST['access_level1'];
+                }?>
+                  <option value="">
+                  <option value="Sales">Sales
                   <option value="Insurance">Insurance
                   <option value="Admin">Admin
                 </select>
@@ -515,7 +569,7 @@ if($_POST['search_text'] != ''){
         <div class="col-sm-3">
         </div>
         <div class="col-sm-4">
-          <button form="form1" style="background-color:#607D8B" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Save</button>
+          <button form="form1" name="add_emp" id="add_emp" style="background-color:#607D8B" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Save</button>
         </div>
        <!--  <div class="col-sm-2">
           <button style="background-color:red;color:white" type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Delete User</button>
