@@ -262,6 +262,8 @@ $('.date').blur(function()
 if($_POST['disable_emp_id'] == '' || $_POST['disable_emp_id'] == null){
   /*echo "null";*/
 }else{
+
+  /*echo "<script>alert('hi');</script>";*/
   $url_disable = 'https://vanisha-honda.herokuapp.com/disable_employee/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy';
   $options_disable = array(
     'http' => array(
@@ -349,12 +351,12 @@ elseif( (strlen(preg_replace("/[^0-9]/","",$_POST['edit_mobile'])) >15 || strlen
   modal.style.display = 'none';
   });
   </script>";
- /*$error_message_edit=$_POST['emp_id_edit'];*/
+ /*$error_message_edit=$_POST['edit_emp_id'];*/
  $url_edit_emp_det = 'https://vanisha-honda.herokuapp.com/edit_employee/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy';
   $options_edit_emp_det = array(
     'http' => array(
       'header'  => array(
-                    'EMPLOYEE-ID: '.$_POST['emp_id_edit'],
+                    'EMPLOYEE-ID: '.$_POST['edit_emp_id'],
                     'NAME: '.$_POST['edit_name'],
                     'EMAIL: '.$_POST['edit_email'],
                     'MOBILE: '.$_POST['edit_mobile'],
@@ -490,7 +492,7 @@ if($_POST['search_text'] != ''){
         $output_data = file_get_contents($url_data, false,$context_data);
         /*var_dump($output_data);*/
         $employees_details_info = json_decode($output_data,true);
-        // var_dump($employees_details_info);
+        /*var_dump($employees_details_info);*/
 }
 
 ?>
@@ -528,9 +530,9 @@ if($_POST['search_text'] != ''){
                 <td align="left"><?php echo empty($employees_details_info['response'][$x]['user_details']['name']) ? "NULL" : $employees_details_info['response'][$x]['user_details']['name']; ?></td>
                 <td align="left"><?php echo empty($employees_details_info['response'][$x]['user_details']['username']) ? "NULL" : $employees_details_info['response'][$x]['user_details']['username']; ?></td>
                 <td align="left"><?php echo empty($employees_details_info['response'][$x]['user_details']['password']) ? "NULL" : $employees_details_info['response'][$x]['user_details']['password']; ?></td>
-                <td align="left"><?php echo empty($employees_details_info['response'][$x]['user_details']['password']) ? "NULL" : $employees_details_info['response'][$x]['user_details']['email']; ?></td>
+                <td align="left"><?php echo empty($employees_details_info['response'][$x]['user_details']['email']) ? "NULL" : $employees_details_info['response'][$x]['user_details']['email']; ?></td>
                 <td align="left"><?php echo empty($employees_details_info['response'][$x]['employee_details']['access_level']) ? "NULL" : $employees_details_info['response'][$x]['employee_details']['access_level']; ?></td>
-                <td align="left"><?php echo empty($employees_details_info['response'][$x]['employee_details']['access_level']) ? "NULL" : $employees_details_info['response'][$x]['employee_details']['is_active']; ?></td>
+                <td align="left"><?php echo empty($employees_details_info['response'][$x]['employee_details']['is_active']) ? "0" : $employees_details_info['response'][$x]['employee_details']['is_active']; ?></td>
                 <td><button style="background-color:#607D8B" onclick="<?php echo 'open_modal('.$employees_details_info['response'][$x]['employee_details']['pk'].')' ?>" class="mdl-button mdl-js-button mdl-button--raised">
                   Edit
                 </button></td>
@@ -721,7 +723,7 @@ echo '<script type="text/javascript">',
             <div class="col-sm-6" style="">
                 <!-- <div class="mdl-textfield mdl-js-textfield">
                 <label style="float: left;" for="edit_employee">Employee Id</label> -->
-                <input class="mdl-textfield__input" type="hidden" name="emp_id_edit" id="emp_id_edit" value="<?php echo ( ($_POST['emp_id_edit']) ?: $sel_emp_det_info[0]['emp_id'] ) ?>">
+                <input class="mdl-textfield__input" type="hidden" name="edit_emp_id" id="edit_emp_id" value="<?php echo ( ($_POST['edit_emp_id']) ?: $sel_emp_det_info[0]['emp_id'] ) ?>">
                 <!-- </div> -->
 
                 <div class="mdl-textfield mdl-js-textfield">
@@ -781,7 +783,7 @@ echo '<script type="text/javascript">',
                 <?php if(isset($_POST['edit_emp'])){
                   $edit_password_1=$_POST['edit_password'];
                 }else{
-                  $edit_name_1=$sel_emp_det_info[0]['user_details']['password'];
+                  $edit_password_1=$sel_emp_det_info[0]['user_details']['password'];
                 } ?>
 
                 <input class="mdl-textfield__input" type="text" name="edit_password" id="edit_password" value="<?php echo $edit_password_1 ?>">
