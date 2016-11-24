@@ -693,7 +693,7 @@ echo '<script type="text/javascript">',
 ?>
 <!-- -Finish inserting data to modal-->
 
-<form action="web_app_user_list.php" method="post" name="disable_form" id="disable_form">
+<form action="web_app_user_list.php?page_no=<?php echo $_GET['page_no'] ?>" method="post" name="disable_form" id="disable_form">
 <input type="hidden" name="disable_emp_id" id="disable_emp_id">
 <button type="submit"></button>
 </form>
@@ -706,7 +706,7 @@ echo '<script type="text/javascript">',
       <p style="color:red;text-align:center"><?php echo $error_message_edit; ?></p>
     </div>
     <div class="modal-body">
-      <form action="web_app_user_list.php" method="post" name="form3" id="form3" style="text-align:center">
+      <form action="web_app_user_list.php?page_no=<?php echo $_GET['page_no'] ?>" method="post" name="form3" id="form3" style="text-align:center">
           <div class="mdl-textfield mdl-js-textfield">
 
           <div class="row">
