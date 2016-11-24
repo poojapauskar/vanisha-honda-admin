@@ -314,7 +314,35 @@ if($_POST['search_text'] != '' || ($_POST['date11'] != '' && $_POST['date22'] !=
 
 ?>
 
-
+<?php
+if($_POST['to'] == '' && isset($_POST['pn_submit'])){
+  echo "<script type='text/javascript'>
+  $(document).ready(function(){
+  var modal=document.getElementById('myModal');
+  modal.style.display = 'block';
+  });
+  </script>";
+  $error_message="To field is required";
+}elseif($_POST['template'] == '' && $_POST['customized'] == ''  && isset($_POST['pn_submit'])){
+  echo "<script type='text/javascript'>
+  $(document).ready(function(){
+  var modal=document.getElementById('myModal');
+  modal.style.display = 'block';
+  });
+  </script>";
+  $error_message="Either template or customized field is required";
+}elseif($_POST['template'] != '' && $_POST['customized'] != ''  && isset($_POST['pn_submit'])){
+  echo "<script type='text/javascript'>
+  $(document).ready(function(){
+  var modal=document.getElementById('myModal');
+  modal.style.display = 'block';
+  });
+  </script>";
+  $error_message="Both template and customized cannot be set";
+}else{
+  /*Push notification code here*/
+}
+?>
 
 
 <!-- <div class="form-group pull-right">
@@ -382,7 +410,8 @@ if($_POST['search_text'] != '' || ($_POST['date11'] != '' && $_POST['date22'] !=
   </ul>
 
 </div>
- 
+
+
 <!-- The Modal -->
 <div id="myModal" class="modal">
 
@@ -391,9 +420,10 @@ if($_POST['search_text'] != '' || ($_POST['date11'] != '' && $_POST['date22'] !=
     <div class="modal-header">
       <span style="color:black" class="close">×</span>
       <h2 style="text-align:center">New Push Notification</h2>
+      <p style="color:red;text-align:center"><?php echo $error_message ?></p>
     </div>
     <div class="modal-body">
-      <form action="#" style="text-align:center">
+      <form id="pn_form" name="pn_form" action="push_notification.php" method="post" style="text-align:center">
           <div class="mdl-textfield mdl-js-textfield">
 
           <div class="row">
@@ -405,13 +435,17 @@ if($_POST['search_text'] != '' || ($_POST['date11'] != '' && $_POST['date22'] !=
 
                 <div class="mdl-textfield mdl-js-textfield">
                 <label style="float: left;" for="to">To</label>
-                <input class="mdl-textfield__input" type="text" id="to" name="to">
+                <input class="mdl-textfield__input" value="<?php echo $_POST['to']; ?>" type="text" id="to" name="to">
                 </div>
 
                 <div class="mdl-textfield mdl-js-textfield">
                 <label style="float: left;" for="template">Template</label>
                 <select id="template" name="template">
-                <option ng-selected="true" value="">
+                  
+                <?php if($_POST['template'] != ''){?>
+                  <option ng-selected="true" value="<?php echo $_POST['template']; ?>"><?php echo $_POST['template'];
+                }?>
+                  <option value="">
                   <option value="Hello">Hello
                   <option value="Good Morning">Good Morning
                   <option value="New Offers">New Offers
@@ -420,7 +454,7 @@ if($_POST['search_text'] != '' || ($_POST['date11'] != '' && $_POST['date22'] !=
 
                 <div class="mdl-textfield mdl-js-textfield">
                 <label style="float: left;" for="customized">Customized</label>
-                <textarea class="mdl-textfield__input" type="text" name="customized" id="customized"></textarea>
+                <textarea class="mdl-textfield__input" type="text" name="customized" id="customized"><?php echo $_POST['customized']; ?></textarea>
                 </div>
             
           </div>
@@ -436,7 +470,7 @@ if($_POST['search_text'] != '' || ($_POST['date11'] != '' && $_POST['date22'] !=
         <div class="col-sm-3">
         </div>
         <div class="col-sm-4">
-          <button style="background-color:#607D8B" type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Send</button>
+          <button id="pn_submit" name="pn_submit" type="pn_submit" form="pn_form" style="background-color:#607D8B" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Send</button>
         </div>
         <!-- <div class="col-sm-2">
           <button style="background-color:red;color:white" type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Cancel</button>
