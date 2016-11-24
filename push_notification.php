@@ -339,7 +339,7 @@ if($_POST['to'] == '' && isset($_POST['pn_submit'])){
   });
   </script>";
   $error_message="Both template and customized cannot be set";
-}else{
+}elseif(isset($_POST['pn_submit'])){
   /*Push notification code here*/
 }
 ?>

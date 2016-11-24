@@ -278,9 +278,70 @@ if($_POST['disable_emp_id'] == '' || $_POST['disable_emp_id'] == null){
 ?>
 
 <?php 
-if($_POST['edit_employee_id'] == '' || $_POST['edit_employee_id'] == null){
-  /*echo "null";*/
-}else{
+/*if(($_POST['edit_employee_id'] == '' || $_POST['edit_employee_id'] == null)  &&  isset($_POST['edit_emp'])){
+ 
+}*/
+
+if(($_POST['edit_mobile'] == '' || $_POST['edit_mobile'] == 'null') &&  isset($_POST['edit_emp'])){
+  echo "<script type='text/javascript'>
+  $(document).ready(function(){
+  var modal=document.getElementById('myModal');
+  modal.style.display = 'block';
+  });
+  </script>";
+  $error_message_edit="Mobile field is required";
+}
+
+elseif(preg_match('/[A-Za-z]/', $_POST['edit_mobile'])  && isset($_POST['edit_emp'])) {
+  echo "<script type='text/javascript'>
+  $(document).ready(function(){
+  var modal=document.getElementById('myModal');
+  modal.style.display = 'block';
+  });
+  </script>";
+  $error_message_edit="Mobile no must contain only digits";
+}
+elseif( (strlen(preg_replace("/[^0-9]/","",$_POST['edit_mobile'])) >15 || strlen(preg_replace("/[^0-9]/","",$_POST['edit_mobile'])) <10) && isset($_POST['edit_emp']) ) {
+  echo "<script type='text/javascript'>
+  $(document).ready(function(){
+  var modal=document.getElementById('myModal');
+  modal.style.display = 'block';
+  });
+  </script>";
+  $error_message_edit="Mobile no. must contain 10-15 digits";
+}elseif( $_POST['edit_email'] != '' && !filter_var($_POST['edit_email'], FILTER_VALIDATE_EMAIL) && isset($_POST['edit_emp']) ) {
+  echo "<script type='text/javascript'>
+  $(document).ready(function(){
+  var modal=document.getElementById('myModal');
+  modal.style.display = 'block';
+  });
+  </script>";
+  $error_message_edit="Email id not valid";
+}elseif(($_POST['edit_username'] == '' || $_POST['edit_username'] == 'null') &&  isset($_POST['edit_emp'])){
+  echo "<script type='text/javascript'>
+  $(document).ready(function(){
+  var modal=document.getElementById('myModal');
+  modal.style.display = 'block';
+  });
+  </script>";
+  $error_message_edit="Username is required";
+}elseif(($_POST['edit_password'] == '' || $_POST['edit_password'] == 'null') &&  isset($_POST['edit_emp'])){
+  echo "<script type='text/javascript'>
+  $(document).ready(function(){
+  var modal=document.getElementById('myModal');
+  modal.style.display = 'block';
+  });
+  </script>";
+  $error_message_edit="Password is required";
+}elseif(($_POST['edit_access_level'] == '' || $_POST['edit_access_level'] == 'null') &&  isset($_POST['edit_emp'])){
+  echo "<script type='text/javascript'>
+  $(document).ready(function(){
+  var modal=document.getElementById('myModal');
+  modal.style.display = 'block';
+  });
+  </script>";
+  $error_message_edit="Access Level is required";
+}elseif(isset($_POST['edit_emp'])){
  $url_edit_emp_det = 'https://vanisha-honda.herokuapp.com/edit_employee/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy';
   $options_edit_emp_det = array(
     'http' => array(
@@ -307,53 +368,61 @@ if($_POST['edit_employee_id'] == '' || $_POST['edit_employee_id'] == null){
 if(($_POST['mobile1'] == '' || $_POST['mobile1'] == 'null') &&  isset($_POST['add_emp'])){
   echo "<script type='text/javascript'>
   $(document).ready(function(){
-  var modal=document.getElementById('myModal_add');
-  modal.style.display = 'block';
+  var modal_add=document.getElementById('myModal_add');
+  modal_add.style.display = 'block';
   });
   </script>";
   $error_message="Mobile field is required";
 }elseif(!is_numeric($_POST['mobile1']) && isset($_POST['add_emp'])) {
   echo "<script type='text/javascript'>
   $(document).ready(function(){
-  var modal=document.getElementById('myModal_add');
-  modal.style.display = 'block';
+  var modal_add=document.getElementById('myModal_add');
+  modal_add.style.display = 'block';
   });
   </script>";
   $error_message="Mobile no must contain only digits";
 }elseif( (strlen($_POST['mobile1']) >15 || strlen($_POST['mobile1']) <10) && isset($_POST['add_emp']) ) {
   echo "<script type='text/javascript'>
   $(document).ready(function(){
-  var modal=document.getElementById('myModal_add');
-  modal.style.display = 'block';
+  var modal_add=document.getElementById('myModal_add');
+  modal_add.style.display = 'block';
   });
   </script>";
   $error_message="Mobile no must contain 10-15 digits";
+}elseif( $_POST['email1'] != '' && !filter_var($_POST['email1'], FILTER_VALIDATE_EMAIL) && isset($_POST['add_emp']) ) {
+  echo "<script type='text/javascript'>
+  $(document).ready(function(){
+  var modal_add=document.getElementById('myModal_add');
+  modal_add.style.display = 'block';
+  });
+  </script>";
+  $error_message="Email id not valid";
 }elseif(($_POST['username1'] == '' || $_POST['username1'] == 'null') &&  isset($_POST['add_emp'])){
   echo "<script type='text/javascript'>
   $(document).ready(function(){
-  var modal=document.getElementById('myModal_add');
-  modal.style.display = 'block';
+  var modal_add=document.getElementById('myModal_add');
+  modal_add.style.display = 'block';
   });
   </script>";
   $error_message="Username is required";
 }elseif(($_POST['password1'] == '' || $_POST['password1'] == 'null') &&  isset($_POST['add_emp'])){
   echo "<script type='text/javascript'>
   $(document).ready(function(){
-  var modal=document.getElementById('myModal_add');
-  modal.style.display = 'block';
+  var modal_add=document.getElementById('myModal_add');
+  modal_add.style.display = 'block';
   });
   </script>";
   $error_message="Password is required";
 }elseif(($_POST['access_level1'] == '' || $_POST['access_level1'] == 'null') &&  isset($_POST['add_emp'])){
   echo "<script type='text/javascript'>
   $(document).ready(function(){
-  var modal=document.getElementById('myModal_add');
-  modal.style.display = 'block';
+  var modal_add=document.getElementById('myModal_add');
+  modal_add.style.display = 'block';
   });
   </script>";
   $error_message="Access Level is required";
 }
-else{
+elseif(isset($_POST['add_emp'])){
   /*echo $_POST['mobile1'];*/
   $url_add = 'https://vanisha-honda.herokuapp.com/add_new_employee/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy';
   $options_add = array(
@@ -634,6 +703,7 @@ echo '<script type="text/javascript">',
     <div class="modal-header">
       <span style="color:black" class="close">×</span>
       <h2 style="text-align:center">Edit User</h2>
+      <p style="color:red;text-align:center"><?php echo $error_message_edit; ?></p>
     </div>
     <div class="modal-body">
       <form action="web_app_user_list.php" method="post" name="form3" id="form3" style="text-align:center">
@@ -643,42 +713,87 @@ echo '<script type="text/javascript">',
             <div class="col-sm-6" style="">
                 <!-- <div class="mdl-textfield mdl-js-textfield">
                 <label style="float: left;" for="edit_employee">Employee Id</label> -->
-                <input class="mdl-textfield__input" type="hidden" name="edit_employee_id" id="edit_employee_id" value="<?php echo $sel_emp_det_info[0]['emp_id'] ?>">
+                <input class="mdl-textfield__input" type="hidden" name="emp_id_edit" id="emp_id_edit" value="<?php echo ( ($_POST['emp_id_edit']) ?: $sel_emp_det_info[0]['emp_id'] ) ?>">
                 <!-- </div> -->
 
                 <div class="mdl-textfield mdl-js-textfield">
                 <label style="float: left;" for="edit_name">Name</label>
-                <input class="mdl-textfield__input" type="text" name="edit_name" id="edit_name" value="<?php echo $sel_emp_det_info[0]['user_details']['name'] ?>"></input>
+                
+                <?php if(isset($_POST['edit_emp'])){
+                  $edit_name_1=$_POST['edit_name'];
+                }else{
+                  $edit_name_1=$sel_emp_det_info[0]['user_details']['name'];
+                } ?>
+                
+                <input class="mdl-textfield__input" type="text" name="edit_name" id="edit_name" value="<?php echo $edit_name_1 ?>"></input>
                 </div>
 
                 <div class="mdl-textfield mdl-js-textfield">
                 <label style="float: left;" for="edit_email">Email</label>
-                <input class="mdl-textfield__input" type="text" name="edit_email"id="edit_email" value="<?php echo $sel_emp_det_info[0]['user_details']['email'] ?>">
+
+                <?php if(isset($_POST['edit_emp'])){
+                  $edit_email_1=$_POST['edit_email'];
+                }else{
+                  $edit_email_1=$sel_emp_det_info[0]['user_details']['email'];
+                } ?>
+
+                <input class="mdl-textfield__input" type="text" name="edit_email"id="edit_email" value="<?php echo $edit_email_1 ?>">
                 </div>
 
                 <div class="mdl-textfield mdl-js-textfield">
                 <label style="float: left;" for="edit_mobile">Mobile</label>
-                <input class="mdl-textfield__input" type="text" name="edit_mobile" id="edit_mobile" value="<?php echo $sel_emp_det_info[0]['user_details']['mobile'] ?>">
+
+                <?php if(isset($_POST['edit_emp'])){
+                  $edit_mobile_1=$_POST['edit_mobile'];
+                }else{
+                  $edit_mobile_1=$sel_emp_det_info[0]['user_details']['mobile'];
+
+                } ?>
+
+                <input class="mdl-textfield__input" type="text" name="edit_mobile" id="edit_mobile" value="<?php echo $edit_mobile_1 ?>">
                 </div>
             </div>
 
             <div class="col-sm-6">
                 <div class="mdl-textfield mdl-js-textfield">
                 <label style="float: left;" for="edit_username">Username</label>
-                <input class="mdl-textfield__input" type="text" name="edit_username" id="edit_username" value="<?php echo $sel_emp_det_info[0]['user_details']['username'] ?>">
+
+                <?php if(isset($_POST['edit_emp'])){
+                  $edit_username_1=$_POST['edit_username'];
+                }else{
+                  $edit_username_1=$sel_emp_det_info[0]['user_details']['username'];
+                } ?>
+
+                <input class="mdl-textfield__input" type="text" name="edit_username" id="edit_username" value="<?php echo $edit_username_1 ?>">
                 </div>
 
                 <div class="mdl-textfield mdl-js-textfield">
                 <label style="float: left;" for="edit_password">Password</label>
-                <input class="mdl-textfield__input" type="text" name="edit_password" id="edit_password" value="<?php echo $sel_emp_det_info[0]['user_details']['password'] ?>">
+
+                <?php if(isset($_POST['edit_emp'])){
+                  $edit_password_1=$_POST['edit_password'];
+                }else{
+                  $edit_name_1=$sel_emp_det_info[0]['user_details']['password'];
+                } ?>
+
+                <input class="mdl-textfield__input" type="text" name="edit_password" id="edit_password" value="<?php echo $edit_password_1 ?>">
                 </div>
 
                 
 
                 <div class="mdl-textfield mdl-js-textfield">
                 <label style="float: left;" for="edit_access_level">Access Level</label>
-                <select id="edit_access_level1" name="edit_access_level" value="<?php echo $sel_emp_det_info[0]['emp_details']['access_level'] ?>"><?php echo $sel_emp_det_info[0]['emp_details']['access_level'] ?>
-                  <option ng-selected="true" value="Sales">Sales
+                <select id="edit_access_level1" name="edit_access_level">
+                
+                <?php if(isset($_POST['edit_emp'])){
+                  $edit_access_level_1=$_POST['edit_access_level'];
+                }else{
+                  $edit_access_level_1=$sel_emp_det_info[0]['emp_details']['access_level'];
+                } ?>
+
+                <option ng-selected="true" value="<?php echo $edit_access_level_1 ?>"><?php echo $edit_access_level_1; ?>
+                
+
                   <option value="Sales">Sales
                   <option value="Insurance">Insurance
                   <option value="Admin">Admin
@@ -699,7 +814,7 @@ echo '<script type="text/javascript">',
         <div class="col-sm-4">
         </div>
         <div class="col-sm-2">
-          <button style="background-color:#607D8B" onclick="show_wait_msg()" type="submit" form="form3" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Save Changes</button>
+          <button name="edit_emp" id="edit_emp" style="background-color:#607D8B" onclick="show_wait_msg()" type="submit" form="form3" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Save Changes</button>
         </div>
         <div class="col-sm-2">
           <button style="background-color:red;color:white" type="submit" onclick="<?php echo 'disable_emp('.$sel_emp_det_info[0]['emp_id'].')' ?>" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Delete User</button>
