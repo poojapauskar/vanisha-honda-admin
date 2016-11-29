@@ -143,7 +143,7 @@ if($arr_check_wether_login['status'] != 200){
     </md-content>
   </div> -->
 <div class="col-sm-6" style="margin-top:2%">
-  <form method="post" action="push_notifications.php" name="search_form" id="search_form">
+  <form method="post" action="push_notification.php" name="search_form" id="search_form">
     <input id="date11" name="date11" value="<?php echo $_POST['date11'] ?>" style="background-color:#E8E8E8;background-image:url(images/calendar-range.png) !important;
     background-size: 20px 20px;background-repeat: no-repeat;text-indent: 22px;font-size:13px" class="date" type="text" placeholder="From: DD/MM/YYYY">
     <input id="date22" name="date22" value="<?php echo $_POST['date22'] ?>" style="background-color:#E8E8E8;background-image:url(images/calendar-range.png) !important;
@@ -155,7 +155,7 @@ if($arr_check_wether_login['status'] != 200){
 </div>
 
 <div class="col-sm-1" style="margin-top:2%">
-     <form action="push_notifications.php">
+     <form action="push_notification.php">
       <button type="submit" onclick="clear1()" class="mdl-button mdl-js-button mdl-button--raised">Clear</button>
     </form>
 </div>
@@ -394,7 +394,7 @@ if($_POST['to'] == '' && isset($_POST['pn_submit'])){
             <?php 
                 for ($x = 0; $x <= $push_notifications_info['count']/10; $x++) { ?>
                     <td>
-                      <form method="get" action="push_notifications.php">
+                      <form method="get" action="push_notification.php">
                         <input type="hidden" name="page_no" value=<?php echo $x+1 ?>>
                         <button style="background-color:#607D8B" class="mdl-button mdl-js-button mdl-button--raised" type="submit"><?php echo $x+1 ?></button>
                       </form>
