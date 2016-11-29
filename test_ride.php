@@ -341,7 +341,7 @@ if($_POST['search_text'] != '' || ($_POST['date11'] != '' && $_POST['date22'] !=
    <?php 
       for ($x = 0; $x < count($test_rides_info['response']); $x++) { ?>
               <tr>
-                <td align="left"><?php echo empty($test_rides_info['response'][$x]['user_details']['name']) ? "All Users" : $test_rides_info['response'][$x]['user_details']['name']; ?></td>
+                <td align="left"><?php echo empty($test_rides_info['response'][$x]['user_details']['name']) ? "NULL" : $test_rides_info['response'][$x]['user_details']['name']; ?></td>
                 <td align="left"><?php echo empty($test_rides_info['response'][$x]['user_details']['mobile']) ? "NULL" : $test_rides_info['response'][$x]['user_details']['mobile']; ?></td>
                 <td align="left"><?php echo empty($test_rides_info['response'][$x]['user_details']['email']) ? "NULL" : $test_rides_info['response'][$x]['user_details']['email']; ?></td>
                 <td align="left"><?php echo empty($test_rides_info['response'][$x]['test_vehicle_details']['vehicle']) ? "NULL" : $test_rides_info['response'][$x]['test_vehicle_details']['vehicle']; ?></td>
@@ -368,7 +368,7 @@ if($_POST['search_text'] != '' || ($_POST['date11'] != '' && $_POST['date22'] !=
             <?php 
                 for ($x = 0; $x <= $test_rides_info['count']/10; $x++) { ?>
                     <td>
-                      <form method="get" action="service_requests.php">
+                      <form method="get" action="test_ride.php">
                         <input type="hidden" name="page_no" value=<?php echo $x+1 ?>>
                         <button style="background-color:#607D8B" class="mdl-button mdl-js-button mdl-button--raised" type="submit"><?php echo $x+1 ?></button>
                       </form>
