@@ -1,5 +1,21 @@
 @import url('fonts.css');
 
+#head_list, #body_list { display: block; }
+
+
+#body_list {
+    height: 420px;       /* Just for the demo          */
+    overflow-y: auto;    /* Trigger vertical scroll    */
+    overflow-x: hidden;  /* Hide the horizontal scroll */
+}
+
+
+#list {
+    width: 100%; /* Optional */
+}
+
+
+
 .logout_btn{
    -moz-transform: scale(0.2) !important;
   -webkit-transform: scale(0.2) !important;

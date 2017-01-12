@@ -161,7 +161,7 @@ if($arr_check_wether_login['status'] != 200){
 </div>
 
     <div class="col-sm-2" style="margin-top:2%">
-      <button style="font-size:10px !important;line-height:12px;text-overflow:initial;overflow:initial;white-space:initial;" onclick="open_modal()" class="mdl-button mdl-js-button mdl-button--raised">
+      <button name="new_push_button" id="new_push_button" style="font-size:10px !important;line-height:12px;text-overflow:initial;overflow:initial;white-space:initial;" onclick="open_modal()" class="mdl-button mdl-js-button mdl-button--raised">
        New Push Notification
       </button>
     </div>
@@ -257,6 +257,20 @@ $('.date').blur(function()
 </script>
 
 <?php
+        $url_list = 'https://vanisha-honda.herokuapp.com/get_list_to_select_specific_user/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy';
+        $options_list = array(
+          'http' => array(
+            /*'header'  => "Content-type: application/x-www-form-urlencoded\r\n",*/
+            'method'  => 'GET',
+          ),
+        );
+        $context_list = stream_context_create($options_list);
+        $output_list = file_get_contents($url_list, false,$context_list);
+        /*var_dump($output_list);*/
+        $list_info = json_decode($output_list,true);
+        /*var_dump($list_info[0]['vehicle_details']['inward_date']);*/
+?>
+<?php
 
 if($_GET['page_no'] == '' || $_GET['page_no'] == 'null'){
   $page=1;
@@ -315,7 +329,15 @@ if($_POST['search_text'] != '' || ($_POST['date11'] != '' && $_POST['date22'] !=
 ?>
 
 <?php
-if($_POST['to'] == '' && isset($_POST['pn_submit'])){
+if(isset($_POST['pn_submit']) && !isset($_POST['specific_user']) && !isset($_POST['to']) && !isset($_POST['all_users'])){
+  echo "<script type='text/javascript'>
+  $(document).ready(function(){
+  var modal=document.getElementById('myModal');
+  modal.style.display = 'block';
+  });
+  </script>";
+  $error_message="Select All Users or Specific User";
+}elseif($_POST['to'] == '' && isset($_POST['pn_submit']) && isset($_POST['specific_user'])){
   echo "<script type='text/javascript'>
   $(document).ready(function(){
   var modal=document.getElementById('myModal');
@@ -344,6 +366,19 @@ if($_POST['to'] == '' && isset($_POST['pn_submit'])){
 }
 ?>
 
+<?php 
+if(isset($_POST['list_submit'])){
+  foreach($_POST['check_list'] as $selected){
+    /*echo $selected."</br>";*/
+  }
+  echo "<script type='text/javascript'>
+  $(document).ready(function(){
+  var modal=document.getElementById('myModal');
+  modal.style.display = 'block';
+  });
+  </script>";
+}
+?>
 
 <!-- <div class="form-group pull-right">
 <input type="text" class="search form-control" placeholder="What you looking for?">
@@ -429,14 +464,40 @@ if($_POST['to'] == '' && isset($_POST['pn_submit'])){
           <div class="row">
 
 <div style="text-align:left">
-<input type="radio" ng-checked="true" ng-model="myVar" value="All Users">All Users<br>
-<input type="radio" ng-model="myVar" value="User">Specific User
+
+<div class="row">
+ <div class="col-sm-6">
+  <input type="radio" ng-model="myVar" name="all_users" value="all_users">All Users<br>
+ </div>
+ <div class="col-sm-6">
+  <input type="radio" ng-model="myVar" name="specific_user" value="specific_user">Specific User
+ </div>
+</div>
+
 </div>
 
                 <div class="mdl-textfield mdl-js-textfield">
-                <label style="float: left;" for="to">To</label>
-                <input class="mdl-textfield__input" value="<?php echo $_POST['to']; ?>" type="text" id="to" name="to">
+                <label style="float: left;" for="to">To<button type="button" onclick="open_list()" style="margin-left:170px;font-weight:normal;background-color:#607D8B">Select List</button></label>
+                
+                <?php 
+                  $list="";
+                
+                  if(isset($_POST['check_list'])){
+                    foreach($_POST['check_list'] as $selected){
+                      /*echo $selected."</br>";*/
+                      $list=$list.",".$selected;
+                    }
+                    $list = ltrim($list, ',');
+                  }elseif(isset($_POST['to'])){
+                    $list=$_POST['to'];
+                  }?>
+
+                 <input class="mdl-textfield__input" value="<?php echo $list; ?>" type="text" id="to" name="to">
+                
+                
                 </div>
+
+                
 
                 <div class="mdl-textfield mdl-js-textfield">
                 <label style="float: left;" for="template">Template</label>
@@ -445,7 +506,7 @@ if($_POST['to'] == '' && isset($_POST['pn_submit'])){
                 <?php if($_POST['template'] != ''){?>
                   <option ng-selected="true" value="<?php echo $_POST['template']; ?>"><?php echo $_POST['template'];
                 }?>
-                  <option value="">
+                  <option value="">Select Template
                   <option value="Hello">Hello
                   <option value="Good Morning">Good Morning
                   <option value="New Offers">New Offers
@@ -454,7 +515,7 @@ if($_POST['to'] == '' && isset($_POST['pn_submit'])){
 
                 <div class="mdl-textfield mdl-js-textfield">
                 <label style="float: left;" for="customized">Customized</label>
-                <textarea class="mdl-textfield__input" type="text" name="customized" id="customized"><?php echo $_POST['customized']; ?></textarea>
+                <textarea class="mdl-textfield__input" placeholder="Please type your message or select from template" type="text" name="customized" id="customized"><?php echo $_POST['customized']; ?></textarea>
                 </div>
             
           </div>
@@ -467,16 +528,82 @@ if($_POST['to'] == '' && isset($_POST['pn_submit'])){
        <!--  <div class="col-sm-4">
           <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Cancel</button>
         </div> -->
-        <div class="col-sm-3">
-        </div>
         <div class="col-sm-4">
+        </div>
+        <div class="col-sm-2">
           <button id="pn_submit" name="pn_submit" type="pn_submit" form="pn_form" style="background-color:#607D8B" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Send</button>
         </div>
-        <!-- <div class="col-sm-2">
-          <button style="background-color:red;color:white" type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Cancel</button>
-        </div> -->
-        <div class="col-sm-5">
+        <div class="col-sm-2">
+          <button style="background-color:red;color:white" type="button" class="cancel mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Cancel</button>
         </div>
+        <div class="col-sm-2">
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- The Modal -->
+<div id="list_modal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <!-- <div class="modal-header"> -->
+      <!-- <span style="color:black" class="close_list">×</span> -->
+    <!-- </div> -->
+    <!-- <div class="modal-body"> -->
+
+<table id="list"  style="margin-left:-17%" align="center" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp results">
+  <thead id="head_list">
+
+    <!-- <tr class="warning no-result">
+      <td colspan="4"><i class="fa fa-warning"></i> No result</td>
+    </tr> -->
+  </thead>
+  <tbody id="body_list">
+    <tr>
+      <th>Name</th>
+      <th>Vehicle</th>
+      <th>Engine No.</th>
+      <th>Chassis No.</th>
+      <th>Reg No.</th>
+      <th>Mobile</th>
+      <th>Email</th>
+      <th>Address</th>
+      <th>Select</th>
+
+    <form name="list_submit_form" id="list_submit_form" method="post" action="#"> 
+      <th><button name="list_submit" value="list_submit" style="background-color:#607D8B" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Submit</button>  
+      </th>
+    </form>
+
+    </tr>
+   <?php 
+      for ($x = 0; $x < count($list_info); $x++) { ?>
+              <tr>
+                <td align="left"><?php echo empty($list_info[$x]['user_details']['name']) ? "NULL" : $list_info[$x]['user_details']['name']; ?></td>
+                <td align="left"><?php echo empty($list_info[$x]['vehicle_details']['vehicle']) ? "NULL" : $list_info[$x]['vehicle_details']['vehicle']; ?></td>
+                <td align="left"><?php echo empty($list_info[$x]['vehicle_details']['engine_no']) ? "NULL" : $list_info[$x]['vehicle_details']['engine_no']; ?></td>
+                <td align="left"><?php echo empty($list_info[$x]['vehicle_details']['chassis_no']) ? "NULL" : $list_info[$x]['vehicle_details']['chassis_no']; ?></td>
+                <td align="left"><?php echo empty($list_info[$x]['vehicle_details']['reg_no']) ? "NULL" : $list_info[$x]['vehicle_details']['reg_no']; ?></td>
+                <td align="left"><?php echo empty($list_info[$x]['user_details']['mobile']) ? "NULL" : $list_info[$x]['user_details']['mobile']; ?></td>
+                <td align="left"><?php echo empty($list_info[$x]['user_details']['email']) ? "NULL" : $list_info[$x]['user_details']['email']; ?></td>
+                <td align="left"><?php echo empty($list_info[$x]['user_details']['address']) ? "NULL" : $list_info[$x]['user_details']['address']; ?></td>
+                <!-- <td align="left"><button name="list_submit" value="list_submit" style="background-color:#607D8B" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Select</button></td>
+                 -->
+                <td align="left"><input form="list_submit_form" type="checkbox" name="check_list[]" value="<?php echo $list_info[$x]['user_details']['name'] ?>"><br/></td>
+              </tr>
+    <?php  } 
+    ?> 
+  </tbody>
+</table>
+
+
+    <!-- </div> -->
+    <div class="modal-footer">
+      <div class="row">
+       
       </div>
     </div>
   </div>
@@ -492,6 +619,7 @@ var modal = document.getElementById('myModal');
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
+var span_cancel = document.getElementsByClassName("cancel")[0];
 
 // When the user clicks the button, open the modal
 /*btn.onclick = function() {
@@ -510,10 +638,49 @@ span.onclick = function() {
     modal.style.display = "none";
 }
 
+span_cancel.onclick = function() {
+    modal.style.display = "none";
+}
+
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
+    }
+}
+</script>
+
+<script>
+// Get the modal
+var list_modal = document.getElementById('list_modal');
+
+// Get the button that opens the modal
+/*var btn = document.getElementById("myBtn");*/
+
+// Get the <span> element that closes the modal
+/*var span_list = document.getElementsByClassName("close_list")[0];*/
+
+// When the user clicks the button, open the modal
+/*btn.onclick = function() {
+    modal.style.display = "block";
+}*/
+
+/*document.getElementById("myBtn1").onclick = function() {
+    modal.style.display = "block";
+}*/
+
+function open_list(){
+   list_modal.style.display = "block";
+}
+// When the user clicks on <span> (x), close the modal
+/*span_list.onclick = function() {
+    list_modal.style.display = "none";
+}*/
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == list_modal) {
+        list_modal.style.display = "none";
     }
 }
 </script>
