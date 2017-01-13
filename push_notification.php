@@ -370,7 +370,7 @@ if(isset($_POST['pn_submit']) && !isset($_POST['select'])){
     'http' => array(
       'header'  => array(
                   'ALL-OR-SPECIFIC: '.$_POST['select'],
-                  'TO: '.$_POST['to_id'],
+                  'TO-ID: '.$_POST['to_id'],
                   'TEMPLATE: '.$_POST['template'],
                   'CUSTOMIZED: '.$_POST['customized'],
                 ),
