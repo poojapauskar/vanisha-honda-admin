@@ -329,7 +329,7 @@ if($_POST['search_text'] != '' || ($_POST['date11'] != '' && $_POST['date22'] !=
 ?>
 
 <?php
-if(isset($_POST['pn_submit']) && !isset($_POST['specific_user']) && !isset($_POST['to']) && !isset($_POST['all_users'])){
+if(isset($_POST['pn_submit']) && !isset($_POST['select'])){
   echo "<script type='text/javascript'>
   $(document).ready(function(){
   var modal=document.getElementById('myModal');
@@ -337,7 +337,7 @@ if(isset($_POST['pn_submit']) && !isset($_POST['specific_user']) && !isset($_POS
   });
   </script>";
   $error_message="Select All Users or Specific User";
-}elseif($_POST['to'] == '' && isset($_POST['pn_submit']) && isset($_POST['specific_user'])){
+}elseif($_POST['to'] == '' && isset($_POST['pn_submit']) && ($_POST['select']=="specific_user")){
   echo "<script type='text/javascript'>
   $(document).ready(function(){
   var modal=document.getElementById('myModal');
@@ -363,6 +363,23 @@ if(isset($_POST['pn_submit']) && !isset($_POST['specific_user']) && !isset($_POS
   $error_message="Both template and customized cannot be set";
 }elseif(isset($_POST['pn_submit'])){
   /*Push notification code here*/
+  $url_push_noti = 'https://vanisha-honda.herokuapp.com/send_push_message/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy&page='.$page;
+  $options_push_noti = array(
+    'http' => array(
+      'header'  => => array(
+                  'USERS: '.$_POST['select'],
+                  'TO: '.$_POST['to'],
+                  'TEMPLATE: '.$_POST['template'],
+                  'CUSTOMIZED: '.$_POST['customized'],
+                ),
+      'method'  => 'GET',
+    ),
+  );
+  $context_push_noti = stream_context_create($options_push_noti);
+  $output_push_noti = file_get_contents($url_push_noti, false,$context_push_noti);
+  /*var_dump($output_data);*/
+  $send_notification = json_decode($output_push_noti,true);
+  /*var_dump($push_notifications_info);*/
 }
 ?>
 
@@ -468,14 +485,14 @@ if(isset($_POST['list_submit'])){
 <div class="row">
  <div class="col-sm-6">
 
-  <?php if($_POST['all_users'] != null){
+  <?php if($_POST['select'] == "all_users"){
     $check1="true";
   }?>
   <input type="radio" ng-checked=<?php echo $check1 ?> ng-model="myVar" name="select" value="all_users">All Users<br>
  </div>
  <div class="col-sm-6">
 
-  <?php if($_POST['check_list'] != null || $_POST['specific_user'] != null){
+  <?php if($_POST['check_list'] != null || $_POST['select'] == "specific_user"){
     $check2="true";
   }?>
   <input type="radio" ng-checked=<?php echo $check2 ?> ng-model="myVar" name="select" value="specific_user">Specific User
