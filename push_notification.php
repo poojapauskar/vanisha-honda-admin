@@ -363,10 +363,10 @@ if(isset($_POST['pn_submit']) && !isset($_POST['select'])){
   $error_message="Both template and customized cannot be set";
 }elseif(isset($_POST['pn_submit'])){
   /*Push notification code here*/
-  $url_push_noti = 'https://vanisha-honda.herokuapp.com/send_push_message/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy&page='.$page;
+  $url_push_noti = 'https://vanisha-honda.herokuapp.com/send_push_message/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy';
   $options_push_noti = array(
     'http' => array(
-      'header'  => => array(
+      'header'  => array(
                   'USERS: '.$_POST['select'],
                   'TO: '.$_POST['to'],
                   'TEMPLATE: '.$_POST['template'],
@@ -377,9 +377,7 @@ if(isset($_POST['pn_submit']) && !isset($_POST['select'])){
   );
   $context_push_noti = stream_context_create($options_push_noti);
   $output_push_noti = file_get_contents($url_push_noti, false,$context_push_noti);
-  /*var_dump($output_data);*/
   $send_notification = json_decode($output_push_noti,true);
-  /*var_dump($push_notifications_info);*/
 }
 ?>
 
