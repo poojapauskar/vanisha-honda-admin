@@ -26,8 +26,10 @@
 <!-- search functionality -->
 <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css'>
 <link rel="stylesheet" href="css/search.css">
+<link rel="stylesheet" href="css/search2.css">
  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src="js/search.js"></script>
+<script src="js/search2.js"></script>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
@@ -571,20 +573,51 @@ if(isset($_POST['list_submit'])){
 <div id="list_modal" class="modal">
 
   <!-- Modal content -->
-  <div class="modal-content">
+  <div class="modal-content" style="background-color:transparent">
     <!-- <div class="modal-header"> -->
       <!-- <span style="color:black" class="close_list">×</span> -->
     <!-- </div> -->
     <!-- <div class="modal-body"> -->
 
-<table id="list"  style="margin-left:-17%" align="center" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp results">
+<div class="container" style="margint-left:-20%;margin-top:-10%">
+  <div class="row" id="row4" style="background-color:#607D8B;height:80px;width:965px">
+
+    
+
+    <div class="col-sm-1" style="margin-top:3%;">
+      <h6 style="margin-top:0%;">Search</h6>
+    </div>
+
+<div class="col-sm-2" style="margin-top:3%;">
+      <form action="#" style="margin-top:-20%">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+          <label class="mdl-button mdl-js-button mdl-button--icon" for="search_text2">
+            <i class="material-icons">search</i>
+          </label>
+          <div class="mdl-textfield__expandable-holder">
+            <input class="search2 mdl-textfield__input" value="<?php echo $_POST['search_text2'] ?>" type="text" id="search_text2" name="search_text2">            
+            <label class="mdl-textfield__label" for="sample-expandable">Expandable Input</label>
+          </div>
+        </div>
+      </form>
+    </div>
+
+
+  </div>
+</div>
+
+
+
+<table id="list"  style="margin-left:-17%;" align="center" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp results2">
+  
   <thead id="head_list">
 
-    <!-- <tr class="warning no-result">
+    <!-- <tr class="warning no-result2">
       <td colspan="4"><i class="fa fa-warning"></i> No result</td>
     </tr> -->
+
   </thead>
-  <tbody id="body_list">
+  <tbody id="body_list" style="width:965px">
     <tr>
       <th>Name</th>
       <th>Vehicle</th>
@@ -604,7 +637,7 @@ if(isset($_POST['list_submit'])){
     </tr>
    <?php 
       for ($x = 0; $x < count($list_info); $x++) { ?>
-              <tr>
+              <tr class="alter">
                 <td align="left"><?php echo empty($list_info[$x]['user_details']['name']) ? "NULL" : $list_info[$x]['user_details']['name']; ?></td>
                 <td align="left"><?php echo empty($list_info[$x]['vehicle_details']['vehicle']) ? "NULL" : $list_info[$x]['vehicle_details']['vehicle']; ?></td>
                 <td align="left"><?php echo empty($list_info[$x]['vehicle_details']['engine_no']) ? "NULL" : $list_info[$x]['vehicle_details']['engine_no']; ?></td>
