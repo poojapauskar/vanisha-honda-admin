@@ -467,10 +467,18 @@ if(isset($_POST['list_submit'])){
 
 <div class="row">
  <div class="col-sm-6">
-  <input type="radio" ng-model="myVar" name="all_users" value="all_users">All Users<br>
+
+  <?php if($_POST['all_users'] != null){
+    $check1="true";
+  }?>
+  <input type="radio" ng-checked=<?php echo $check1 ?> ng-model="myVar" name="select" value="all_users">All Users<br>
  </div>
  <div class="col-sm-6">
-  <input type="radio" ng-model="myVar" name="specific_user" value="specific_user">Specific User
+
+  <?php if($_POST['check_list'] != null || $_POST['specific_user'] != null){
+    $check2="true";
+  }?>
+  <input type="radio" ng-checked=<?php echo $check2 ?> ng-model="myVar" name="select" value="specific_user">Specific User
  </div>
 </div>
 
