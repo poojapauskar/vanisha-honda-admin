@@ -370,7 +370,7 @@ if(isset($_POST['pn_submit']) && !isset($_POST['select'])){
     'http' => array(
       'header'  => array(
                   'USERS: '.$_POST['select'],
-                  'TO: '.$_POST['to'],
+                  'TO: '.$_POST['to_id'],
                   'TEMPLATE: '.$_POST['template'],
                   'CUSTOMIZED: '.$_POST['customized'],
                 ),
@@ -506,19 +506,42 @@ if(isset($_POST['list_submit'])){
                 
                 <?php 
                   $list="";
+                  $list_id="";
                 
                   if(isset($_POST['check_list'])){
                     foreach($_POST['check_list'] as $selected){
-                      /*echo $selected."</br>";*/
-                      $list=$list.",".$selected;
+
+                          $url_get_name_from_id = 'https://vanisha-honda.herokuapp.com/get_user_name_from_id/?access_token=YbZtBg6XuWWbZ39R3BIn9Mb1XOn7uy';
+                          $options_get_name_from_id = array(
+                            'http' => array(
+                              'header'  => array(
+                                          'USER-ID: '.$selected,
+                                        ),
+                              'method'  => 'GET',
+                            ),
+                          );
+                          $context_get_name_from_id = stream_context_create($options_get_name_from_id);
+                          $output_get_name_from_id = file_get_contents($url_get_name_from_id, false,$context_get_name_from_id);
+                          $get_name_from_id = json_decode($output_get_name_from_id,true);
+
+                          /*echo $selected."</br>";*/
+                          $list=$list.",".$get_name_from_id[0]['name'];
+
+                          $list_id=$list_id.",".$selected;
                     }
+
+
                     $list = ltrim($list, ',');
+                    $list_id = ltrim($list_id, ',');
+
                   }elseif(isset($_POST['to'])){
                     $list=$_POST['to'];
+                    $list_id=$_POST['to_id'];
                   }?>
 
                  <input class="mdl-textfield__input" value="<?php echo $list; ?>" type="text" id="to" name="to">
-                
+                  
+                 <input class="mdl-textfield__input" value="<?php echo $list_id; ?>" type="hidden" id="to_id" name="to_id">
                 
                 </div>
 
@@ -648,7 +671,7 @@ if(isset($_POST['list_submit'])){
                 <td align="left"><?php echo empty($list_info[$x]['user_details']['address']) ? "NULL" : $list_info[$x]['user_details']['address']; ?></td>
                 <!-- <td align="left"><button name="list_submit" value="list_submit" style="background-color:#607D8B" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Select</button></td>
                  -->
-                <td align="left"><input form="list_submit_form" type="checkbox" name="check_list[]" value="<?php echo $list_info[$x]['user_details']['name'] ?>"><br/></td>
+                <td align="left"><input form="list_submit_form" type="checkbox" name="check_list[]" value="<?php echo $list_info[$x]['user_details']['pk'] ?>"><br/></td>
               </tr>
     <?php  } 
     ?> 
