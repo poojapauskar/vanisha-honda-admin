@@ -369,7 +369,7 @@ if(isset($_POST['pn_submit']) && !isset($_POST['select'])){
   $options_push_noti = array(
     'http' => array(
       'header'  => array(
-                  'USERS: '.$_POST['select'],
+                  'ALL-OR-SPECIFIC: '.$_POST['select'],
                   'TO: '.$_POST['to_id'],
                   'TEMPLATE: '.$_POST['template'],
                   'CUSTOMIZED: '.$_POST['customized'],
